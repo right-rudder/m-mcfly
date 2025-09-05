@@ -1,26 +1,57 @@
 @import "tailwindcss";
 
+
 @theme {
-  --color-primary-50: #fdf1e8;
-  --color-primary-100: #fbdcbf;
-  --color-primary-200: #f7b783;
-  --color-primary-300: #f29247;
-  --color-primary-400: #f07b28;
-  --color-primary-500: #ef7016;
-  --color-primary-600: #d16314;
-  --color-primary-700: #a94e0f;
-  --color-primary-800: #7d390b;
-  --color-primary-900: #532407;
-  --color-primary-950: #321505;
-  --color-accent-50: #edf0f3;
-  --color-accent-100: #cfd6dd;
-  --color-accent-200: #a7b1bb;
-  --color-accent-300: #7f8c99;
-  --color-accent-400: #556272;
-  --color-accent-500: #19232d;
-  --color-accent-600: #151d25;
-  --color-accent-700: #10171d;
-  --color-accent-800: #0b1014;
-  --color-accent-900: #070a0c;
-  --color-accent-950: #040506;
+
+  /* Primary Color */
+  --color-primary-50: #fdfee8;
+  --color-primary-100: #fbfdc4;
+  --color-primary-200: #fbfc8c;
+  --color-primary-300: #fbf449;
+  --color-primary-400: #f7e518;
+  --color-primary-500: #e8cd0b;
+  --color-primary-600: #c7a007;
+  --color-primary-700: #9f7409;
+  --color-primary-800: #835b10;
+  --color-primary-900: #704a13;
+  --color-primary-950: #412707;
+
+  /* Accent Color */
+  --color-accent-50: #f4f7f7;
+  --color-accent-100: #e4e8e9;
+  --color-accent-200: #cbd4d6;
+  --color-accent-300: #a7b5b9;
+  --color-accent-400: #7c8f94;
+  --color-accent-500: #617479;
+  --color-accent-600: #536167;
+  --color-accent-700: #475157;
+  --color-accent-800: #3f474b;
+  --color-accent-900: #313639;
+  --color-accent-950: #22272a;
+
+
+  /* fonts  */
+  --font-sans: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-heading: 'Space Grotesk', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.btn-primary {
+  @apply bg-primary-500 text-white rounded-full px-4 py-2 flex items-center justify-center gap-2 hover:bg-primary-600 transition;
+}
+
+.btn-secondary {
+  @apply bg-accent-500 text-white rounded-full px-4 py-2 flex items-center justify-center gap-2 hover:bg-accent-600 transition;
+}
+
+.btn-transparent {
+  @apply bg-transparent text-accent-50 border border-primary-500 rounded-full px-4 py-2 flex items-center justify-center gap-2 hover:bg-primary-500 hover:text-white transition;
+}
+
+.eyebrow {
+  @apply text-sm font-semibold text-primary-500 uppercase border-b-2 border-l-2 border-r-2 border-t-1 border-primary-500 inline-block mb-2 rounded-full px-3 py-1 w-fit;
+}
+
+body {
+  font-family: var(--font-sans);
+  line-height: 1.6;
 }

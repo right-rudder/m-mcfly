@@ -1,0 +1,33 @@
+---
+const { data } = Astro.props;
+import ImageComp from "./ImageComp.astro";
+
+---
+<div class={data.styling}>
+  <ImageComp
+    src={data.primaryImage}
+    alt={data.primaryAlt}
+    classes={`object-cover h-full w-full`}
+    loading="eager"
+  />
+
+  <div
+    class="absolute inset-0 flex items-center px-5 text-left text-white backdrop-brightness-50 md:px-10 lg:px-20"
+  >
+    <div class="flex translate-y-5 flex-col gap-3 w-1/2 lg:gap-6">
+      <p class="eyebrow font-semibold uppercase lg:text-base">
+        {data.eyebrow}
+      </p>
+      <h1
+        class="font-display max-w-2xl text-4xl font-black italic lg:max-w-6xl lg:text-7xl"
+      >
+        {data.title}
+      </h1>
+      {
+        data.subtitle && (
+          <h2 class="text-2xl font-semibold lg:text-3xl">{data.subtitle}</h2>
+        )
+      }
+    </div>
+  </div>
+</div>
