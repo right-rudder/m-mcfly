@@ -1,30 +1,35 @@
 ---
-import HeroFull from "../components/HeroFull.astro";
+import HeroHomepage from "../components/HeroHomepage.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
+import HeroCards from "../components/HeroCards.astro";
+import HomePageAbout from "../components/HomePageAbout.astro";
+import ProgramsList from "../components/ProgramsList.astro";
+import CTAWhyUs from "../components/CTAWhyUs.astro";
+import bgImage from "../assets/stock/hero-homepage.jpg";
 ---
 
 <BaseLayout>
-  <HeroFull
-    data={{
-      eyebrow: "Our Blog",
-      title: "Discover Amazing Places",
-      subtitle: "Welcome to my website!",
-      primaryImage: "/src/assets/blog-placeholder-5.jpg",
-      primaryAlt: "Hero Image",
-      styling: "relative flex h-screen overflow-hidden object-cover",
-    }}
-  />
-  <section class="bg-gradient-to-b from-blue-50 to-white">
-    <div class="container mx-auto px-4 py-20 text-center">
-      <h1 class="mb-4 text-4xl font-bold">Welcome to My Astro Site</h1>
-      <p class="mb-8 text-lg text-gray-700">
-        This is a simple hero section to showcase the layout.
-      </p>
-      <a
-        href="#"
-        class="inline-block rounded-full bg-blue-600 px-6 py-3 text-white transition hover:bg-blue-700"
-        >Get Started</a
-      >
+  <div
+    class={`bg-[url('${bgImage}')] relative min-h-[115vh] bg-cover bg-center bg-no-repeat px-20`}
+  >
+    <div
+      class="relative z-30 container flex h-full flex-col justify-center gap-18"
+    >
+      {/* Hero section */}
+      <HeroHomepage
+        data={{
+          eyebrow: "Our Blog",
+          title: "Discover Amazing Places",
+          subtitle: "Welcome to my website!",
+          styling:
+            "relative min-h-[60vh] overflow-hidden flex flex-row items-end",
+        }}
+      />
+      <HeroCards />
     </div>
-  </section>
+    <div class="pointer-events-none absolute inset-0 z-20 bg-black/50"></div>
+  </div>
+  <HomePageAbout />
+  <ProgramsList />
+  <CTAWhyUs />
 </BaseLayout>

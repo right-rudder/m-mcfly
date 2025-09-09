@@ -1,0 +1,89 @@
+---
+const data = {
+  eyebrow: "WHY CHOOSE US",
+  title: "Building Wings For\nAviation Leaders",
+  bullets: [
+    "Guided by the skies’ finest captains",
+    "Your direct gateway to global airlines",
+    "Fly the most advanced training fleet",
+    "Experience the future in our simulators",
+  ],
+  blurb: "We equip aspiring pilots with the vision, discipline, and skills needed to soar above the rest in aviation.",
+  imageSrc: "/images/placeholder-cockpit.jpg",
+  imageAlt: "Cockpit dashboard placeholder",
+};
+
+---
+
+<section class="relative isolate overflow-hidden bg-accent-200 text-accent-700">
+  <!-- subtle topo-like background gradient -->
+  <div class="pointer-events-none absolute inset-0 -z-10 opacity-40">
+    <div class="absolute inset-0 bg-gradient-to-b from-muted-900/40 via-transparent to-muted-900/60"></div>
+    <!-- optional pattern (replace with your own SVG / image if desired) -->
+    <div
+      class="absolute inset-0 [background:radial-gradient(60rem_60rem_at_30%_-10%,rgba(255,255,255,0.05),transparent_60%),radial-gradient(60rem_60rem_at_120%_10%,rgba(255,255,255,0.04),transparent_60%)]"
+    ></div>
+  </div>
+
+  <div class="mx-auto max-w-7xl px-5 md:px-10 lg:px-16 py-16 lg:py-24">
+    <div class="grid items-center gap-10 lg:grid-cols-2">
+      <!-- LEFT: image -->
+      <figure class="relative">
+        <img
+          src={data.imageSrc}
+          alt={data.imageAlt}
+          class="h-72 w-full rounded-3xl object-cover object-center shadow-2xl md:h-96 lg:h-[28rem]"
+          loading="lazy"
+        />
+        <!-- soft inner vignette -->
+        <div class="pointer-events-none absolute inset-0 rounded-3xl ring-1 ring-white/10 shadow-inner"></div>
+      </figure>
+
+      <!-- RIGHT: content -->
+      <div class="max-w-2xl lg:max-w-none">
+        <!-- eyebrow -->
+        <span class="inline-flex items-center rounded-full border border-primary-400/30 bg-primary-400 px-3 py-1 text-xs font-medium tracking-wider text-accent-700">
+          {data.eyebrow}
+        </span>
+
+        <!-- title -->
+        <h2 class="mt-4 text-4xl font-extrabold leading-tight tracking-tight sm:text-5xl">
+          {data.title.split("\n").map((line) => (
+            <>
+              {line}<br />
+            </>
+          ))}
+        </h2>
+
+        <!-- bullets -->
+        <ul class="mt-6 space-y-4 text-base/7">
+          {data.bullets.map((item) => (
+            <li class="flex items-start gap-3">
+              <span class="mt-1 inline-flex size-6 shrink-0 items-center justify-center rounded-full bg-yellow-400/20 ring-1 ring-yellow-400/40">
+                <!-- check icon -->
+                <svg
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                  class="size-4 text-yellow-300"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M20 6 9 17l-5-5" />
+                </svg>
+              </span>
+              <span class="text-muted-100">{item}</span>
+            </li>
+          ))}
+        </ul>
+
+        <!-- blurb -->
+        <p class="mt-6 text-muted-300">
+          {data.blurb}
+        </p>
+      </div>
+    </div>
+  </div>
+</section>

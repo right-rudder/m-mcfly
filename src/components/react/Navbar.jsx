@@ -74,7 +74,7 @@ const Navbar = ({ pathname }) => {
   return (
     <nav className="fixed top-0 z-50 h-0 w-full tracking-wider">
       <div
-        className={`${navBar || openMobile ? "bg-white shadow" : ""} ${showNavbar ? "-translate-y-28" : ""}`}
+        className={`${navBar || openMobile ? "bg-accent-900/60 backdrop-blur-md" : ""} ${showNavbar ? "-translate-y-28" : ""}`}
       >
         <div className="mx-auto max-w-[98rem] px-14">
           <div
