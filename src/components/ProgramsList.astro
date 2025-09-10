@@ -3,7 +3,7 @@ const data = {
   eyebrow: "OUR PROGRAMS",
   heading: "Experience The Power Of Flight",
   subheading: "Our programs deliver hands-on training, advanced simulation and expert mentorship to help you master every aspect of flying.",
-  moreLabel: "More Programs",
+  moreLabel: "See Our Programs",
   moreHref: "#",
   items: [
     {
@@ -11,7 +11,7 @@ const data = {
       desc: "Foundation training for aspiring aviators.",
       href: "#",
       img: {
-        src: "https://images.unsplash.com/photo-1541976076758-347942db1970?q=80&w=1600&auto=format&fit=crop",
+        src: "/src/assets/marty-mcfly-student.jpg",
         alt: "Private pilot training",
       },
     },
@@ -20,7 +20,7 @@ const data = {
       desc: "Advanced skills for professional pilots.",
       href: "#",
       img: {
-        src: "https://images.unsplash.com/photo-1591076482161-42c58a6f2b8f?q=80&w=1600&auto=format&fit=crop",
+        src: "/src/assets/marty-mcfly-student.jpg",
         alt: "Commercial pilot briefing",
       },
     },
@@ -29,7 +29,7 @@ const data = {
       desc: "Master precise navigation in any weather.",
       href: "#",
       img: {
-        src: "https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?q=80&w=1600&auto=format&fit=crop",
+        src: "/src/assets/marty-mcfly-student.jpg",
         alt: "Instrument cockpit",
       },
     },
@@ -38,7 +38,7 @@ const data = {
       desc: "Fly advanced complex twin engine aircraft.",
       href: "#",
       img: {
-        src: "https://images.unsplash.com/photo-1514933651103-005eec06c04b?q=80&w=1600&auto=format&fit=crop",
+        src: "/src/assets/marty-mcfly-student.jpg",
         alt: "Instructor mentoring student",
       },
     },
@@ -46,12 +46,12 @@ const data = {
 }
 ---
 
-<section class="relative isolate bg-[#0b1320] text-white">
+<section class="relative isolate bg-gradient-to-b from-accent-950 via-accent-900 to-accent-950 text-white">
   <div class="mx-auto max-w-7xl px-5 md:px-8 lg:px-10 py-12 md:py-16 lg:py-20">
     <!-- Header -->
     <div class="flex flex-col gap-6 md:gap-4 md:flex-row md:items-start md:justify-between">
       <div class="max-w-3xl">
-        <p class="inline-flex items-center gap-2 text-[11px] tracking-widest uppercase text-primary-200/80 bg-white/5 border border-white/10 rounded-full px-3 py-1 mb-3">
+        <p class=" eyebrow inline-flex items-center gap-2 text-[11px] tracking-widest uppercase text-primary-200/80 bg-white/5 border border-white/10 rounded-full px-3 py-1 mb-3">
           <span class="size-1.5 rounded-full bg-yellow-400/90"></span>
           {data.eyebrow}
         </p>
@@ -63,7 +63,7 @@ const data = {
 
       <a
         href={data.moreHref}
-        class="self-start md:self-center rounded-full border border-white/15 bg-white/10 px-5 py-3 text-sm font-semibold hover:bg-white/15 transition inline-flex items-center gap-2 whitespace-nowrap mt-2"
+        class="self-start md:self-center btn-transparent"
       >
         {data.moreLabel}
         <svg viewBox="0 0 24 24" class="size-4" fill="none" stroke="currentColor" stroke-width="1.75">
@@ -75,41 +75,43 @@ const data = {
     <!-- Cards -->
     <div class="mt-10 grid gap-6 sm:gap-7 md:gap-8 grid-cols-1 sm:grid-cols-2 xl:grid-cols-4">
       {data.items.map((item) => (
-        <a href={item.href} class="group relative overflow-hidden rounded-[22px] ring-1 ring-white/10 bg-white/5">
+        <a href={item.href} class="group relative overflow-hidden rounded-[22px] ring-1 ring-white/10 bg-white/5 focus:outline-none focus:ring-2 focus:ring-yellow-400/60 focus:ring-offset-2 focus:ring-offset-[#0b1320]">
           <img
             src={item.img.src}
             alt={item.img.alt}
-            class="h-64 sm:h-72 md:h-80 w-full object-cover transition duration-500 group-hover:scale-[1.03]"
+            class="h-64 sm:h-72 md:h-80 w-full object-cover transition duration-500 group-hover:scale-[1.03] group-hover:brightness-110 group-hover:contrast-105"
             loading="lazy"
           />
-          <!-- top gradient -->
-          <div class="pointer-events-none absolute inset-0 bg-gradient-to-b from-black/30 via-black/10 to-black/40"></div>
+          <!-- top gradient (lightens on hover) -->
+            <div class="pointer-events-none absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 to-black/60 transition-colors duration-300 group-hover:from-black/25 group-hover:via-black/10 group-hover:to-black/40"></div>
 
           <!-- corner arrow -->
           <div class="absolute top-4 right-4">
-            <div class="flex items-center justify-center rounded-full bg-white/10 backdrop-blur px-2 py-2 border border-white/15 group-hover:bg-white/15 transition">
+            <div class="flex items-center justify-center rounded-full bg-white/10 backdrop-blur px-2 py-2 border border-white/15 transition group-hover:bg-white/20 group-hover:border-white/25">
               <svg viewBox="0 0 24 24" class="size-5 text-white/90" fill="none" stroke="currentColor" stroke-width="1.75">
                 <path d="M5 12h14M13 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round" />
               </svg>
             </div>
           </div>
 
-          <!-- text overlay bottom -->
-          <div class="absolute inset-x-0 bottom-0 p-5 sm:p-6">
-            <h3 class="text-lg sm:text-xl font-extrabold drop-shadow [text-shadow:_0_1px_1px_rgba(0,0,0,.45)]">
+          <!-- text overlay bottom (flex to keep uniform baseline) -->
+          <div class="absolute inset-0 flex flex-col justify-end p-5 sm:p-6">
+            <h3 class="text-lg sm:text-xl font-extrabold drop-shadow [text-shadow:_0_1px_1px_rgba(0,0,0,.45)] min-h-[28px]">
               <span class="text-yellow-400">{item.title}</span>
             </h3>
-            <p class="mt-1 text-sm text-gray-200/90 max-w-sm">{item.desc}</p>
+            <p class="mt-1 text-sm text-gray-200/90 max-w-sm min-h-[40px] leading-snug">
+              {item.desc}
+            </p>
           </div>
 
-          <!-- focus ring -->
-          <span class="absolute inset-0 rounded-[22px] ring-1 ring-white/10 group-hover:ring-white/25 transition" aria-hidden="true"></span>
+          <!-- focus / hover ring -->
+          <span class="absolute inset-0 rounded-[22px] ring-1 ring-white/10 group-hover:ring-white/30 transition" aria-hidden="true"></span>
         </a>
       ))}
     </div>
 
     <!-- Footer hint (optional) -->
-    <div class="mt-10 text-center text-sm text-gray-300">
+    <div class="mt-10 text-center text-md text-gray-300">
       Your Aviation Career Starts Here
       <a href="#" class="ml-2 inline-flex items-center gap-1 font-semibold text-yellow-400 hover:underline">
         Register Now

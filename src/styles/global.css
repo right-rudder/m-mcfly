@@ -17,17 +17,17 @@
   --color-primary-950: #412707;
 
   /* Accent Color */
-  --color-accent-50: #f4f7f7;
-  --color-accent-100: #e4e8e9;
-  --color-accent-200: #cbd4d6;
-  --color-accent-300: #a7b5b9;
-  --color-accent-400: #7c8f94;
-  --color-accent-500: #617479;
-  --color-accent-600: #536167;
-  --color-accent-700: #475157;
-  --color-accent-800: #3f474b;
-  --color-accent-900: #313639;
-  --color-accent-950: #22272a;
+  --color-accent-50: #f6f6f6;
+  --color-accent-100: #e7e7e7;
+  --color-accent-200: #d1d1d1;
+  --color-accent-300: #b0b0b0;
+  --color-accent-400: #888888;
+  --color-accent-500: #6d6d6d;
+  --color-accent-600: #5d5d5d;
+  --color-accent-700: #4f4f4f;
+  --color-accent-800: #454545;
+  --color-accent-900: #3d3d3d;
+  --color-accent-950: #1c1c1c;
 
 
   /* fonts  */
@@ -36,7 +36,7 @@
 }
 
 .btn-primary {
-  @apply bg-primary-500 text-white rounded-full px-4 py-2 flex items-center justify-center gap-2 hover:bg-primary-600 transition;
+  @apply bg-primary-500 text-black font-semibold rounded-full px-4 py-2 flex items-center justify-center gap-2 hover:bg-primary-600 transition;
 }
 
 .btn-secondary {
@@ -44,11 +44,15 @@
 }
 
 .btn-transparent {
-  @apply bg-transparent text-accent-50 border border-primary-500 rounded-full px-4 py-2 flex items-center justify-center gap-2 hover:bg-primary-500 hover:text-white transition;
+  @apply bg-primary-500/20 text-accent-50 border border-primary-500 rounded-full px-4 py-2 flex items-center justify-center gap-2 hover:bg-primary-500 hover:text-white transition font-semibold;
 }
 
 .eyebrow {
-  @apply text-sm font-semibold text-primary-500 uppercase border-b-2 border-l-2 border-r-2 border-t-1 border-primary-500 mb-2 rounded-full px-3 py-1 w-fit;
+  @apply font-semibold text-primary-500 uppercase border-b-2 border-l-2 border-r-2 border-t-1 border-primary-500 mb-2 rounded-full px-3 py-1 w-fit text-sm;
+}
+
+.eyebrow-fill {
+  @apply bg-primary-500 text-black font-semibold uppercase px-3 py-1 w-fit rounded-full text-sm;
 }
 
 body {

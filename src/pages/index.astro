@@ -12,9 +12,7 @@ import CTAIntroFlight from "../components/CTAIntroFlight.astro";
 ---
 
 <BaseLayout>
-  <div
-    class="relative min-h-[115vh]"
-  >
+  <div class="relative min-h-[115vh]">
     <ImageComp
       src="/src/assets/stock/hero-homepage.jpg"
       alt="A small aircraft flying over a scenic landscape during sunset."
@@ -22,14 +20,15 @@ import CTAIntroFlight from "../components/CTAIntroFlight.astro";
       loading="eager"
     />
     <div
-      class="relative z-30 container flex h-full flex-col justify-center gap-18 px-6 md:px-20 w-full max-w-[98rem] mx-auto"
+      class="relative z-30 container mx-auto flex h-full w-full max-w-[98rem] flex-col justify-center gap-18 px-6 md:px-20"
     >
       <!-- Hero section -->
       <HeroHomepage
         data={{
           eyebrow: "Fly with McFly",
           title: "Become a Pilot Today",
-          paragraph: "We craft exceptional aviators with world-class training unmatched discipline and passion to conquer skies with skill and confidence.",
+          paragraph:
+            "We craft exceptional aviators with world-class training unmatched discipline and passion to conquer skies with skill and confidence.",
           styling:
             "relative min-h-[60vh] overflow-hidden flex flex-row items-end mt-20 md:mt-0",
         }}
@@ -41,7 +40,11 @@ import CTAIntroFlight from "../components/CTAIntroFlight.astro";
   <HomePageAbout />
   <ProgramsList />
   <CTAWhyUs />
-  <TestimonialsCarousel items={[]} client:load />
+  <TestimonialsCarousel
+    items={[]}
+    className="bg-gradient-to-b from-accent-950 via-accent-950/80 to-accent-950 text-white px-5 md:px-8 lg:px-10 py-16 md:py-20 lg:py-24"
+    client:load
+  />
   <ContactForm />
   <CTAIntroFlight />
 </BaseLayout>

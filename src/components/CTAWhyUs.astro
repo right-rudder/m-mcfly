@@ -1,4 +1,6 @@
 ---
+import ImageComp from "./ImageComp.astro";
+
 const data = {
   eyebrow: "WHY CHOOSE US",
   title: "Building Wings For\nAviation Leaders",
@@ -9,31 +11,26 @@ const data = {
     "Experience the future in our simulators",
   ],
   blurb: "We equip aspiring pilots with the vision, discipline, and skills needed to soar above the rest in aviation.",
-  imageSrc: "/images/placeholder-cockpit.jpg",
+  imageSrc: "/src/assets/marty-mcfly-student-handshake.jpg",
   imageAlt: "Cockpit dashboard placeholder",
 };
 
 ---
 
-<section class="relative isolate overflow-hidden bg-accent-200 text-accent-700">
-  <!-- subtle topo-like background gradient -->
-  <div class="pointer-events-none absolute inset-0 -z-10 opacity-40">
-    <div class="absolute inset-0 bg-gradient-to-b from-muted-900/40 via-transparent to-muted-900/60"></div>
-    <!-- optional pattern (replace with your own SVG / image if desired) -->
-    <div
-      class="absolute inset-0 [background:radial-gradient(60rem_60rem_at_30%_-10%,rgba(255,255,255,0.05),transparent_60%),radial-gradient(60rem_60rem_at_120%_10%,rgba(255,255,255,0.04),transparent_60%)]"
-    ></div>
+<section class="relative isolate overflow-hidden bg-accent-950 text-white">
+  {/* soft radial glow */}
+  <div
+    class="pointer-events-none absolute inset-0 -z-10 bg-radial-[at_50%_50%] from-accent-900 via-primary-950/50 to-accent-950 to-80%"
+  >
   </div>
-
   <div class="mx-auto max-w-7xl px-5 md:px-10 lg:px-16 py-16 lg:py-24">
     <div class="grid items-center gap-10 lg:grid-cols-2">
       <!-- LEFT: image -->
       <figure class="relative">
-        <img
+        <ImageComp
           src={data.imageSrc}
           alt={data.imageAlt}
-          class="h-72 w-full rounded-3xl object-cover object-center shadow-2xl md:h-96 lg:h-[28rem]"
-          loading="lazy"
+          classes="h-72 w-full rounded-3xl object-cover object-top -2xl md:h-96 lg:h-[28rem]"
         />
         <!-- soft inner vignette -->
         <div class="pointer-events-none absolute inset-0 rounded-3xl ring-1 ring-white/10 shadow-inner"></div>
@@ -42,9 +39,12 @@ const data = {
       <!-- RIGHT: content -->
       <div class="max-w-2xl lg:max-w-none">
         <!-- eyebrow -->
-        <span class="inline-flex items-center rounded-full border border-primary-400/30 bg-primary-400 px-3 py-1 text-xs font-medium tracking-wider text-accent-700">
+        <p
+          class="eyebrow inline-flex items-center gap-2 px-3 py-1 tracking-widest"
+        >
+          <span class="size-1.5 rounded-full bg-primary-500"></span>
           {data.eyebrow}
-        </span>
+        </p>
 
         <!-- title -->
         <h2 class="mt-4 text-4xl font-extrabold leading-tight tracking-tight sm:text-5xl">
@@ -59,15 +59,15 @@ const data = {
         <ul class="mt-6 space-y-4 text-base/7">
           {data.bullets.map((item) => (
             <li class="flex items-start gap-3">
-              <span class="mt-1 inline-flex size-6 shrink-0 items-center justify-center rounded-full bg-yellow-400/20 ring-1 ring-yellow-400/40">
+              <span class="mt-1 inline-flex size-6 shrink-0 items-center justify-center rounded-full bg-primary-400 ring-1 ring-yellow-400/40">
                 <!-- check icon -->
                 <svg
                   viewBox="0 0 24 24"
                   aria-hidden="true"
-                  class="size-4 text-yellow-300"
+                  class="size-4 text-black"
                   fill="none"
                   stroke="currentColor"
-                  stroke-width="2"
+                  stroke-width="3"
                   stroke-linecap="round"
                   stroke-linejoin="round"
                 >
