@@ -1,12 +1,9 @@
 ---
-import ImageComp from "./ImageComp.astro";
-
 const content = {
   eyebrow: "Contact Us",
   heading: "Let’s Plan Your Flight",
   subheading:
     "Contact our school today for expert guidance, program details, and professional advice to start your journey toward mastering the skies.",
-  bgImage: "/src/assets/marty-mcfly-contact-us.webp", // optionally place an image in /public
   info: {
     title: "Get in Touch",
     intro:
@@ -40,10 +37,10 @@ const content = {
 ---
 
 <section
-  class="bg-accent-950 relative mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8 lg:py-20"
+  class="bg-accent-950 px-4 py-12 sm:px-6 lg:px-8 lg:py-20"
   aria-labelledby="contact-heading"
 >
-  <div class="grid grid-cols-1 items-stretch gap-8 lg:grid-cols-2 lg:gap-10">
+  <div class="grid grid-cols-1 items-stretch gap-8 lg:grid-cols-2 lg:gap-10 max-w-7xl mx-auto">
     <!-- LEFT: Info panel -->
     <div
       class="relative overflow-hidden rounded-3xl text-white"
