@@ -1,4 +1,6 @@
 ---
+import ImageComp from "./ImageComp.astro"
+
 const data = {
   eyebrow: "OUR PROGRAMS",
   heading: "Experience The Power Of Flight",
@@ -76,11 +78,10 @@ const data = {
     <div class="mt-10 grid gap-6 sm:gap-7 md:gap-8 grid-cols-1 sm:grid-cols-2 xl:grid-cols-4">
       {data.items.map((item) => (
         <a href={item.href} class="group relative overflow-hidden rounded-[22px] ring-1 ring-white/10 bg-white/5 focus:outline-none focus:ring-2 focus:ring-yellow-400/60 focus:ring-offset-2 focus:ring-offset-[#0b1320]">
-          <img
+          <ImageComp
             src={item.img.src}
             alt={item.img.alt}
-            class="h-64 sm:h-72 md:h-80 w-full object-cover transition duration-500 group-hover:scale-[1.03] group-hover:brightness-110 group-hover:contrast-105"
-            loading="lazy"
+            classes="h-64 sm:h-72 md:h-80 w-full object-cover transition duration-500 group-hover:scale-[1.03] group-hover:brightness-110 group-hover:contrast-105"
           />
           <!-- top gradient (lightens on hover) -->
             <div class="pointer-events-none absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 to-black/60 transition-colors duration-300 group-hover:from-black/25 group-hover:via-black/10 group-hover:to-black/40"></div>
