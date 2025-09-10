@@ -191,14 +191,14 @@ const Navbar = ({ pathname }) => {
 
             <div className="text-accent-50 hidden w-[20%] justify-center gap-4 lg:flex">
               <a
-                href="https://truflight.azurewebsites.net/identity/account/login"
+                href="#"
                 target="_blank"
                 className="btn-transparent flex-1 whitespace-nowrap"
               >
                 Get in Touch
               </a>
               <a
-                href="/enrollment-form"
+                href="#"
                 className="btn-primary group flex-1 whitespace-nowrap"
               >
                 Enroll Now
