@@ -4,29 +4,21 @@ import { BiSolidQuoteLeft } from "react-icons/bi";
 const PLACEHOLDER_TESTIMONIALS = [
   {
     quote:
-      "I don’t know where I was without this tool. It’s addictive and useful — I use it every day to speed up design work.",
-    author: "Andrew B.",
-    handle: "IGchef_andrewb",
-    role: "Content Creator",
-    avatar:
-      "https://images.unsplash.com/photo-1607746882042-944635dfe10e?w=300&h=300&fit=crop&crop=faces",
+      "Marty is an Incredible instructor. He is very knowledgeable and can answer any question you throw at him. He has a great systematic and easy to follow path for the written exam that any student can follow. Any student who takes his course is guaranteed to pass the written. I can’t speak for his flight lessons, but if they’re anything like his ground lessons then you should have no problem reaching your goals. Thanks for everything McFly!",
+    author: "Rockin R.",
+    role: "Student Pilot",
   },
   {
     quote:
-      "Simply outstanding. The ability to collaborate in real-time keeps our team in flow. We ship creatives 5× faster now.",
-    author: "Navneet K.",
-    handle: "navneet4",
-    role: "Marketing Lead",
-    avatar:
-      "https://images.unsplash.com/photo-1547425260-76bcadfb4f2c?w=300&h=300&fit=crop&crop=faces",
+      "I had a ground lesson with Marty who is also my CfI for private pilot training the instructions we clear and the PowerPoint was neat and organized. As well Marty was knowledgeable and was really good for one on one instructions would highly recommend!",
+    author: "Logan D.",
+    role: "Student Pilot",
   },
   {
     quote:
-      "The editor feels effortless and fun. Our interns were productive on day one — huge win for onboarding.",
-    author: "Samira A.",
-    role: "Design Ops",
-    avatar:
-      "https://images.unsplash.com/photo-1545996124-0501ebae84d0?w=300&h=300&fit=crop&crop=faces",
+      "Marty is awesome. He certainly knows his stuff and I really like his approach to teaching. He is very passionate to help others learn and I highly recommend!",
+    author: "Sean S.",
+    role: "Student Pilot",
   },
 ];
 

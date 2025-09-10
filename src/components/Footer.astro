@@ -2,34 +2,31 @@
 import ImageComp from "./ImageComp.astro";
 const data = {
   brand: {
-    name: "AVIA",
+    name: "McFly",
     tagline:
       "We craft exceptional aviators with world-class training, unmatched discipline and passion to conquer skies.",
-    phone: "+800-3374-4676",
-    address: "456 Creative District, Ahmad Yani, Medan",
+    phone: "909-262-5236",
+    address: "4868+C3 Upland, California, USA",
   },
   quickLinks: [
-    { label: "Home", href: "/" },
-    { label: "About Us", href: "/about" },
-    { label: "Courses", href: "/courses" },
-    { label: "Pricing", href: "/pricing" },
-    { label: "Blog", href: "/blog" },
-    { label: "Contact", href: "/contact" },
+    { label: "Home", href: "#" },
+    { label: "About Us", href: "#" },
+    { label: "Pilot Training", href: "#" },
+    { label: "Blog", href: "#" },
+    { label: "Contact", href: "#" },
   ],
   usefulLinks: [
-    { label: "Privacy Policy", href: "/privacy" },
-    { label: "Terms & Conditions", href: "/terms" },
-    { label: "Disclaimer", href: "/disclaimer" },
-    { label: "Support", href: "/support" },
-    { label: "FAQ", href: "/faq" },
+    { label: "Privacy Policy", href: "#" },
+    { label: "Terms & Conditions", href: "#" },
+    { label: "Discovery Flight", href: "#" },
+    { label: "FAQ", href: "#" },
   ],
   serviceAreas: [
-    "Reno–Tahoe",
-    "Carson City",
-    "Truckee",
-    "South Lake Tahoe",
-    "Minden",
-    "Sparks",
+    "Cable",
+    "Claremont",
+    "Rancho Cucamanga",
+    "LaVerne",
+    "Chino Hills"
   ],
   social: [
     { label: "Facebook", href: "#", icon: "facebook" },
@@ -41,12 +38,9 @@ const data = {
 const Year = new Date().getFullYear();
 ---
 
-<footer
-  class="text-white bg-accent-900 pt-12 pb-6 sm:pt-16 sm:pb-10 lg:pt-20 lg:pb-12"
->
-  {/* subtle radial glow */}
+<footer class="bg-accent-950 relative isolate -z-0 overflow-hidden text-white">
   <div
-    class="pointer-events-none absolute inset-0 -z-10 bg-radial-[at_20%_40%] from-accent-900 via-primary-950/50 to-accent-950 to-80%"
+    class="from-primary-950/50 pointer-events-none absolute inset-0 -z-10 bg-radial-[at_80%_70%] to-transparent to-90%"
   >
   </div>
   <div class="mx-auto max-w-7xl px-5 py-16 md:px-10 lg:px-16 lg:py-20">
@@ -105,7 +99,9 @@ const Year = new Date().getFullYear();
 
       <!-- Quick Links -->
       <nav aria-labelledby="quick-links" class="lg:col-span-2">
-        <h3 id="quick-links" class="text-2xl font-semibold">Quick Links</h3>
+        <h3 id="quick-links" class="text-primary-500 text-2xl font-semibold">
+          Quick Links
+        </h3>
         <ul class="mt-6 space-y-3">
           {
             data.quickLinks.map((l) => (
@@ -124,7 +120,9 @@ const Year = new Date().getFullYear();
 
       <!-- Useful Links -->
       <nav aria-labelledby="useful-links" class="lg:col-span-2">
-        <h3 id="useful-links" class="text-2xl font-semibold">Useful Links</h3>
+        <h3 id="useful-links" class="text-primary-500 text-2xl font-semibold">
+          Useful Links
+        </h3>
         <ul class="mt-6 space-y-3">
           {
             data.usefulLinks.map((l) => (
@@ -143,7 +141,9 @@ const Year = new Date().getFullYear();
 
       <!-- Service Locations (replaces newsletter) -->
       <section class="lg:col-span-3">
-        <h3 class="text-2xl font-semibold">Service Locations</h3>
+        <h3 class="text-primary-500 text-2xl font-semibold">
+          Service Locations
+        </h3>
         <p class="text-muted-200/90 mt-4 max-w-prose">
           We proudly serve training across these primary areas. Don’t see yours? <a
             href="/contact"
@@ -195,7 +195,7 @@ const Year = new Date().getFullYear();
       class="mt-12 flex flex-col items-center justify-between gap-4 border-t border-white/10 pt-6 md:flex-row"
     >
       <p class="text-muted-300/80 text-sm">
-        Avia, {Year} © All Rights Reserved by Dex-Theme
+        McFly Education, {Year} © All Rights Reserved
       </p>
 
       <div class="flex items-center gap-3">
@@ -204,7 +204,7 @@ const Year = new Date().getFullYear();
             <a
               href={s.href}
               aria-label={s.label}
-              class="grid h-10 w-10 place-content-center rounded-full bg-white/5 transition hover:bg-white/10"
+              class="grid h-10 w-10 place-content-center rounded-full bg-primary-500/80 transition hover:bg-white/10"
             >
               {s.icon === "facebook" && (
                 <svg
@@ -216,14 +216,16 @@ const Year = new Date().getFullYear();
                   <path d="M13 22v-9h3l1-4h-4V7a1 1 0 011-1h3V2h-3a5 5 0 00-5 5v2H6v4h3v9h4z" />
                 </svg>
               )}
-              {s.icon === "twitter" && (
+              {s.icon === "instagram" && (
                 <svg
                   viewBox="0 0 24 24"
                   class="h-5 w-5"
                   fill="currentColor"
                   aria-hidden="true"
                 >
-                  <path d="M22 5.8a8.2 8.2 0 01-2.36.65A4.1 4.1 0 0021.4 4a8.2 8.2 0 01-2.6.99 4.1 4.1 0 00-7 3.74A11.7 11.7 0 013 4.8a4.1 4.1 0 001.27 5.47 4.06 4.06 0 01-1.85-.51v.05a4.1 4.1 0 003.3 4.02 4.1 4.1 0 01-1.85.07A4.1 4.1 0 007 15.6a8.23 8.23 0 01-5.1 1.76c-.33 0-.66-.02-.98-.06A11.6 11.6 0 006.29 19 11.6 11.6 0 0018 7.28c0-.18 0-.35-.01-.53A8.2 8.2 0 0022 5.8z" />
+                  <path
+                    d="M7 2C4.243 2 2 4.243 2 7v10c0 2.757 2.243 5 5 5h10c2.757 0 5-2.243 5-5V7c0-2.757-2.243-5-5-5H7zm10 2c1.654 0 3 1.346 3 3v10c0 1.654-1.346 3-3 3H7c-1.654 0-3-1.346-3-3V7c0-1.654 1.346-3 3-3h10zm-5 3a5 5 0 100 10 5 5 0 000-10zm0 2a3 3 0 110 6 3 3 0 010-6zm4.8-.4a1.2 1.2 0 11-2.4 0 1.2 1.2 0 012.4 0z"
+                  />
                 </svg>
               )}
               {s.icon === "youtube" && (
