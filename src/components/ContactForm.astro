@@ -1,10 +1,12 @@
 ---
+import ImageComp from "./ImageComp.astro";
+
 const content = {
   eyebrow: "Contact Us",
   heading: "Let’s Plan Your Flight",
   subheading:
     "Contact our school today for expert guidance, program details, and professional advice to start your journey toward mastering the skies.",
-  bgImage: "/contact-bg-placeholder.jpg", // optionally place an image in /public
+  bgImage: "/src/assets/marty-mcfly-contact-us.webp", // optionally place an image in /public
   info: {
     title: "Get in Touch",
     intro:
@@ -38,29 +40,14 @@ const content = {
 ---
 
 <section
-  class="relative mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8 lg:py-20"
+  class="bg-accent-950 relative mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8 lg:py-20"
   aria-labelledby="contact-heading"
 >
   <div class="grid grid-cols-1 items-stretch gap-8 lg:grid-cols-2 lg:gap-10">
     <!-- LEFT: Info panel -->
     <div
-      class="bg-muted-900/60 relative overflow-hidden rounded-3xl ring-1 ring-white/10"
+      class="relative overflow-hidden rounded-3xl text-white"
     >
-      <!-- Background image -->
-      <div class="absolute inset-0 -z-10">
-        <img
-          src={content.bgImage}
-          alt=""
-          class="h-full w-full object-cover opacity-40"
-          loading="lazy"
-          decoding="async"
-        />
-        <div
-          class="from-muted-950/80 via-muted-950/70 absolute inset-0 bg-gradient-to-br to-transparent"
-        >
-        </div>
-      </div>
-
       <div class="text-muted-50 p-6 sm:p-8 lg:p-10">
         <h2 class="text-3xl font-extrabold tracking-tight">
           {content.info.title}
@@ -152,11 +139,12 @@ const content = {
 
     <!-- RIGHT: Form -->
     <div
-      class="bg-muted-950 rounded-3xl p-6 ring-1 ring-white/10 sm:p-8 lg:p-10"
+      class="bg-gradient-to-br from-accent-950/10 to-primary-950/60 rounded-3xl p-6 ring-1 ring-accent-950/10 sm:p-8 lg:p-10 text-white"
     >
       <p
-        class="inline-flex items-center gap-2 text-xs font-semibold tracking-wider text-yellow-300/90 uppercase"
+        class="eyebrow inline-flex items-center gap-2 px-3 py-1 text-[11px] tracking-widest uppercase"
       >
+        <span class="size-1.5 rounded-full bg-yellow-400/90"></span>
         {content.eyebrow}
       </p>
       <h2
@@ -259,9 +247,9 @@ const content = {
         <div class="pt-2">
           <button
             type="submit"
-            class="focus-visible:ring-offset-muted-950 inline-flex w-full items-center justify-center rounded-2xl bg-yellow-400 px-6 py-3 text-sm font-semibold text-black shadow-[0_8px_24px_rgba(250,204,21,0.25)] transition hover:brightness-95 focus:outline-none focus-visible:ring-2 focus-visible:ring-yellow-300 focus-visible:ring-offset-2 sm:w-auto"
+            class="btn-primary box-shadow-[0_4px_20px_rgba(255,211,0,0.25)] hover:brightness-95 focus:outline-none focus-visible:ring-2 focus-visible:ring-yellow-300 focus-visible:ring-offset-2"
           >
-            {content.form.cta.toUpperCase()}
+            {content.form.cta}
           </button>
         </div>
       </form>
