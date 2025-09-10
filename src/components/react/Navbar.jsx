@@ -2,10 +2,8 @@ import { navbarLinks } from "../../data/navbarLinks.js";
 import { useEffect, useState } from "react";
 import { IoIosArrowForward } from "react-icons/io";
 import { FaPhone } from "react-icons/fa";
-import { FaHelicopter } from "react-icons/fa";
 import { FACEBOOK_URL, INSTAGRAM_URL, PHONE_NUMBER } from "../../consts.js";
-import logo from "../../assets/blog-placeholder-5.jpg";
-import { TbPropeller } from "react-icons/tb";
+import logo from "../../assets/mcfly-logo-nav.png";
 
 const Navbar = ({ pathname }) => {
   const [openMobile, setOpenMobile] = useState(false);
@@ -74,26 +72,25 @@ const Navbar = ({ pathname }) => {
   return (
     <nav className="fixed top-0 z-50 h-0 w-full tracking-wider">
       <div
-        className={`${navBar || openMobile ? "bg-accent-900/60 backdrop-blur-md" : ""} ${showNavbar ? "-translate-y-28" : ""}`}
+        className={`${navBar || openMobile ? "bg-accent-950/60 backdrop-blur-md" : ""} ${showNavbar ? "-translate-y-28" : ""}`}
       >
-        <div className="mx-auto max-w-[98rem] px-14">
+        <div className="mx-auto max-w-[98rem] px-14 py-4">
           <div
             className={`relative flex h-18 items-center justify-between gap-3 transition-all lg:h-24`}
             id="navbar"
           >
-            <div className="flex items-center justify-between gap-10 w-[80%]">
-              <a href="/" className="w-auto duration-200">
-                {/* <img
-                src={logo.src}
-                alt="TruFlight Academy Logo"
-                loading="eager"
-                decoding="async"
-                fetchPriority="auto"
-                width="397"
-                height="128"
-                className="h-full w-full object-contain"
-              ></img> */}
-                <TbPropeller className="text-primary-500 md:h-18 md:w-18" />
+            <div className="flex w-[80%] items-center justify-between gap-10">
+              <a href="/" className="w-auto duration-200 md:pt-8">
+                <img
+                  src={logo.src}
+                  alt="TruFlight Academy Logo"
+                  loading="eager"
+                  decoding="async"
+                  fetchPriority="auto"
+                  width="397"
+                  height="128"
+                  className="h-18 w-18 md:h-32 md:w-32 rounded-full object-contain"
+                ></img>
               </a>
               <div className="hidden flex-1 gap-10 lg:flex">
                 <ul className="text-accent-50 flex justify-center gap-10 md:text-lg">
@@ -192,15 +189,18 @@ const Navbar = ({ pathname }) => {
               </div>
             </div>
 
-            <div className="hidden justify-center w-[20%] gap-4 lg:flex text-accent-50">
+            <div className="text-accent-50 hidden w-[20%] justify-center gap-4 lg:flex">
               <a
                 href="https://truflight.azurewebsites.net/identity/account/login"
                 target="_blank"
-                className="btn-transparent whitespace-nowrap flex-1"
+                className="btn-transparent flex-1 whitespace-nowrap"
               >
                 Get in Touch
               </a>
-              <a href="/enrollment-form" className="btn-primary group whitespace-nowrap flex-1">
+              <a
+                href="/enrollment-form"
+                className="btn-primary group flex-1 whitespace-nowrap"
+              >
                 Enroll Now
               </a>
             </div>

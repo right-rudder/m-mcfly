@@ -48,7 +48,7 @@
 }
 
 .eyebrow {
-  @apply text-sm font-semibold text-primary-500 uppercase border-b-2 border-l-2 border-r-2 border-t-1 border-primary-500 inline-block mb-2 rounded-full px-3 py-1 w-fit;
+  @apply text-sm font-semibold text-primary-500 uppercase border-b-2 border-l-2 border-r-2 border-t-1 border-primary-500 mb-2 rounded-full px-3 py-1 w-fit;
 }
 
 body {

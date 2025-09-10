@@ -1,72 +1,163 @@
 ---
-const today = new Date();
+const data = {
+  brand: {
+    name: "AVIA",
+    tagline:
+      "We craft exceptional aviators with world-class training, unmatched discipline and passion to conquer skies.",
+    phone: "+800-3374-4676",
+    address: "456 Creative District, Ahmad Yani, Medan",
+  },
+  quickLinks: [
+    { label: "Home", href: "/" },
+    { label: "About Us", href: "/about" },
+    { label: "Courses", href: "/courses" },
+    { label: "Pricing", href: "/pricing" },
+    { label: "Blog", href: "/blog" },
+    { label: "Contact", href: "/contact" },
+  ],
+  usefulLinks: [
+    { label: "Privacy Policy", href: "/privacy" },
+    { label: "Terms & Conditions", href: "/terms" },
+    { label: "Disclaimer", href: "/disclaimer" },
+    { label: "Support", href: "/support" },
+    { label: "FAQ", href: "/faq" },
+  ],
+  serviceAreas: [
+    "Reno–Tahoe",
+    "Carson City",
+    "Truckee",
+    "South Lake Tahoe",
+    "Minden",
+    "Sparks",
+  ],
+  social: [
+    { label: "Facebook", href: "#", icon: "facebook" },
+    { label: "Twitter", href: "#", icon: "twitter" },
+    { label: "YouTube", href: "#", icon: "youtube" },
+  ],
+}
+
+const Year = new Date().getFullYear();
 ---
 
-<footer>
-  &copy; {today.getFullYear()} Your name here. All rights reserved.
-  <div class="social-links">
-    <a href="https://m.webtoo.ls/@astro" target="_blank">
-      <span class="sr-only">Follow Astro on Mastodon</span>
-      <svg
-        viewBox="0 0 16 16"
-        aria-hidden="true"
-        width="32"
-        height="32"
-        astro-icon="social/mastodon"
-        ><path
-          fill="currentColor"
-          d="M11.19 12.195c2.016-.24 3.77-1.475 3.99-2.603.348-1.778.32-4.339.32-4.339 0-3.47-2.286-4.488-2.286-4.488C12.062.238 10.083.017 8.027 0h-.05C5.92.017 3.942.238 2.79.765c0 0-2.285 1.017-2.285 4.488l-.002.662c-.004.64-.007 1.35.011 2.091.083 3.394.626 6.74 3.78 7.57 1.454.383 2.703.463 3.709.408 1.823-.1 2.847-.647 2.847-.647l-.06-1.317s-1.303.41-2.767.36c-1.45-.05-2.98-.156-3.215-1.928a3.614 3.614 0 0 1-.033-.496s1.424.346 3.228.428c1.103.05 2.137-.064 3.188-.189zm1.613-2.47H11.13v-4.08c0-.859-.364-1.295-1.091-1.295-.804 0-1.207.517-1.207 1.541v2.233H7.168V5.89c0-1.024-.403-1.541-1.207-1.541-.727 0-1.091.436-1.091 1.296v4.079H3.197V5.522c0-.859.22-1.541.66-2.046.456-.505 1.052-.764 1.793-.764.856 0 1.504.328 1.933.983L8 4.39l.417-.695c.429-.655 1.077-.983 1.934-.983.74 0 1.336.259 1.791.764.442.505.661 1.187.661 2.046v4.203z"
-        ></path></svg
-      >
-    </a>
-    <a href="https://twitter.com/astrodotbuild" target="_blank">
-      <span class="sr-only">Follow Astro on Twitter</span>
-      <svg
-        viewBox="0 0 16 16"
-        aria-hidden="true"
-        width="32"
-        height="32"
-        astro-icon="social/twitter"
-        ><path
-          fill="currentColor"
-          d="M5.026 15c6.038 0 9.341-5.003 9.341-9.334 0-.14 0-.282-.006-.422A6.685 6.685 0 0 0 16 3.542a6.658 6.658 0 0 1-1.889.518 3.301 3.301 0 0 0 1.447-1.817 6.533 6.533 0 0 1-2.087.793A3.286 3.286 0 0 0 7.875 6.03a9.325 9.325 0 0 1-6.767-3.429 3.289 3.289 0 0 0 1.018 4.382A3.323 3.323 0 0 1 .64 6.575v.045a3.288 3.288 0 0 0 2.632 3.218 3.203 3.203 0 0 1-.865.115 3.23 3.23 0 0 1-.614-.057 3.283 3.283 0 0 0 3.067 2.277A6.588 6.588 0 0 1 .78 13.58a6.32 6.32 0 0 1-.78-.045A9.344 9.344 0 0 0 5.026 15z"
-        ></path></svg
-      >
-    </a>
-    <a href="https://github.com/withastro/astro" target="_blank">
-      <span class="sr-only">Go to Astro's GitHub repo</span>
-      <svg
-        viewBox="0 0 16 16"
-        aria-hidden="true"
-        width="32"
-        height="32"
-        astro-icon="social/github"
-        ><path
-          fill="currentColor"
-          d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"
-        ></path></svg
-      >
-    </a>
+<footer class="relative bg-[#0c1a24] text-muted-100">
+  <div class="mx-auto max-w-7xl px-5 md:px-10 lg:px-16 py-16 lg:py-20">
+    <div class="grid gap-12 lg:gap-16 lg:grid-cols-12 items-start">
+      <!-- Brand / Intro / Contacts -->
+      <div class="lg:col-span-5">
+        <div class="flex items-center gap-3">
+          <!-- Logo placeholder (replace with your Image component if desired) -->
+          <div class="h-12 w-12 rounded bg-yellow-400/90 grid place-content-center">
+            <svg viewBox="0 0 24 24" class="h-7 w-7 text-black" fill="currentColor" aria-hidden="true">
+              <path d="M12 2l2.5 5 5.5.8-4 3.9.9 5.6L12 15l-4.9 2.3.9-5.6-4-3.9 5.5-.8L12 2z"/>
+            </svg>
+          </div>
+          <div class="text-2xl font-semibold tracking-wide">MCFLY<span class="sr-only">Flight Education</span></div>
+        </div>
+
+        <p class="mt-6 max-w-prose text-muted-200/90 leading-relaxed">
+          {data.brand.tagline}
+        </p>
+
+        <!-- Contact blocks -->
+        <div class="mt-8 grid gap-6 sm:grid-cols-2">
+          <div class="flex items-start gap-3">
+            <span class="mt-0.5 inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-yellow-400/90 text-black" aria-hidden="true">
+              <svg viewBox="0 0 24 24" class="h-5 w-5" fill="currentColor"><path d="M6.6 10.8a15.5 15.5 0 006.6 6.6l2.2-2.2a1 1 0 011-.24 11 11 0 003.46.55 1 1 0 011 1V20a1 1 0 01-1 1C9.16 21 3 14.84 3 7a1 1 0 011-1h3.5a1 1 0 011 1 11 11 0 00.55 3.46 1 1 0 01-.24 1l-2.21 2.34z"/></svg>
+            </span>
+            <div>
+              <p class="text-sm text-muted-300/80">Phone Number</p>
+              <p class="text-lg font-semibold tracking-wide">{data.brand.phone}</p>
+            </div>
+          </div>
+
+          <div class="flex items-start gap-3">
+            <span class="mt-0.5 inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-yellow-400/90 text-black" aria-hidden="true">
+              <svg viewBox="0 0 24 24" class="h-5 w-5" fill="currentColor"><path d="M12 2C7.58 2 4 5.58 4 10c0 5.25 7 12 8 12s8-6.75 8-12c0-4.42-3.58-8-8-8zm0 10.5a2.5 2.5 0 110-5 2.5 2.5 0 010 5z"/></svg>
+            </span>
+            <div>
+              <p class="text-sm text-muted-300/80">Our Location</p>
+              <p class="font-semibold tracking-wide">{data.brand.address}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quick Links -->
+      <nav aria-labelledby="quick-links" class="lg:col-span-2">
+        <h3 id="quick-links" class="text-2xl font-semibold">Quick Links</h3>
+        <ul class="mt-6 space-y-3">
+          {data.quickLinks.map((l) => (
+            <li>
+              <a class="text-muted-200/90 hover:text-white transition" href={l.href}>{l.label}</a>
+            </li>
+          ))}
+        </ul>
+      </nav>
+
+      <!-- Useful Links -->
+      <nav aria-labelledby="useful-links" class="lg:col-span-2">
+        <h3 id="useful-links" class="text-2xl font-semibold">Useful Links</h3>
+        <ul class="mt-6 space-y-3">
+          {data.usefulLinks.map((l) => (
+            <li>
+              <a class="text-muted-200/90 hover:text-white transition" href={l.href}>{l.label}</a>
+            </li>
+          ))}
+        </ul>
+      </nav>
+
+      <!-- Service Locations (replaces newsletter) -->
+      <section class="lg:col-span-3">
+        <h3 class="text-2xl font-semibold">Service Locations</h3>
+        <p class="mt-4 text-muted-200/90 max-w-prose">
+          We proudly serve training across these primary areas. Don’t see yours? <a href="/contact" class="underline decoration-yellow-400/70 underline-offset-4 hover:text-white">Contact us</a>.
+        </p>
+
+        <ul class="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-3">
+          {data.serviceAreas.map((city) => (
+            <li class="rounded-xl border border-white/5 bg-white/5 px-4 py-3 backdrop-blur-sm hover:bg-white/10 transition">
+              <span class="inline-flex items-center gap-2">
+                <svg viewBox="0 0 24 24" class="h-4 w-4" fill="currentColor" aria-hidden="true">
+                  <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+                </svg>
+                {city}
+              </span>
+            </li>
+          ))}
+        </ul>
+
+        <!-- Contact email row (optional helper) -->
+        <div class="mt-6 flex items-center gap-2 text-muted-200/90">
+          <span class="inline-flex h-6 w-6 items-center justify-center rounded bg-white/10" aria-hidden="true">
+            <svg viewBox="0 0 24 24" class="h-4 w-4" fill="currentColor"><path d="M12 13L2 6.76V18a2 2 0 002 2h16a2 2 0 002-2V6.76L12 13z"/><path d="M22 6l-10 6L2 6l10-4 10 4z"/></svg>
+          </span>
+          <a href="mailto:hola@dominantsite.com" class="hover:text-white">hola@dominantsite.com</a>
+        </div>
+      </section>
+    </div>
+
+    <!-- Divider -->
+    <div class="mt-12 border-t border-white/10 pt-6 flex flex-col md:flex-row items-center justify-between gap-4">
+      <p class="text-sm text-muted-300/80">
+        Avia, {Year} © All Rights Reserved by Dex-Theme
+      </p>
+
+      <div class="flex items-center gap-3">
+        {data.social.map((s) => (
+          <a href={s.href} aria-label={s.label} class="grid h-10 w-10 place-content-center rounded-full bg-white/5 hover:bg-white/10 transition">
+            {s.icon === "facebook" && (
+              <svg viewBox="0 0 24 24" class="h-5 w-5" fill="currentColor" aria-hidden="true"><path d="M13 22v-9h3l1-4h-4V7a1 1 0 011-1h3V2h-3a5 5 0 00-5 5v2H6v4h3v9h4z"/></svg>
+            )}
+            {s.icon === "twitter" && (
+              <svg viewBox="0 0 24 24" class="h-5 w-5" fill="currentColor" aria-hidden="true"><path d="M22 5.8a8.2 8.2 0 01-2.36.65A4.1 4.1 0 0021.4 4a8.2 8.2 0 01-2.6.99 4.1 4.1 0 00-7 3.74A11.7 11.7 0 013 4.8a4.1 4.1 0 001.27 5.47 4.06 4.06 0 01-1.85-.51v.05a4.1 4.1 0 003.3 4.02 4.1 4.1 0 01-1.85.07A4.1 4.1 0 007 15.6a8.23 8.23 0 01-5.1 1.76c-.33 0-.66-.02-.98-.06A11.6 11.6 0 006.29 19 11.6 11.6 0 0018 7.28c0-.18 0-.35-.01-.53A8.2 8.2 0 0022 5.8z"/></svg>
+            )}
+            {s.icon === "youtube" && (
+              <svg viewBox="0 0 24 24" class="h-5 w-5" fill="currentColor" aria-hidden="true"><path d="M23.5 7.1a3 3 0 00-2.1-2.1C19.3 4.5 12 4.5 12 4.5s-7.3 0-9.4.5A3 3 0 00.5 7.1 31.2 31.2 0 000 12a31.2 31.2 0 00.5 4.9 3 3 0 002.1 2.1c2.1.5 9.4.5 9.4.5s7.3 0 9.4-.5a3 3 0 002.1-2.1A31.2 31.2 0 0024 12a31.2 31.2 0 00-.5-4.9zM9.75 15.02V8.98L15.5 12l-5.75 3.02z"/></svg>
+            )}
+          </a>
+        ))}
+      </div>
+    </div>
   </div>
 </footer>
-<style>
-  footer {
-    padding: 2em 1em 6em 1em;
-    background: linear-gradient(var(--gray-gradient)) no-repeat;
-    color: rgb(var(--gray));
-    text-align: center;
-  }
-  .social-links {
-    display: flex;
-    justify-content: center;
-    gap: 1em;
-    margin-top: 1em;
-  }
-  .social-links a {
-    text-decoration: none;
-    color: rgb(var(--gray));
-  }
-  .social-links a:hover {
-    color: rgb(var(--gray-dark));
-  }
-</style>
