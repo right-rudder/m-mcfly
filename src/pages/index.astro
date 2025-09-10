@@ -1,19 +1,50 @@
 ---
+import HeroHomepage from "../components/HeroHomepage.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
+import HeroCards from "../components/HeroCards.astro";
+import HomePageAbout from "../components/HomePageAbout.astro";
+import ProgramsList from "../components/ProgramsList.astro";
+import CTAWhyUs from "../components/CTAWhyUs.astro";
+import ImageComp from "../components/ImageComp.astro";
+import ContactForm from "../components/ContactForm.astro";
+import TestimonialsCarousel from "../components/react/TestimonialsCarousel.jsx";
+import CTAIntroFlight from "../components/CTAIntroFlight.astro";
 ---
 
 <BaseLayout>
-	<section class="bg-gradient-to-b from-blue-50 to-white">
-		<div class="container mx-auto px-4 py-20 text-center">
-			<h1 class="text-4xl font-bold mb-4">Welcome to My Astro Site</h1>
-			<p class="text-lg text-gray-700 mb-8">
-				This is a simple hero section to showcase the layout.
-			</p>
-			<a
-				href="#"
-				class="inline-block bg-blue-600 text-white px-6 py-3 rounded-full hover:bg-blue-700 transition"
-				>Get Started</a
-			>
-		</div>
-	</section>
+  <div class="relative min-h-[115vh]">
+    <ImageComp
+      src="/src/assets/stock/hero-homepage.jpg"
+      alt="A small aircraft flying over a scenic landscape during sunset."
+      classes="absolute inset-0 h-full w-full object-cover"
+      loading="eager"
+    />
+    <div
+      class="relative z-30 container mx-auto flex h-full w-full max-w-[98rem] flex-col justify-center gap-18 px-6 md:px-20"
+    >
+      <!-- Hero section -->
+      <HeroHomepage
+        data={{
+          eyebrow: "Fly with McFly",
+          title: "Become a Pilot Today",
+          paragraph:
+            "We craft exceptional aviators with world-class training unmatched discipline and passion to conquer skies with skill and confidence.",
+          styling:
+            "relative min-h-[60vh] overflow-hidden flex flex-row items-end mt-20 md:mt-0",
+        }}
+      />
+      <HeroCards />
+    </div>
+    <div class="pointer-events-none absolute inset-0 z-20 bg-black/50"></div>
+  </div>
+  <HomePageAbout />
+  <ProgramsList />
+  <CTAWhyUs />
+  <TestimonialsCarousel
+    items={[]}
+    className="bg-gradient-to-b from-accent-950 via-accent-950/80 to-accent-950 text-white px-5 md:px-8 lg:px-10 py-16 md:py-20 lg:py-24"
+    client:load
+  />
+  <ContactForm />
+  <CTAIntroFlight />
 </BaseLayout>

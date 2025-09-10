@@ -1,0 +1,115 @@
+---
+import ImageComp from "./ImageComp.astro";
+
+const data = {
+  eyebrow: "About Us",
+  title: [
+    "Your Trusted Pathway To",
+    "Excellence In Professional",
+    "Pilot Careers",
+  ],
+  quote: `"A great pilot is not born from talent alone but from discipline, persistence and an unshakable passion for the skies."`,
+  quoteAuthor: "Capt. Alexander Moore, Founder & CEO",
+  statValue: "32+",
+  statLabel: "Years of aviation excellence",
+  body: "With expert instructors and advanced resources we equip aspiring pilots with skills and confidence to thrive in aviation.",
+  ctaLabel: "Read More",
+  ctaHref: "#",
+  rightImage: {
+    src: "/src/assets/mcfly-education-flight-school-student.webp",
+    alt: "Inside a commercial cockpit",
+  },
+};
+---
+
+<section class="bg-accent-950 relative isolate -z-0 overflow-hidden text-white">
+  {/* soft radial glow */}
+  <div
+    class="from-primary-950/50 pointer-events-none absolute inset-0 -z-10 bg-radial-[at_20%_40%] to-transparent to-60%"
+  >
+  </div>
+
+  <div class="mx-auto max-w-7xl px-5 py-12 md:px-8 md:py-16 lg:px-10 lg:py-20">
+    <div class="grid items-start gap-10 lg:grid-cols-2 lg:gap-14">
+      {/* LEFT: Headline, quote, stat */}
+      <div>
+        <p
+          class="eyebrow inline-flex items-center gap-2 px-3 py-1 text-[11px] tracking-widest uppercase"
+        >
+          <span class="size-1.5 rounded-full bg-yellow-400/90"></span>
+          {data.eyebrow}
+        </p>
+
+        <h1
+          class="text-4xl leading-tight font-bold tracking-tight sm:text-5xl lg:text-[56px]"
+        >
+          {
+            Array.isArray(data.title)
+              ? data.title.map((line) => <span class="block">{line}</span>)
+              : data.title
+          }
+        </h1>
+
+        {/* Quote card (narrowed) */}
+        <div
+          class="mt-6 max-w-md rounded-2xl border border-white/10 bg-white/5 p-5 md:p-6"
+        >
+          <div class="flex items-start gap-3">
+            <span class="text-3xl leading-none text-yellow-400 select-none"
+              >”</span
+            >
+            <p class="text-sm/6 text-gray-200 md:text-base/7">{data.quote}</p>
+          </div>
+          <p class="mt-3 text-xs text-gray-400 md:text-sm">
+            {data.quoteAuthor}
+          </p>
+        </div>
+
+        {/* Stat (narrowed) */}
+        <div class="mt-7 flex max-w-md items-end gap-5">
+          <span class="text-6xl font-extrabold text-yellow-400 sm:text-7xl">
+            {data.statValue}
+          </span>
+          <div class="pb-2">
+            <p class="text-xs tracking-widest text-gray-400 uppercase">
+              Years of Aviation
+            </p>
+            <p class="-mt-0.5 font-medium text-gray-200">{data.statLabel}</p>
+          </div>
+        </div>
+      </div>
+
+      {/* RIGHT: Big image, body, CTA */}
+      <div class="lg:pl-4">
+        <figure class="relative">
+          <ImageComp
+            src={data.rightImage.src}
+            alt={data.rightImage.alt}
+            classes="aspect-[4/3] w-full rounded-[32px] object-cover shadow-[0_20px_60px_rgba(0,0,0,0.45)] ring-1 ring-white/10 md:aspect-[5/4]"
+          />
+        </figure>
+
+        <p class="mt-6 text-gray-300 md:text-lg/8">
+          {data.body}
+        </p>
+
+        <a href={data.ctaHref} class="btn-transparent mt-5 w-fit">
+          {data.ctaLabel}
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            class="size-4"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.75"
+          >
+            <path
+              d="M5 12h14M13 5l7 7-7 7"
+              stroke-linecap="round"
+              stroke-linejoin="round"></path>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>

@@ -34,23 +34,6 @@ export const navbarLinks = [
     ],
   },
   {
-    name: "Add-Ons",
-    submenu: [
-      {
-        name: "Private Helicopter Add-On",
-        link: "/add-on/private-helicopter-add-on",
-      },
-      {
-        name: "Instrument Helicopter Add-On",
-        link: "/add-on/instrument-helicopter-add-on",
-      },
-      {
-        name: "Commercial Helicopter Add-On",
-        link: "/add-on/commercial-helicopter-add-on",
-      },
-    ],
-  },
-  {
     name: "About Us",
     submenu: [
       {

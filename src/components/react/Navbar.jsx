@@ -2,9 +2,8 @@ import { navbarLinks } from "../../data/navbarLinks.js";
 import { useEffect, useState } from "react";
 import { IoIosArrowForward } from "react-icons/io";
 import { FaPhone } from "react-icons/fa";
-import { FaHelicopter } from "react-icons/fa";
 import { FACEBOOK_URL, INSTAGRAM_URL, PHONE_NUMBER } from "../../consts.js";
-import logo from "../../assets/blog-placeholder-5.jpg";
+import logo from "../../assets/mcfly-logo-nav.png";
 
 const Navbar = ({ pathname }) => {
   const [openMobile, setOpenMobile] = useState(false);
@@ -73,29 +72,28 @@ const Navbar = ({ pathname }) => {
   return (
     <nav className="fixed top-0 z-50 h-0 w-full tracking-wider">
       <div
-        className={`${navBar || openMobile ? "bg-white shadow" : ""} ${showNavbar ? "-translate-y-28" : ""}`}
+        className={`${navBar || openMobile ? "bg-accent-950/60 backdrop-blur-md" : ""} ${showNavbar ? "-translate-y-28" : ""}`}
       >
-        <div className="mx-auto max-w-[98rem] px-4 lg:px-12">
+        <div className="mx-auto max-w-[98rem] px-14 py-4">
           <div
-            className={`h-18 relative flex items-center justify-between gap-3 transition-all lg:h-24`}
+            className={`relative flex h-18 items-center justify-between gap-3 transition-all lg:h-24`}
             id="navbar"
           >
-            <a href="/" className="w-32 duration-200 lg:w-48">
-              <img
-                src={logo.src}
-                alt="TruFlight Academy Logo"
-                loading="eager"
-                decoding="async"
-                fetchPriority="auto"
-                width="397"
-                height="128"
-                className="h-full w-full object-contain"
-              ></img>
-            </a>
-
-            <div className="flex items-center justify-between gap-8">
-              <div className="hidden flex-1 items-center gap-8 lg:flex">
-                <ul className="flex items-center gap-10">
+            <div className="flex w-[80%] items-center justify-between gap-10">
+              <a href="/" className="w-auto duration-200 md:pt-8">
+                <img
+                  src={logo.src}
+                  alt="TruFlight Academy Logo"
+                  loading="eager"
+                  decoding="async"
+                  fetchPriority="auto"
+                  width="397"
+                  height="128"
+                  className="h-18 w-18 md:h-32 md:w-32 rounded-full object-contain"
+                ></img>
+              </a>
+              <div className="hidden flex-1 gap-10 lg:flex">
+                <ul className="text-accent-50 flex justify-center gap-10 md:text-lg">
                   {navbarLinks.map((item, index) => (
                     <li
                       key={index}
@@ -110,18 +108,18 @@ const Navbar = ({ pathname }) => {
                       {item.link ? (
                         <a
                           href={item.link}
-                          className="group-last:btn-primary decoration-primary-500 whitespace-nowrap py-12 font-extrabold tracking-tight decoration-2 underline-offset-[10px] duration-300 hover:underline group-last:hover:no-underline"
+                          className="group-last:btn-primary decoration-primary-500 py-12 font-medium tracking-tight whitespace-nowrap decoration-2 underline-offset-[10px] duration-300 hover:underline group-last:hover:no-underline"
                         >
                           {item.name}
                         </a>
                       ) : (
-                        <span className="decoration-primary-500 cursor-default whitespace-nowrap py-12 font-extrabold tracking-tight decoration-2 underline-offset-[10px] duration-300 hover:underline">
+                        <span className="decoration-primary-500 cursor-default py-12 font-medium tracking-tight whitespace-nowrap decoration-2 underline-offset-[10px] duration-300 hover:underline">
                           {item.name}
                         </span>
                       )}
                       {item.submenu && item.submenu.length > 0 && (
                         <ul
-                          className={`bg-accent-500 absolute left-0 top-[40px] z-10 overflow-hidden whitespace-nowrap rounded text-white duration-300 ${
+                          className={`bg-accent-500 absolute top-[40px] left-0 z-10 overflow-hidden rounded whitespace-nowrap text-white duration-300 ${
                             hoveredIndex === index
                               ? "h-auto w-auto opacity-100"
                               : "h-0 w-0 overflow-hidden opacity-0"
@@ -154,7 +152,7 @@ const Navbar = ({ pathname }) => {
                               {subitem.subsubmenu &&
                                 subitem.subsubmenu.length > 0 && (
                                   <ul
-                                    className={`absolute left-full top-0 z-20 whitespace-nowrap bg-black duration-500 ${
+                                    className={`absolute top-0 left-full z-20 bg-black whitespace-nowrap duration-500 ${
                                       subHoveredIndex === subIndex
                                         ? "h-auto w-auto opacity-100"
                                         : "h-0 w-0 overflow-hidden opacity-0"
@@ -189,22 +187,22 @@ const Navbar = ({ pathname }) => {
                   ))}
                 </ul>
               </div>
+            </div>
 
-              <div className="hidden flex-1 justify-end lg:flex">
-                <a
-                  href="https://truflight.azurewebsites.net/identity/account/login"
-                  target="_blank"
-                  className="btn-secondary whitespace-nowrap"
-                >
-                  Log In
-                </a>
-              </div>
-              <div className="hidden flex-1 justify-end lg:flex">
-                <a href="/enrollment-form" className="btn-primary group">
-                  <FaHelicopter className="duration-300 group-hover:-translate-y-1" />
-                  Enroll Now
-                </a>
-              </div>
+            <div className="text-accent-50 hidden w-[20%] justify-center gap-4 lg:flex">
+              <a
+                href="https://truflight.azurewebsites.net/identity/account/login"
+                target="_blank"
+                className="btn-transparent flex-1 whitespace-nowrap"
+              >
+                Get in Touch
+              </a>
+              <a
+                href="/enrollment-form"
+                className="btn-primary group flex-1 whitespace-nowrap"
+              >
+                Enroll Now
+              </a>
             </div>
 
             <div className="absolute inset-y-0 right-0 flex items-center lg:hidden">
@@ -261,7 +259,7 @@ const Navbar = ({ pathname }) => {
         } bg-accent-500 absolute top-0 z-50 h-screen w-full overflow-x-hidden duration-300 ease-in-out lg:hidden`}
         id="mobile-menu"
       >
-        <div className="flex justify-end py-6 pl-5 pr-[26px]">
+        <div className="flex justify-end py-6 pr-[26px] pl-5">
           <svg
             className={`h-6 w-6 cursor-pointer text-white`}
             fill="none"
@@ -299,7 +297,7 @@ const Navbar = ({ pathname }) => {
           }`}
         ></div>
 
-        <ul className="mt-12 flex flex-col px-4 pb-3 pt-2">
+        <ul className="mt-12 flex flex-col px-4 pt-2 pb-3">
           {navbarLinks.map((item, index) => (
             <li
               key={index}
@@ -309,12 +307,12 @@ const Navbar = ({ pathname }) => {
               {item.link ? (
                 <a
                   href={item.link}
-                  className="group-last:bg-primary-500 block whitespace-nowrap border-blue-800 p-4 text-lg font-semibold text-white duration-300 group-last:mx-5 group-last:mt-4 group-last:rounded-full group-last:px-8 group-last:py-4 group-last:text-center"
+                  className="group-last:bg-primary-500 block border-blue-800 p-4 text-lg font-semibold whitespace-nowrap text-white duration-300 group-last:mx-5 group-last:mt-4 group-last:rounded-full group-last:px-8 group-last:py-4 group-last:text-center"
                 >
                   {item.name}
                 </a>
               ) : (
-                <div className="flex w-full cursor-pointer justify-between whitespace-nowrap border-blue-800 p-4 text-lg font-semibold text-white duration-300">
+                <div className="flex w-full cursor-pointer justify-between border-blue-800 p-4 text-lg font-semibold whitespace-nowrap text-white duration-300">
                   <p>{item.name}</p>
                   <div
                     className={`pointer-events-none p-1 duration-300 ${
@@ -353,7 +351,7 @@ const Navbar = ({ pathname }) => {
                           {subitem.name}
                         </a>
                       ) : (
-                        <div className="flex w-full cursor-pointer justify-between whitespace-nowrap border-blue-800 p-5 text-lg font-semibold text-white duration-300">
+                        <div className="flex w-full cursor-pointer justify-between border-blue-800 p-5 text-lg font-semibold whitespace-nowrap text-white duration-300">
                           <p>{subitem.name}</p>
                           <div
                             className={`pointer-events-none rounded-full p-1 duration-300 ${
@@ -375,7 +373,7 @@ const Navbar = ({ pathname }) => {
 
                       {subitem.subsubmenu && subitem.subsubmenu.length > 0 && (
                         <ul
-                          className={`left-full z-20 ml-8 overflow-hidden whitespace-nowrap bg-black duration-500 ${
+                          className={`left-full z-20 ml-8 overflow-hidden bg-black whitespace-nowrap duration-500 ${
                             subHoveredIndex === subIndex
                               ? "max-h-32"
                               : "max-h-0"
@@ -402,7 +400,7 @@ const Navbar = ({ pathname }) => {
           <li>
             <a
               href="/enrollment-form"
-              className="bg-primary-500 mx-5 mt-4 block whitespace-nowrap rounded-full p-5 px-8 py-4 text-center text-lg font-semibold uppercase text-white duration-300"
+              className="bg-primary-500 mx-5 mt-4 block rounded-full p-5 px-8 py-4 text-center text-lg font-semibold whitespace-nowrap text-white uppercase duration-300"
             >
               Enroll Now
             </a>
@@ -411,7 +409,7 @@ const Navbar = ({ pathname }) => {
             <a
               href="https://truflight.azurewebsites.net/identity/account/login"
               target="_blank"
-              className="border-primary-500 text-primary-500 mx-5 mt-4 block whitespace-nowrap rounded-full border p-5 px-8 py-4 text-center text-lg font-semibold uppercase duration-300"
+              className="border-primary-500 text-primary-500 mx-5 mt-4 block rounded-full border p-5 px-8 py-4 text-center text-lg font-semibold whitespace-nowrap uppercase duration-300"
             >
               Log In
             </a>

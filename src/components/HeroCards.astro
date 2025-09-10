@@ -1,0 +1,61 @@
+---
+import { LuMapPin } from "react-icons/lu";
+
+const facts = [
+  {
+    title: "Experienced Pilot",
+    icon: "/src/assets/icons/pilot-icon.svg",
+  },
+  {
+    title: "State-of-the-Art Fleet",
+    icon: "/src/assets/icons/aircraft-icon.svg",
+  },
+  {
+    title: "Personalized Training",
+    icon: "/src/assets/icons/training-icon.svg",
+  },
+];
+---
+
+<section class="relative">
+  <div
+    class="container flex flex-col-reverse items-center py-12 text-center md:flex-row-reverse gap-10 md:items-start md:py-20 md:text-left border-b border-white"
+  >
+    <div
+      class="mb-12 flex flex-col items-center md:mb-0 md:items-start md:text-left w-full md:w-[30%]"
+    >
+      <p class="mb-12 text-md text-white">
+        Our commitment to excellence and safety ensures you receive top-tier
+        aviation education tailored to your goals.
+      </p>
+      <a
+        href="#"
+        class="ml-2 inline-flex items-center gap-1 font-semibold text-lg text-yellow-400 hover:underline"
+      >
+        Register Now
+        <svg
+          viewBox="0 0 24 24"
+          class="size-4"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.75"
+        >
+          <path
+            d="M5 12h14M13 5l7 7-7 7"
+            stroke-linecap="round"
+            stroke-linejoin="round"></path>
+        </svg>
+      </a>
+    </div>
+    <div class="grid w-full grid-cols-1 gap-8 md:grid-cols-3 w-[70%]">
+      {
+        facts.map((fact) => (
+          <div class="rounded-lg bg-white/20 p-6 shadow-lg border border-white/30 translate-y-0 hover:translate-y-[-6px] transition-transform duration-300">
+            <LuMapPin className="mx-auto md:mx-0 size-12 text-yellow-400 mb-4" />
+            <h3 class="mb-2 text-lg font-semibold md:text-2xl text-white">{fact.title}</h3>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>
