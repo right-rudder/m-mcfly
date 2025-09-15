@@ -1,18 +1,20 @@
 ---
+import { ADDRESS_LINE_1, ADDRESS_LINE_2, PHONE_NUMBER } from "../consts";
+
 const content = {
   eyebrow: "Contact Us",
   heading: "Let’s Plan Your Flight",
   subheading:
     "Contact our school today for expert guidance, program details, and professional advice to start your journey toward mastering the skies.",
   info: {
-    title: "Get in Touch",
+    title: "Give Us A Call Or Drop By Our Place",
     intro:
-      "Our aviation experts are ready to listen, provide clear answers, and help you navigate the right path toward your dream of flying.",
+      "We’re here to assist you with any questions or to help you get started on your aviation journey.",
     locationLabel: "Our Location",
-    addressLine1: "456 Creative District Ahmad Yani,",
-    addressLine2: "Medan, North Sumatera",
+    addressLine1: ADDRESS_LINE_1,
+    addressLine2: ADDRESS_LINE_2,
     phoneLabel: "Phone Number",
-    phoneValue: "+800-3374-4676",
+    phoneValue: PHONE_NUMBER,
     emailLabel: "Our Email",
     emailValue: "hola@dominantsite.com",
   },
@@ -37,7 +39,7 @@ const content = {
 ---
 
 <section
-  class="bg-accent-950 px-4 py-12 sm:px-6 lg:px-8 lg:py-20"
+  class="bg-black px-4 py-12 sm:px-6 lg:px-8 lg:py-20"
   aria-labelledby="contact-heading"
 >
   <div class="grid grid-cols-1 items-stretch gap-8 lg:grid-cols-2 lg:gap-10 max-w-7xl mx-auto">
@@ -46,10 +48,10 @@ const content = {
       class="relative overflow-hidden rounded-3xl text-white"
     >
       <div class="text-muted-50 p-6 sm:p-8 lg:p-10">
-        <h2 class="text-3xl font-extrabold tracking-tight">
+        <h2 class="text-5xl font-extrabold tracking-tight">
           {content.info.title}
         </h2>
-        <p class="text-muted-200 mt-3 max-w-prose text-sm/6">
+        <p class="text-muted-200 mt-3 max-w-prose text-md">
           {content.info.intro}
         </p>
 
@@ -136,17 +138,17 @@ const content = {
 
     <!-- RIGHT: Form -->
     <div
-      class="bg-gradient-to-br from-accent-950/10 to-primary-950/60 rounded-3xl p-6 ring-1 ring-accent-950/10 sm:p-8 lg:p-10 text-white"
+      class="bg-primary-500/30 rounded-3xl p-6 ring-1 ring-primary-200/70 sm:p-8 lg:p-10 text-white font-semibold"
     >
       <p
-        class="eyebrow inline-flex items-center gap-2 px-3 py-1 text-[11px] tracking-widest uppercase"
+        class="eyebrow-dark inline-flex items-center gap-2 px-3 py-1 text-[11px] tracking-widest uppercase"
       >
         <span class="size-1.5 rounded-full bg-yellow-400/90"></span>
         {content.eyebrow}
       </p>
       <h2
         id="contact-heading"
-        class="mt-2 text-4xl font-extrabold text-white lg:text-5xl"
+        class="mt-2 text-4xl font-extrabold lg:text-5xl"
       >
         {content.heading}
       </h2>

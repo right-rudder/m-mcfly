@@ -4,7 +4,7 @@ import { BiSolidQuoteLeft } from "react-icons/bi";
 const PLACEHOLDER_TESTIMONIALS = [
   {
     quote:
-      "Marty is an Incredible instructor. He is very knowledgeable and can answer any question you throw at him. He has a great systematic and easy to follow path for the written exam that any student can follow. Any student who takes his course is guaranteed to pass the written. I can’t speak for his flight lessons, but if they’re anything like his ground lessons then you should have no problem reaching your goals. Thanks for everything McFly!",
+      "Marty is an Incredible instructor. He is very knowledgeable and can answer any question you throw at him. He has a great systematic and easy to follow path for the written exam that any student can follow. Thanks for everything McFly!",
     author: "Rockin R.",
     role: "Student Pilot",
   },
@@ -44,17 +44,17 @@ export default function TestimonialsCarousel({
   const next = () => goTo(index + 1);
   const prev = () => goTo(index - 1);
 
-  // Auto-play
   useEffect(() => {
     if (autoPlayMs <= 0) return;
     if (timerRef.current) clearInterval(timerRef.current);
     timerRef.current = setInterval(() => {
       if (!hoveringRef.current) next();
     }, autoPlayMs);
-    return () => timerRef.current && clearInterval(timerRef.current);
+    return () => {
+      if (timerRef.current) clearInterval(timerRef.current);
+    };
   }, [index, autoPlayMs, data.length]);
 
-  // Keyboard navigation
   useEffect(() => {
     const onKey = (e) => {
       if (e.key === "ArrowRight") next();
@@ -74,45 +74,40 @@ export default function TestimonialsCarousel({
       onMouseEnter={() => (hoveringRef.current = true)}
       onMouseLeave={() => (hoveringRef.current = false)}
     >
-      {/* Heading */}
       <div className="mb-10 text-center">
-        <p class="eyebrow mb-3 inline-flex items-center gap-2 px-3 py-1 text-[11px] tracking-widest uppercase">
-          <span class="size-1.5 rounded-full bg-yellow-400/90"></span>
+        <p className="eyebrow mb-3 inline-flex items-center gap-2 px-3 py-1 text-[11px] tracking-widest uppercase">
+          <span className="size-1.5 rounded-full bg-yellow-400/90"></span>
           What Our Students Say
-          <span class="size-1.5 rounded-full bg-yellow-400/90"></span>
+          <span className="size-1.5 rounded-full bg-yellow-400/90"></span>
         </p>
         <h2 className="mt-2 text-2xl font-semibold sm:text-3xl">
           Inspiring Stories from Our Students
         </h2>
       </div>
 
-      {/* Slide */}
-      <div className="relative flex flex-col items-center">
-        {/* Decorative opening quote */}
-        <BiSolidQuoteLeft className="text-primary-500 size-10" />
 
-        <figure className="max-w-4xl text-center transition-opacity duration-300">
-          <blockquote className="text-xl leading-relaxed text-balance md:text-4xl w-full">
-            “{current.quote}”
-          </blockquote>
-          <figcaption className="mt-8 flex flex-col items-center gap-3">
-            <div className="text-center">
-              <div className="text-primary-500 text-lg font-semibold">
-                {current.author}
+      <div className="mx-auto w-full max-w-[720px]">
+        <div className="relative flex h-[420px] w-full flex-col items-center justify-start overflow-hidden rounded-2xl">
+          <BiSolidQuoteLeft className="text-primary-500 size-10" />
+
+          <figure className="flex h-full w-full flex-col items-center px-4 text-center md:px-6">
+            <blockquote className="mt-4 flex-1 overflow-hidden text-xl leading-relaxed text-balance md:text-3xl">
+              “{current.quote}”
+            </blockquote>
+            <figcaption className="mt-6 shrink-0">
+              <div className="text-center">
+                <div className="text-primary-500 text-lg font-semibold">
+                  {current.author}
+                </div>
+                <div className="text-muted-500 text-sm">
+                  {current.role ? <span>{current.role}</span> : null}
+                </div>
               </div>
-              <div className="text-muted-500 text-sm">
-                {current.role ? (
-                  <>
-                    <span>{current.role}</span>
-                  </>
-                ) : null}
-              </div>
-            </div>
-          </figcaption>
-        </figure>
+            </figcaption>
+          </figure>
+        </div>
       </div>
 
-      {/* Controls */}
       <div className="mt-10 flex items-center justify-center gap-4">
         <button
           type="button"
@@ -145,7 +140,7 @@ export default function TestimonialsCarousel({
         </nav>
         <button
           type="button"
-          className="inline-flex items-center justify-center rounded-full px-3 py-2 text-sm ring-1 ring-primary-500/30 ring-inset hover:bg-black/5"
+          className="ring-primary-500/30 inline-flex items-center justify-center rounded-full px-3 py-2 text-sm ring-1 ring-inset hover:bg-black/5"
           aria-label="Next testimonial"
           onClick={next}
         >

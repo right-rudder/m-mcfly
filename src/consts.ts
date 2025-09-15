@@ -3,9 +3,10 @@
 
 export const SITE_TITLE = "McFly Education | Aviation Training & Pilot School";
 export const SITE_DESCRIPTION = "Welcome to McFly Education!";
-export const PHONE_NUMBER = "+1 (918) 770-1201";
-export const INSTAGRAM_URL = "";
+export const PHONE_NUMBER = "+1 (909) 262-5236";
+export const INSTAGRAM_URL = "https://www.instagram.com/1martymcfly/";
 export const FACEBOOK_URL = "";
-export const ADDRESS_LINE_1 = "9007 FM 902";
-export const ADDRESS_LINE_2 = "Howe, TX 75459";
+export const LOCATION = "4868+C3 Upland, California, USA";
+export const ADDRESS_LINE_1 = "1749 W 13th St";
+export const ADDRESS_LINE_2 = "Upland, CA 91786";
 export const AIRPORT = "Finney Field Airport (T47)";

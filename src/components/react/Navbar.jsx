@@ -20,9 +20,9 @@ const Navbar = ({ pathname }) => {
   };
 
   useEffect(() => {
-    window.addEventListener("scroll", changeBackground);
+    window.addEventListener("scroll", changeBackgroundAndLogo);
     return () => {
-      window.removeEventListener("scroll", changeBackground);
+      window.removeEventListener("scroll", changeBackgroundAndLogo);
     };
   }, []);
 
@@ -48,7 +48,7 @@ const Navbar = ({ pathname }) => {
     return selected;
   };
 
-  const changeBackground = () => {
+  const changeBackgroundAndLogo = () => {
     if (window.scrollY >= 10) {
       setNavbar(true);
     } else {
@@ -72,7 +72,7 @@ const Navbar = ({ pathname }) => {
   return (
     <nav className="fixed top-0 z-50 h-0 w-full tracking-wider">
       <div
-        className={`${navBar || openMobile ? "bg-accent-950/60 backdrop-blur-md" : ""} ${showNavbar ? "-translate-y-28" : ""}`}
+        className={`${navBar || openMobile ? "bg-accent-950/80 backdrop-blur-md" : ""} ${showNavbar ? "-translate-y-28" : ""}`}
       >
         <div className="mx-auto max-w-[98rem] px-14 py-4">
           <div
@@ -80,7 +80,10 @@ const Navbar = ({ pathname }) => {
             id="navbar"
           >
             <div className="flex w-[80%] items-center justify-between gap-10">
-              <a href="/" className="w-auto duration-200 md:pt-8">
+              <a
+                href="/"
+                className={`${navBar || openMobile ? "" : "w-auto duration-200 md:pt-8"}`}
+              >
                 <img
                   src={logo.src}
                   alt="TruFlight Academy Logo"
@@ -89,7 +92,7 @@ const Navbar = ({ pathname }) => {
                   fetchPriority="auto"
                   width="397"
                   height="128"
-                  className="h-18 w-18 md:h-32 md:w-32 rounded-full object-contain"
+                  className={`${navBar || openMobile ? "h-12 w-12 rounded-full object-contain md:h-20 md:w-20" : "h-18 w-18 rounded-full object-contain md:h-32 md:w-32"} duration-300`}
                 ></img>
               </a>
               <div className="hidden flex-1 gap-10 lg:flex">
@@ -108,7 +111,7 @@ const Navbar = ({ pathname }) => {
                       {item.link ? (
                         <a
                           href={item.link}
-                          className="group-last:btn-primary decoration-primary-500 py-12 font-medium tracking-tight whitespace-nowrap decoration-2 underline-offset-[10px] duration-300 hover:underline group-last:hover:no-underline"
+                          className="group-last:btn-primary decoration-primary-500 py-14 font-medium tracking-tight whitespace-nowrap decoration-2 underline-offset-[10px] duration-300 hover:underline group-last:hover:no-underline"
                         >
                           {item.name}
                         </a>

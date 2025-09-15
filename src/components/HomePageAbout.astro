@@ -3,16 +3,12 @@ import ImageComp from "./ImageComp.astro";
 
 const data = {
   eyebrow: "About Us",
-  title: [
-    "Your Trusted Pathway To",
-    "Excellence In Professional",
-    "Pilot Careers",
-  ],
-  quote: `"A great pilot is not born from talent alone but from discipline, persistence and an unshakable passion for the skies."`,
+  title: "A personalized pathway for every student.",
+  quote: "McFly Education is a community built around safety, service, and mentorship. Led by one experienced instructor, Marty Marino, we are dedicated to helping aspiring pilots achieve their dreams with world-class training and unwavering support.",
   statValue: "37.3K+",
   statLabel: "Followers & Alumni Worldwide",
-  body: "With expert instructors and advanced resources we equip aspiring pilots with skills and confidence to thrive in aviation.",
-  ctaLabel: "Read More",
+  body: "From your first flight lesson to earning your pilot's license and beyond, McFly Education is with you every step of the way.",
+  ctaLabel: "Learn More",
   ctaHref: "#",
   rightImage: {
     src: "/src/assets/mcfly-education-flight-school-student.webp",
@@ -42,11 +38,7 @@ const data = {
         <h1
           class="text-4xl leading-tight font-bold tracking-tight sm:text-5xl lg:text-[56px]"
         >
-          {
-            Array.isArray(data.title)
-              ? data.title.map((line) => <span class="block">{line}</span>)
-              : data.title
-          }
+          {data.title}
         </h1>
 
         {/* Quote card (narrowed) */}
@@ -54,23 +46,19 @@ const data = {
           class="mt-6 max-w-md rounded-2xl border border-white/10 bg-white/5 p-5 md:p-6"
         >
           <div class="flex items-start gap-3">
-            <span class="text-3xl leading-none text-yellow-400 select-none"
-              >”</span
-            >
             <p class="text-sm/6 text-gray-200 md:text-base/7">{data.quote}</p>
           </div>
         </div>
 
         {/* Stat (narrowed) */}
-        <div class="mt-7 flex max-w-md items-end gap-5">
-          <span class="text-6xl font-extrabold text-yellow-400 sm:text-7xl">
+        <div class="mt-7 flex max-w-md items-center gap-5">
+          <span class="text-6xl font-extrabold text-yellow-400 sm:text-7xl text-shadow-md text-shadow-primary-/40">
             {data.statValue}
           </span>
           <div class="pb-2">
-            <p class="text-xs tracking-widest text-gray-400 uppercase">
-              Social Media Followers
+            <p class="text-sm tracking-widest text-gray-400 uppercase">
+              {data.statLabel}
             </p>
-            <p class="-mt-0.5 font-medium text-gray-200">{data.statLabel}</p>
           </div>
         </div>
       </div>

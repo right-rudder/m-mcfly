@@ -5,24 +5,20 @@ const data = {
   eyebrow: "WHY CHOOSE US",
   title: "Building Wings For\nAviation Leaders",
   bullets: [
-    "Guided by the skies’ finest captains",
-    "Your direct gateway to global airlines",
-    "Fly the most advanced training fleet",
-    "Experience the future in our simulators",
+    "One-on-one training with a highly experienced instructor",
+    "Comprehensive programs from private pilot to flight instructor",
+    "Hands-on control from your very first lesson.",
+    "Flexible scheduling that adapts to your lifestyle.",
+    "A focus on discipline, persistence, and confidence in every flight.",
   ],
-  blurb: "We equip aspiring pilots with the vision, discipline, and skills needed to soar above the rest in aviation.",
+  blurb: "We equip aspiring pilots with the vision, discipline, and skills needed to excel above the rest in aviation.",
   imageSrc: "/src/assets/marty-mcfly-student-handshake.jpg",
   imageAlt: "Cockpit dashboard placeholder",
 };
 
 ---
 
-<section class="relative isolate overflow-hidden bg-accent-950 text-white">
-  {/* soft radial glow */}
-  <div
-    class="pointer-events-none absolute inset-0 -z-10 bg-radial-[at_50%_50%] from-accent-900 via-primary-950/50 to-accent-950 to-80%"
-  >
-  </div>
+<section class="relative isolate overflow-hidden bg-primary-600 text-accent-950">
   <div class="mx-auto max-w-7xl px-5 md:px-10 lg:px-16 py-16 lg:py-24">
     <div class="grid items-center gap-10 lg:grid-cols-2">
       <!-- LEFT: image -->
@@ -40,7 +36,7 @@ const data = {
       <div class="max-w-2xl lg:max-w-none">
         <!-- eyebrow -->
         <p
-          class="eyebrow inline-flex items-center gap-2 px-3 py-1 tracking-widest"
+          class="eyebrow-dark inline-flex items-center gap-2 px-3 py-1 tracking-widest"
         >
           <span class="size-1.5 rounded-full bg-primary-500"></span>
           {data.eyebrow}

@@ -1,13 +1,15 @@
 ---
 import ImageComp from "./ImageComp.astro";
 import { FaInstagram } from "react-icons/fa6";
+import { PHONE_NUMBER, LOCATION } from "../consts";
+
 const data = {
   brand: {
     name: "McFly",
     tagline:
       "We craft exceptional aviators with world-class training, unmatched discipline and passion to conquer skies.",
-    phone: "909-262-5236",
-    address: "4868+C3 Upland, California, USA",
+    phone: PHONE_NUMBER,
+    address: LOCATION,
   },
   quickLinks: [
     { label: "Home", href: "#" },
@@ -39,7 +41,7 @@ const data = {
 const Year = new Date().getFullYear();
 ---
 
-<footer class="bg-accent-950 relative isolate -z-0 overflow-hidden text-white">
+<footer class="relative isolate -z-0 overflow-hidden bg-black text-white">
   <div
     class="from-primary-950/50 pointer-events-none absolute inset-0 -z-10 bg-radial-[at_80%_70%] to-transparent to-90%"
   >
@@ -51,7 +53,7 @@ const Year = new Date().getFullYear();
         <ImageComp
           src="/src/assets/mcfly-logo-nav.png"
           alt="McFly Education Logo"
-          classes="h-32 w-32 rounded-full"
+          classes="h-32 w-32 rounded-full ring-1 ring-white/20 object-contain"
         />
 
         <p class="text-muted-200/90 mt-6 max-w-prose leading-relaxed">
@@ -198,6 +200,21 @@ const Year = new Date().getFullYear();
       <p class="text-muted-300/80 text-sm">
         McFly Education, {Year} © All Rights Reserved
       </p>
+      <span class="flex justify-center gap-2 text-center">
+        Powered by
+        <a
+          href="https://rightruddermarketing.com/"
+          target="_blank"
+          class="text-bold group flex items-center gap-2 duration-200 hover:text-white/70 hover:underline"
+        >
+          <ImageComp
+            src="/src/assets/RRM-R-symbol-474.webp"
+            alt="Right Rudder Marketing Logo"
+            classes="h-6 w-auto"
+          />
+          More Right Rudder
+        </a>
+      </span>
 
       <div class="flex items-center gap-3">
         {
