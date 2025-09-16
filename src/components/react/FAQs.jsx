@@ -41,7 +41,7 @@ function FAQItem({ item, idx, open, onToggle }) {
         }`}
       >
         <div className="overflow-hidden">
-          <div className="py-5 px-8 text-base leading-relaxed text-white/85 bg-primary-500/50 md:py-6">
+          <div className="py-5 px-8 text-base leading-relaxed text-black font-medium bg-primary-500 md:py-6">
             {item.answer?.map((p, i) => (
               <p key={i} className={i === item.answer.length - 1 ? "" : "mb-3"}>
                 {p}
@@ -109,7 +109,7 @@ export default function FAQSection({ faqs = content || [] }) {
           <div className="flex flex-col gap-8 lg:w-[28rem]">
             <aside>
               <div className="rounded-2xl border border-white/10 bg-white/5 p-5 backdrop-blur md:p-6">
-                <h3 className="mb-2 text-2xl font-bold md:text-3xl">
+                <h3 className="mb-2 text-2xl font-bold md:text-3xl text-primary-500">
                   Have more questions?
                 </h3>
                 <p className="mb-4 text-white/75">
@@ -117,8 +117,8 @@ export default function FAQSection({ faqs = content || [] }) {
                   discovery flight.
                 </p>
                 <a
-                  href="tel:+180033744676"
-                  className="group flex items-center justify-between rounded-xl border border-white/10 bg-white/5 px-4 py-4 transition hover:bg-white/10"
+                  href={`tel:${PHONE_NUMBER.replace(/[^+\d]/g, "")}`}
+                  className="group flex items-center justify-between rounded-xl border border-white/10 bg-white/5 px-4 py-4 transition hover:bg-primary-500 hover:text-black"
                 >
                   <span className="flex items-center gap-3">
                     <span className="inline-flex h-9 w-9 items-center justify-center rounded-lg border border-white/20">
