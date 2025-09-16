@@ -1,0 +1,30 @@
+---
+import HeroFull from "../../components/HeroFull.astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import TrainingsSlider from "../../components/react/TrainingsSlider.jsx";
+import CTAIntroFlight from "../../components/CTAIntroFlight.astro";
+import FAQSection from "../../components/react/FAQs.jsx";
+import generalFAQs from "../../data/generalFAQs.js";
+import { getCollection } from "astro:content";
+import { itemsMap } from "../../lib/itemsMap.js";
+
+const trainings = await getCollection("trainings");
+const items = itemsMap(trainings);
+---
+
+<BaseLayout>
+  <HeroFull
+    data={{
+      eyebrow: "Trainings",
+      title: "Elevate Your Skills",
+      paragraph:
+        "Join our comprehensive training programs designed for all levels.",
+      styling: "relative h-[400px] md:h-[600px] lg:h-[700px]",
+      image: "/src/assets/stock/Small Airplanes Airport Tarmac.jpg",
+      alt: "Person attending a training session",
+    }}
+  />
+  <TrainingsSlider items={items} client:only />
+  <FAQSection faqs={generalFAQs} client:visible />
+  <CTAIntroFlight />
+</BaseLayout>

@@ -14,22 +14,23 @@ export const navbarLinks = [
   },
   {
     name: "Pilot Training",
+    link: "/trainings",
     submenu: [
       {
-        name: "Private Pilot",
-        link: "/pilot-training/private-pilot",
+        name: "All Trainings",
+        link: "/trainings",
       },
       {
-        name: "Instrument Pilot",
-        link: "/pilot-training/instrument-pilot",
+        name: "Private Pilot",
+        link: "/trainings/private-pilot",
+      },
+      {
+        name: "Instrument Rating",
+        link: "/trainings/instrument-rating",
       },
       {
         name: "Commercial Pilot",
-        link: "/pilot-training/commercial-pilot",
-      },
-      {
-        name: "External Load Training",
-        link: "/pilot-training/external-load-training",
+        link: "/trainings/commercial-pilot",
       },
     ],
   },
