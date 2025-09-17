@@ -1,17 +1,19 @@
 ---
-import { LuMapPin } from "react-icons/lu";
+import { GoGoal } from "react-icons/go";
+import { FaPeopleGroup } from "react-icons/fa6";
+import { AiFillSafetyCertificate } from "react-icons/ai";
 
 const facts = [
   {
-    title: "Experienced Pilot",
+    title: "Goal-Oriented Training",
     icon: "/src/assets/icons/pilot-icon.svg",
   },
   {
-    title: "State-of-the-Art Fleet",
+    title: "Community-Driven Approach",
     icon: "/src/assets/icons/aircraft-icon.svg",
   },
   {
-    title: "Personalized Training",
+    title: "Safety Above All",
     icon: "/src/assets/icons/training-icon.svg",
   },
 ];
@@ -19,18 +21,18 @@ const facts = [
 
 <section class="relative">
   <div
-    class="container flex flex-col-reverse items-center py-12 text-center md:flex-row-reverse gap-10 md:items-start md:py-20 md:text-left border-b border-white"
+    class="container flex flex-col-reverse items-center gap-10 border-b border-white py-12 text-center md:flex-row-reverse md:items-start md:py-20 md:text-left"
   >
     <div
-      class="mb-12 flex flex-col items-center md:mb-0 md:items-start md:text-left w-full md:w-[30%]"
+      class="mb-12 flex w-full flex-col items-center md:mb-0 md:w-[30%] md:items-start md:text-left"
     >
-      <p class="mb-12 text-md text-white">
+      <p class="text-md mb-12 text-white">
         Our commitment to excellence and safety ensures you receive top-tier
         aviation education tailored to your goals.
       </p>
       <a
         href="#"
-        class="ml-2 inline-flex items-center gap-1 font-semibold text-lg text-yellow-400 hover:underline"
+        class="ml-2 inline-flex items-center gap-1 text-lg font-semibold text-yellow-400 hover:underline"
       >
         Register Now
         <svg
@@ -47,12 +49,24 @@ const facts = [
         </svg>
       </a>
     </div>
-    <div class="grid w-full grid-cols-1 gap-8 md:grid-cols-3 w-[70%]">
+    <div class="grid w-[70%] w-full grid-cols-1 gap-8 md:grid-cols-3">
       {
         facts.map((fact) => (
-          <div class="rounded-lg bg-white/20 p-6 shadow-lg border border-white/30 translate-y-0 hover:translate-y-[-6px] transition-transform duration-300">
-            <LuMapPin className="mx-auto md:mx-0 size-12 text-yellow-400 mb-4" />
-            <h3 class="mb-2 text-lg font-semibold md:text-2xl text-white">{fact.title}</h3>
+          <div class="translate-y-0 rounded-lg border border-white/30 bg-white/20 p-6 shadow-lg transition-transform duration-300 hover:translate-y-[-6px]">
+            {(() => {
+              if (fact.title === "Goal-Oriented Training")
+                return (
+                  <GoGoal className="mx-auto md:mx-0 size-12 text-yellow-400 mb-4" />
+                );
+              if (fact.title === "Community-Driven Approach")
+                return <FaPeopleGroup className="mx-auto md:mx-0 size-12 text-yellow-400 mb-4" />;
+              if (fact.title === "Safety Above All")
+                return <AiFillSafetyCertificate className="mx-auto md:mx-0 size-12 text-yellow-400 mb-4" />;
+              return null;
+            })()}
+            <h3 class="mb-2 text-lg font-semibold text-white md:text-2xl">
+              {fact.title}
+            </h3>
           </div>
         ))
       }
