@@ -1,0 +1,62 @@
+---
+import ImageComp from "./ImageComp.astro";
+import { BiSolidPlaneAlt } from "react-icons/bi";
+
+const { content } = Astro.props;
+---
+
+<div class="relative h-[90vh]">
+  <!-- Mobile: image first, text below (no overlap) -->
+  <div class="overflow-hidden md:hidden">
+    <ImageComp
+      src={content.headshot}
+      alt=""
+      classes="h-full w-full object-cover"
+    />
+  </div>
+
+  <!-- Desktop: image as background -->
+  <div class="absolute inset-0 hidden md:block">
+    <ImageComp
+      src={content.headshot}
+      alt=""
+      classes="h-full w-full object-cover"
+    />
+  </div>
+
+  <!-- Text box aligned to the right on desktop -->
+  <div
+    class="relative z-10 md:px-8 md:py-12 text-white md:mt-0 md:flex md:min-h-[28rem] md:items-center"
+  >
+    <div
+      class="md:bg-accent-800/70 md:ring-accent-200/30 md:rounded-2xl px-6 py-6 shadow-lg md:ring-1 md:backdrop-blur-md sm:px-8 sm:py-8 md:ml-[55%] md:max-w-lg bg-accent-900 px-4 py-8"
+    >
+      {
+        content.role && (
+          <p class="eyebrow text-primary-200/80 mb-3 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-[11px] tracking-widest uppercase">
+            <span class="size-1.5 rounded-full bg-yellow-400/90" />
+            {content.role}
+          </p>
+        )
+      }
+
+      <h2 class="text-4xl font-bold tracking-tight">
+        Meet {content.name}
+      </h2>
+      <p class="mt-4 leading-relaxed">{content.bio}</p>
+
+      {
+        content.bullets?.length > 0 && (
+          <ul class="mt-6 grid gap-3 text-md sm:grid-cols-2 font-medium">
+            {content.bullets.map((b: any) => (
+              <li class="flex items-start gap-3">
+                <BiSolidPlaneAlt className="inline-block h-10 w-10 text-primary-500" />
+                {b}
+              </li>
+            ))}
+          </ul>
+        )
+      }
+    </div>
+  </div>
+</div>

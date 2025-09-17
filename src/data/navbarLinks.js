@@ -1,11 +1,8 @@
 export const navbarLinks = [
   {
     name: "New to Flying?",
+    link: "/new-to-flying",
     submenu: [
-      {
-        name: "Why Become a Pilot?",
-        link: "/why-become-a-pilot",
-      },
       {
         name: "Book a Discovery Flight",
         link: "/discovery-flight",
@@ -36,26 +33,23 @@ export const navbarLinks = [
   },
   {
     name: "About Us",
+    link: "/about",
     submenu: [
       {
         name: "Our Story",
-        link: "/about/our-story",
-      },
-      {
-        name: "Our Chief Pilot",
-        link: "/about/our-chief-pilot",
-      },
-      {
-        name: "Our Fleet",
-        link: "/about/our-fleet",
+        link: "/about",
       },
       {
         name: "Our Blog",
         link: "/blog",
       },
       {
-        name: "Pricing",
-        link: "/about/pricing",
+        name: "Contact Us",
+        link: "/contact",
+      },
+      {
+        name: "Our Aircraft",
+        link: "/aircraft",
       },
     ],
   },

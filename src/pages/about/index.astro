@@ -1,0 +1,274 @@
+---
+import HeroFull from "../../components/HeroFull.astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import AboutMarty from "../../components/AboutMarty.astro";
+import CTAIntroFlight from "../../components/CTAIntroFlight.astro";
+import CTAAbout from "../../components/CTAAbout.astro";
+import { MdPeopleAlt } from "react-icons/md";
+import { AiFillSafetyCertificate } from "react-icons/ai";
+import { PiStairsFill } from "react-icons/pi";
+import { FaPlaneDeparture } from "react-icons/fa";
+import ImageComp from "../../components/ImageComp.astro";
+
+const pageData = {
+  styling: "relative h-[400px] md:h-[600px] lg:h-[700px]",
+  image: "/src/assets/marty-mcfly-contact-us.webp",
+  alt: "About Us Hero Image",
+  eyebrow: "About Us",
+  title: "Your Journey, Our Mission",
+  paragraph: "Learn more about our mission and team.",
+};
+
+const instructor = {
+  name: "Marty McFly",
+  role: "Certified Flight Instructor (CFI/CFII)",
+  headshot: "/src/assets/mcfly-education-marty-headshot-selfie.webp",
+  bio: `Marty is a people‑first instructor who blends disciplined airmanship with an easygoing, hands‑on style. He builds confidence fast by tailoring each lesson to the pilot in front of him—meeting you where you are, then stretching you just enough to grow. Students appreciate his clear briefs, structured debriefs, and the way he translates complex topics into practical, cockpit‑ready skills.`,
+  bullets: [
+    "Personalized 1:1 coaching and scenario‑based training",
+    "Safety‑first mindset: clear standards, conservative decision‑making",
+    "Community builder: study groups, peer flights, and accountability",
+  ],
+  socials: [
+    { label: "Instagram", href: "https://www.instagram.com/1martymcfly/" },
+    {
+      label: "Skool",
+      href: "https://www.skool.com/mcfly-education-8588/about",
+    },
+  ],
+};
+
+const cta = {
+  eyebrow: "Our Story",
+  title: "Chasing dreams to the skies",
+  image: "/src/assets/mcfly-education-marty-w-plane.webp",
+  imageAlt: "Marty McFly with his plane",
+  text: "Marty first caught the aviation bug at 13 during a summer camp; in his early twenties he rediscovered flying and committed to professional training. He launched his Instagram to document CFI checkride prep, invite constructive peer review, and share practical insights—cultivating a welcoming community where newcomers can learn faster, ask candid questions, and start their journey with confidence.",
+  primary: { label: "Chase your dreams with Us", href: "/about#enroll" },
+};
+
+const approach = {
+  eyebrow: "How We Get You There",
+  title: "A personalized path to pilot proficiency",
+  caption:
+    "Every pilot is unique. Your training should be too. Here’s how we tailor your journey to fit you.",
+  steps: [
+    {
+      k: "01",
+      title: "Discovery & Baseline",
+      text: "We clarify your goals, review prior experience, and fly a short baseline to map strengths and gaps.",
+      image: "/src/assets/marty-mcfly-student-handshake.jpg",
+      imageAlt: "Marty McFly with his student",
+      href: "#",
+    },
+    {
+      k: "02",
+      title: "Custom Game Plan",
+      text: "You get a tailored lesson map—ground + flight + chair flying—so you always know what’s next.",
+      image: "/src/assets/marty-mcfly-student-handshake.jpg",
+      imageAlt: "Marty McFly with his student",
+      href: "#",
+    },
+    {
+      k: "03",
+      title: "Hands‑On Mastery",
+      text: "Brief, fly, debrief. Tight feedback loops, scenario‑based lessons, and practical decision‑making.",
+      image: "/src/assets/marty-mcfly-student-handshake.jpg",
+      imageAlt: "Marty McFly with his student",
+      href: "#",
+    },
+    {
+      k: "04",
+      title: "Confident Checkride‑Ready",
+      text: "We polish weak areas and run realistic mock‑rides so the real thing feels familiar.",
+      image: "/src/assets/marty-mcfly-student-handshake.jpg",
+      imageAlt: "Marty McFly with his student",
+      href: "#",
+    },
+  ],
+};
+
+const values = {
+  eyebrow: "What Drives Us",
+  title: "People first. Goal Oriented. Safety always.",
+  items: [
+    {
+      title: "Community Service Mindset",
+      text: "We serve students and the aviation community first—mentoring, sharing resources, and uplifting new pilots.",
+    },
+    {
+      title: "Safety Back Home",
+      text: "Our mission is simple: everyone gets involved and returns home to their families—every flight, every time.",
+    },
+    {
+      title: "Clear Structure, Human Touch",
+      text: "Structured syllabi with flexible delivery. We adapt to your pace without compromising standards.",
+    },
+    {
+      title: "Growth Through Discipline",
+      text: "Confidence comes from reps and standards. We train judgment, not just maneuvers.",
+    },
+  ],
+};
+
+// const cta = {
+//   title: "Ready to train with a coach who knows your name?",
+//   text: "Tell me your goals and I’ll tailor a plan you can trust.",
+//   primary: { label: "Start Your Plan", href: "/enroll" },
+//   secondary: { label: "Get in Touch", href: "/contact" },
+// };
+---
+
+<BaseLayout>
+  <HeroFull data={pageData} />
+  <CTAAbout content={cta} />
+  <section>
+    <AboutMarty content={instructor} />
+  </section>
+
+  <section class="bg-black px-12 py-14 text-white">
+    <div class="flex flex-col items-center py-12 text-center sm:py-16">
+      <div class="mb-8">
+        {
+          values.eyebrow && (
+            <p class="eyebrow text-primary-200/80 mb-3 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-[11px] tracking-widest uppercase">
+              <span class="size-1.5 rounded-full bg-yellow-400/90" />
+              {values.eyebrow}
+              <span class="size-1.5 rounded-full bg-yellow-400/90" />
+            </p>
+          )
+        }
+        <h2 class="mt-1 text-2xl font-bold tracking-tight sm:text-3xl">
+          {values.title}
+        </h2>
+      </div>
+      <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        {
+          values.items.map((it) => (
+            <article class="ring-accent-500/70 bg-accent-600/50 text-primary-600 hover:bg-primary-500 rounded-2xl px-8 py-10 shadow-sm ring-1 transition hover:text-black hover:shadow-md">
+              <div class="flex items-center gap-4 text-left">
+                {(() => {
+                  if (it.title === "Community Service Mindset")
+                    return <MdPeopleAlt className="h-10 w-10" />;
+                  if (it.title === "Safety Back Home")
+                    return <AiFillSafetyCertificate className="h-10 w-10" />;
+                  if (it.title === "Clear Structure, Human Touch")
+                    return <PiStairsFill className="h-10 w-10" />;
+                  if (it.title === "Growth Through Discipline")
+                    return <FaPlaneDeparture className="h-10 w-10" />;
+                  return null;
+                })()}
+                <h3 class="font-semibold">{it.title}</h3>
+              </div>
+              <p class="text-md mt-2 text-justify text-white">{it.text}</p>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-primary-600 px-18 py-24 sm:py-32">
+    <div class="mx-auto max-w-2xl px-6 lg:max-w-7xl lg:px-8">
+      {/* Eyebrow + Title */}
+      <p
+        class="eyebrow-dark mb-3 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-[11px] tracking-widest uppercase"
+      >
+        <span class="size-1.5 rounded-full bg-yellow-400/90"></span>
+        {approach.eyebrow}
+      </p>
+      <p
+        class="mt-2 max-w-lg text-4xl font-semibold tracking-tight text-pretty text-black sm:text-5xl"
+      >
+        {approach.title}
+      </p>
+      {
+        approach.caption && (
+          <p class="mt-3 max-w-2xl text-xl text-black">{approach.caption}</p>
+        )
+      }
+
+      {/* Bento grid */}
+      <div
+        class="mt-10 grid grid-cols-1 gap-4 sm:mt-16 lg:grid-cols-6 lg:grid-rows-2"
+      >
+        {
+          (approach.steps || []).map((s, idx) => {
+            // Cycle spans in pattern: 4,2,2,4 across lg screens
+            const spanPattern = [
+              "lg:col-span-4",
+              "lg:col-span-2",
+              "lg:col-span-2",
+              "lg:col-span-4",
+            ];
+            const colSpan = spanPattern[idx % spanPattern.length];
+
+            // Rounded-corner hints (optional nicety)
+            const roundedHint = [
+              "max-lg:rounded-t-4xl lg:rounded-tl-4xl",
+              "lg:rounded-tr-4xl",
+              "lg:rounded-bl-4xl",
+              "max-lg:rounded-b-4xl lg:rounded-br-4xl",
+            ][idx % 4];
+
+            // Image (optional). Provide safe fallback if not present.
+            const hasImg = Boolean(s.image);
+            const imgSrc = s.image || "https://picsum.photos/1200/600?blur=1";
+            const imgAlt = s.imageAlt || s.title || "Card image";
+
+            return (
+              <div class={`flex p-px ${colSpan} transition hover:scale-[1.02]`}>
+                <div
+                  class={`bg-accent-900 w-full overflow-hidden rounded-lg shadow-sm outline outline-black/5 ${roundedHint || ""} text-white`}
+                >
+                  {/* Media */}
+                  {hasImg ? (
+                    <ImageComp
+                      src={imgSrc}
+                      alt={imgAlt}
+                      classes="h-80 w-full object-cover object-top"
+                    />
+                  ) : (
+                    <div class="h-80 w-full bg-gradient-to-br from-gray-100 to-gray-200" />
+                  )}
+
+                  {/* Content */}
+                  <div class="flex flex-col gap-4 p-10">
+                    {/* Step tag/label */}
+                    <h3 class="text-primary-500 text-sm/4 font-semibold">
+                      {/* Prefer explicit tag/label if provided; else STEP k */}
+                      {s.k ? `STEP ${s.k}` : "Overview"}
+                    </h3>
+                    <p class="text-xl font-bold tracking-tight">{s.title}</p>
+                    <p class="text-md max-w-lg">{s.text}</p>
+                    <a
+                      href={s.href || "#"}
+                      class="btn-transparent inline-flex w-fit items-center gap-1 font-semibold text-yellow-400 hover:underline"
+                    >
+                      Learn more
+                      <svg
+                        viewBox="0 0 24 24"
+                        class="size-4"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.75"
+                      >
+                        <path
+                          d="M5 12h14M13 5l7 7-7 7"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        />
+                      </svg>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            );
+          })
+        }
+      </div>
+    </div>
+  </section>
+
+  <CTAIntroFlight />
+</BaseLayout>
