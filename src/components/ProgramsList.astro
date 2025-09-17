@@ -3,15 +3,15 @@ import ImageComp from "./ImageComp.astro"
 
 const data = {
   eyebrow: "OUR PROGRAMS",
-  heading: "Experience The Power Of Flight",
-  subheading: "Our programs deliver hands-on training, advanced simulation and expert mentorship to help you master every aspect of flying.",
+  heading: "From First Flight to Career Pilot",
+  subheading: "Whether you’re brand new to flying or working toward professional advancement, McFly Education offers a clear and focused training path.",
   moreLabel: "See Our Programs",
-  moreHref: "#",
+  moreHref: "/trainings",
   items: [
     {
       title: "Private Pilot License",
       desc: "Foundation training for aspiring aviators.",
-      href: "#",
+      href: "/trainings/private-pilot",
       img: {
         src: "/src/assets/marty-mcfly-student.jpg",
         alt: "Private pilot training",
@@ -20,7 +20,7 @@ const data = {
     {
       title: "Commercial Pilot License",
       desc: "Advanced skills for professional pilots.",
-      href: "#",
+      href: "/trainings/commercial-pilot",
       img: {
         src: "/src/assets/marty-mcfly-student.jpg",
         alt: "Commercial pilot briefing",
@@ -29,7 +29,7 @@ const data = {
     {
       title: "Instrument Flight Rating",
       desc: "Master precise navigation in any weather.",
-      href: "#",
+      href: "/trainings/instrument-rating",
       img: {
         src: "/src/assets/marty-mcfly-student.jpg",
         alt: "Instrument cockpit",
@@ -38,7 +38,7 @@ const data = {
     {
       title: "Flight Instructor Course",
       desc: "Fly advanced complex twin engine aircraft.",
-      href: "#",
+      href: "/trainings/flight-instructor",
       img: {
         src: "/src/assets/marty-mcfly-student.jpg",
         alt: "Instructor mentoring student",
@@ -48,7 +48,7 @@ const data = {
 }
 ---
 
-<section class="relative isolate bg-gradient-to-b from-accent-950 via-accent-900 to-accent-950 text-white">
+<section class="relative isolate bg-black text-white">
   <div class="mx-auto max-w-7xl px-5 md:px-8 lg:px-10 py-12 md:py-16 lg:py-20">
     <!-- Header -->
     <div class="flex flex-col gap-6 md:gap-4 md:flex-row md:items-start md:justify-between">
@@ -114,7 +114,7 @@ const data = {
     <!-- Footer hint (optional) -->
     <div class="mt-10 text-center text-md text-gray-300">
       Your Aviation Career Starts Here
-      <a href="#" class="ml-2 inline-flex items-center gap-1 font-semibold text-yellow-400 hover:underline">
+      <a href="/enroll" class="ml-2 inline-flex items-center gap-1 font-semibold text-yellow-400 hover:underline">
         Register Now
         <svg viewBox="0 0 24 24" class="size-4" fill="none" stroke="currentColor" stroke-width="1.75">
           <path d="M5 12h14M13 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round" />

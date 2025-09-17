@@ -3,10 +3,8 @@ import ImageComp from "./ImageComp.astro";
 const data = {
   eyebrow: "YOUR PILOT CAREER START HERE",
   heading: "Take Off with McFly Aviation",
-  description:
-    "Begin your flight training today and join a global network of skilled pilots shaping the future of aviation together.",
-  primary: { label: "Enroll with Us", href: "#" },
-  secondary: { label: "VIEW PROGRAMS", href: "/programs" },
+  description: "Experience personalized flight training with Marty Marino, a seasoned instructor dedicated to your success. Whether you're starting your first lesson or advancing your skills, McFly Aviation offers a supportive community and expert guidance every step of the way.",
+  primary: { label: "Book an Intro Flight", href: "#" },
   image: {
     src: "/src/assets/dominic-chasse-HoXuUY3h2z8-unsplash.jpg",
     alt: "Smiling flight instructors and students in uniform",
@@ -20,7 +18,7 @@ const data = {
     <ImageComp
       src={data.image.src}
       alt={data.image.alt}
-      classes="h-full w-full object-cover"
+      classes="h-full w-full object-cover brightness-75"
       loading="lazy"
       decoding="async"
     />

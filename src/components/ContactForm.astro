@@ -1,252 +1,298 @@
 ---
-const content = {
-  eyebrow: "Contact Us",
-  heading: "Let’s Plan Your Flight",
-  subheading:
-    "Contact our school today for expert guidance, program details, and professional advice to start your journey toward mastering the skies.",
-  info: {
-    title: "Get in Touch",
-    intro:
-      "Our aviation experts are ready to listen, provide clear answers, and help you navigate the right path toward your dream of flying.",
-    locationLabel: "Our Location",
-    addressLine1: "456 Creative District Ahmad Yani,",
-    addressLine2: "Medan, North Sumatera",
-    phoneLabel: "Phone Number",
-    phoneValue: "+800-3374-4676",
-    emailLabel: "Our Email",
-    emailValue: "hola@dominantsite.com",
-  },
-  form: {
-    labels: {
-      name: "Name",
-      email: "Email",
-      phone: "Phone Number",
-      subject: "Subject",
-      message: "Message",
-    },
-    placeholders: {
-      name: "Your Real Name",
-      email: "example@yourmail.com",
-      phone: "+1 234 5...",
-      subject: "Write Your Subject",
-      message: "Write your message here...",
-    },
-    cta: "Send Message",
-  },
+/**
+ * Reusable contact/enroll/intro form component.
+ * Props:
+ * - content: object with { eyebrow, heading, subheading, info:{...}, form:{labels, placeholders, fields[], cta} }
+ * - classes: optional class overrides (see defaults below)
+ */
+import contactData from "../data/forms/contact.js";
+
+const { content = contactData, classes = {} } = Astro.props;
+
+const ui = {
+  section: "bg-black px-4 py-12 sm:px-6 lg:px-8 lg:py-20",
+  grid: "grid grid-cols-1 items-stretch gap-8 lg:grid-cols-2 lg:gap-10 max-w-7xl mx-auto",
+  left: "relative overflow-hidden rounded-3xl text-white",
+  leftInner: "text-muted-50 p-6 sm:p-8 lg:p-10",
+  right:
+    "bg-primary-500/30 rounded-3xl p-6 ring-1 ring-primary-200/70 sm:p-8 lg:p-10 text-white font-semibold",
+  eyebrow:
+    "eyebrow-dark inline-flex items-center gap-2 px-3 py-1 text-[11px] tracking-widest uppercase",
+  h2: "mt-2 text-4xl font-extrabold lg:text-5xl",
+  sub: "text-muted-300 mt-4 max-w-prose",
+  input:
+    "bg-muted-900/70 text-muted-50 placeholder:text-muted-400 mt-2 h-12 rounded-2xl border border-white/10 px-4 outline-none focus:border-primary-300/40 focus:ring-2 focus:ring-primary-300/30",
+  textarea:
+    "bg-muted-900/70 text-muted-50 placeholder:text-muted-400 mt-2 rounded-2xl border border-white/10 px-4 py-3 outline-none focus:border-yellow-300/40 focus:ring-2 focus:ring-yellow-300/30",
+  label: "text-muted-200 text-sm font-medium",
+  button:
+    "btn-primary box-shadow-[0_4px_20px_rgba(255,211,0,0.25)] hover:brightness-95 focus:outline-none focus-visible:ring-2 focus-visible:ring-yellow-300 focus-visible:ring-offset-2",
+  ...classes,
 };
+
+const iconWrap =
+  "inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-yellow-400/10 ring-1 ring-yellow-300/20";
+const icon = "h-5 w-5 text-yellow-300";
 ---
 
-<section
-  class="bg-accent-950 px-4 py-12 sm:px-6 lg:px-8 lg:py-20"
-  aria-labelledby="contact-heading"
->
-  <div class="grid grid-cols-1 items-stretch gap-8 lg:grid-cols-2 lg:gap-10 max-w-7xl mx-auto">
+<section class={ui.section} aria-labelledby="contact-heading">
+  <div class={ui.grid}>
     <!-- LEFT: Info panel -->
-    <div
-      class="relative overflow-hidden rounded-3xl text-white"
-    >
-      <div class="text-muted-50 p-6 sm:p-8 lg:p-10">
-        <h2 class="text-3xl font-extrabold tracking-tight">
-          {content.info.title}
+    <div class={ui.left}>
+      <div class={ui.leftInner}>
+        <h2 class="text-5xl font-extrabold tracking-tight">
+          {content?.info?.title}
         </h2>
-        <p class="text-muted-200 mt-3 max-w-prose text-sm/6">
-          {content.info.intro}
-        </p>
+        {
+          content?.info?.intro && (
+            <p class="text-muted-200 text-md mt-3 max-w-prose">
+              {content.info.intro}
+            </p>
+          )
+        }
 
         <ul class="mt-8 space-y-6">
-          <!-- Location -->
-          <li class="flex items-start gap-4">
-            <span
-              class="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-yellow-400/10 ring-1 ring-yellow-300/20"
-              aria-hidden="true"
-            >
-              <!-- Map pin icon -->
-              <svg viewBox="0 0 24 24" class="h-5 w-5 text-yellow-300">
-                <path
-                  fill="currentColor"
-                  d="M12 2a7 7 0 0 0-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 0 0-7-7Zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5Z"
-                ></path>
-              </svg>
-            </span>
-            <div>
-              <p class="text-muted-100 font-semibold">
-                {content.info.locationLabel}
-              </p>
-              <p class="text-muted-300">{content.info.addressLine1}</p>
-              <p class="text-muted-300">{content.info.addressLine2}</p>
-            </div>
-          </li>
+          {
+            content?.info?.addressLine1 && (
+              <li class="flex items-start gap-4">
+                <span class={iconWrap} aria-hidden="true">
+                  <svg viewBox="0 0 24 24" class={icon}>
+                    <path
+                      fill="currentColor"
+                      d="M12 2a7 7 0 0 0-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 0 0-7-7Zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5Z"
+                    />
+                  </svg>
+                </span>
+                <div>
+                  <p class="text-muted-100 font-semibold">
+                    {content?.info?.locationLabel || "Location"}
+                  </p>
+                  <p class="text-muted-300">{content.info.addressLine1}</p>
+                  {content?.info?.addressLine2 && (
+                    <p class="text-muted-300">{content.info.addressLine2}</p>
+                  )}
+                </div>
+              </li>
+            )
+          }
 
-          <!-- Phone -->
-          <li class="flex items-start gap-4">
-            <span
-              class="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-yellow-400/10 ring-1 ring-yellow-300/20"
-              aria-hidden="true"
-            >
-              <!-- Phone icon -->
-              <svg viewBox="0 0 24 24" class="h-5 w-5 text-yellow-300">
-                <path
-                  fill="currentColor"
-                  d="M6.62 10.79a15.05 15.05 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.01-.24c1.11.37 2.31.57 3.58.57a1 1 0 0 1 1 1v3.49a1 1 0 0 1-1 1C10.29 22 2 13.71 2 3.99a1 1 0 0 1 1-1H6.5a1 1 0 0 1 1 1c0 1.27.2 2.47.57 3.58a1 1 0 0 1-.24 1.01l-2.2 2.21Z"
-                ></path>
-              </svg>
-            </span>
-            <div>
-              <p class="text-muted-100 font-semibold">
-                {content.info.phoneLabel}
-              </p>
-              <a
-                href={`tel:${content.info.phoneValue}`}
-                class="text-muted-300 hover:text-yellow-300"
-              >
-                {content.info.phoneValue}
-              </a>
-            </div>
-          </li>
-
-          <!-- Email -->
-          <li class="flex items-start gap-4">
-            <span
-              class="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-yellow-400/10 ring-1 ring-yellow-300/20"
-              aria-hidden="true"
-            >
-              <!-- Mail icon -->
-              <svg viewBox="0 0 24 24" class="h-5 w-5 text-yellow-300">
-                <path
-                  fill="currentColor"
-                  d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2Zm0 4-8 5L4 8V6l8 5 8-5v2Z"
-                ></path>
-              </svg>
-            </span>
-            <div>
-              <p class="text-muted-100 font-semibold">
-                {content.info.emailLabel}
-              </p>
-              <a
-                href={`mailto:${content.info.emailValue}`}
-                class="text-muted-300 hover:text-yellow-300"
-              >
-                {content.info.emailValue}
-              </a>
-            </div>
-          </li>
+          {
+            content?.info?.phoneValue && (
+              <li class="flex items-start gap-4">
+                <span class={iconWrap} aria-hidden="true">
+                  <svg viewBox="0 0 24 24" class={icon}>
+                    <path
+                      fill="currentColor"
+                      d="M6.62 10.79a15.05 15.05 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.01-.24c1.11.37 2.31.57 3.58.57a1 1 0 0 1 1 1v3.49a1 1 0 0 1-1 1C10.29 22 2 13.71 2 3.99a1 1 0 0 1 1-1H6.5a1 1 0 0 1 1 1c0 1.27.2 2.47.57 3.58a1 1 0 0 1-.24 1.01l-2.2 2.21Z"
+                    />
+                  </svg>
+                </span>
+                <div>
+                  <p class="text-muted-100 font-semibold">
+                    {content?.info?.phoneLabel || "Phone"}
+                  </p>
+                  <a
+                    href={`tel:${content.info.phoneValue}`}
+                    class="text-muted-300 hover:text-yellow-300"
+                  >
+                    {content.info.phoneValue}
+                  </a>
+                </div>
+              </li>
+            )
+          }
         </ul>
       </div>
     </div>
 
     <!-- RIGHT: Form -->
-    <div
-      class="bg-gradient-to-br from-accent-950/10 to-primary-950/60 rounded-3xl p-6 ring-1 ring-accent-950/10 sm:p-8 lg:p-10 text-white"
-    >
-      <p
-        class="eyebrow inline-flex items-center gap-2 px-3 py-1 text-[11px] tracking-widest uppercase"
-      >
-        <span class="size-1.5 rounded-full bg-yellow-400/90"></span>
-        {content.eyebrow}
-      </p>
-      <h2
-        id="contact-heading"
-        class="mt-2 text-4xl font-extrabold text-white lg:text-5xl"
-      >
-        {content.heading}
-      </h2>
-      <p class="text-muted-300 mt-4 max-w-prose">
-        {content.subheading}
-      </p>
+    <div class={ui.right}>
+      {
+        content?.eyebrow && (
+          <p class={ui.eyebrow}>
+            <span class="size-1.5 rounded-full bg-yellow-400/90" />
+            {content.eyebrow}
+          </p>
+        )
+      }
+      {
+        content?.heading && (
+          <h2 id="contact-heading" class={ui.h2}>
+            {content.heading}
+          </h2>
+        )
+      }
+      {content?.subheading && <p class={ui.sub}>{content.subheading}</p>}
 
       <form
         class="mt-8 space-y-6"
-        method="post"
-        action="#"
-        onsubmit="event.preventDefault(); alert('This is a demo form. Hook it up to your endpoint.');"
+        method={content?.form?.method || "post"}
+        action={content?.form?.action || "#"}
+        onsubmit={content?.form?.onsubmit ||
+          "event.preventDefault(); alert('This is a demo form. Hook it up to your endpoint.');"}
       >
-        <!-- Row 1 -->
+        <!-- Dynamic fields -->
         <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
-          <div class="flex flex-col">
-            <label for="name" class="text-muted-200 text-sm font-medium">
-              {content.form.labels.name}
-              <span class="text-yellow-300">*</span>
-            </label>
-            <input
-              id="name"
-              name="name"
-              type="text"
-              required
-              placeholder={content.form.placeholders.name}
-              class="bg-muted-900/70 text-muted-50 placeholder:text-muted-400 mt-2 h-12 rounded-2xl border border-white/10 px-4 outline-none focus:border-yellow-300/40 focus:ring-2 focus:ring-yellow-300/30"
-            />
-          </div>
-          <div class="flex flex-col">
-            <label for="email" class="text-muted-200 text-sm font-medium">
-              {content.form.labels.email}
-              <span class="text-yellow-300">*</span>
-            </label>
-            <input
-              id="email"
-              name="email"
-              type="email"
-              required
-              placeholder={content.form.placeholders.email}
-              class="bg-muted-900/70 text-muted-50 placeholder:text-muted-400 mt-2 h-12 rounded-2xl border border-white/10 px-4 outline-none focus:border-yellow-300/40 focus:ring-2 focus:ring-yellow-300/30"
-            />
-          </div>
+          {
+            content.form.fields
+              ?.filter((f) => f.row === 1)
+              .map((f) => (
+                <div
+                  class={
+                    f.colSpan === 2
+                      ? "flex flex-col md:col-span-2"
+                      : "flex flex-col"
+                  }
+                >
+                  <label for={f.id} class={ui.label}>
+                    {f.label}
+                    {f.required && <span class="text-yellow-300">*</span>}
+                  </label>
+                  {f.type !== "textarea" ? (
+                    <input
+                      id={f.id}
+                      name={f.name || f.id}
+                      type={f.type || "text"}
+                      required={f.required}
+                      placeholder={f.placeholder}
+                      class={ui.input}
+                      pattern={f.pattern}
+                      inputmode={f.inputmode}
+                      list={f.datalistId}
+                    />
+                  ) : null}
+                  {f.type === "select" ? (
+                    <select
+                      id={f.id}
+                      name={f.name || f.id}
+                      required={f.required}
+                      class={ui.input}
+                    >
+                      {(f.options || []).map((o) => (
+                        <option value={o.value}>{o.label}</option>
+                      ))}
+                    </select>
+                  ) : null}
+                  {f.type === "textarea" ? (
+                    <textarea
+                      id={f.id}
+                      name={f.name || f.id}
+                      rows={f.rows || 6}
+                      required={f.required}
+                      placeholder={f.placeholder}
+                      class={ui.textarea}
+                    />
+                  ) : null}
+                </div>
+              ))
+          }
         </div>
 
-        <!-- Row 2 -->
         <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
-          <div class="flex flex-col">
-            <label for="phone" class="text-muted-200 text-sm font-medium">
-              {content.form.labels.phone}
-              <span class="text-yellow-300">*</span>
-            </label>
-            <input
-              id="phone"
-              name="phone"
-              type="tel"
-              required
-              placeholder={content.form.placeholders.phone}
-              class="bg-muted-900/70 text-muted-50 placeholder:text-muted-400 mt-2 h-12 rounded-2xl border border-white/10 px-4 outline-none focus:border-yellow-300/40 focus:ring-2 focus:ring-yellow-300/30"
-            />
-          </div>
-          <div class="flex flex-col">
-            <label for="subject" class="text-muted-200 text-sm font-medium">
-              {content.form.labels.subject}
-              <span class="text-yellow-300">*</span>
-            </label>
-            <input
-              id="subject"
-              name="subject"
-              type="text"
-              required
-              placeholder={content.form.placeholders.subject}
-              class="bg-muted-900/70 text-muted-50 placeholder:text-muted-400 mt-2 h-12 rounded-2xl border border-white/10 px-4 outline-none focus:border-yellow-300/40 focus:ring-2 focus:ring-yellow-300/30"
-            />
-          </div>
+          {
+            content.form.fields
+              ?.filter((f) => f.row === 2)
+              .map((f) => (
+                <div
+                  class={
+                    f.colSpan === 2
+                      ? "flex flex-col md:col-span-2"
+                      : "flex flex-col"
+                  }
+                >
+                  <label for={f.id} class={ui.label}>
+                    {f.label}
+                    {f.required && <span class="text-yellow-300">*</span>}
+                  </label>
+                  {f.type !== "textarea" ? (
+                    <input
+                      id={f.id}
+                      name={f.name || f.id}
+                      type={f.type || "text"}
+                      required={f.required}
+                      placeholder={f.placeholder}
+                      class={ui.input}
+                      pattern={f.pattern}
+                      inputmode={f.inputmode}
+                    />
+                  ) : null}
+                  {f.type === "select" ? (
+                    <select
+                      id={f.id}
+                      name={f.name || f.id}
+                      required={f.required}
+                      class={ui.input}
+                    >
+                      {(f.options || []).map((o) => (
+                        <option value={o.value}>{o.label}</option>
+                      ))}
+                    </select>
+                  ) : null}
+                  {f.type === "textarea" ? (
+                    <textarea
+                      id={f.id}
+                      name={f.name || f.id}
+                      rows={f.rows || 6}
+                      required={f.required}
+                      placeholder={f.placeholder}
+                      class={ui.textarea}
+                    />
+                  ) : null}
+                </div>
+              ))
+          }
         </div>
 
-        <!-- Message -->
-        <div class="flex flex-col">
-          <label for="message" class="text-muted-200 text-sm font-medium">
-            {content.form.labels.message}
-            <span class="text-yellow-300">*</span>
-          </label>
-          <textarea
-            id="message"
-            name="message"
-            required
-            rows={6}
-            placeholder={content.form.placeholders.message}
-            class="bg-muted-900/70 text-muted-50 placeholder:text-muted-400 mt-2 rounded-2xl border border-white/10 px-4 py-3 outline-none focus:border-yellow-300/40 focus:ring-2 focus:ring-yellow-300/30"
-          ></textarea>
-        </div>
+        <!-- Any fields placed on row 3+ take full width -->
+        {
+          content.form.fields
+            ?.filter((f) => (f.row || 3) >= 3)
+            .map((f) => (
+              <div class="flex flex-col">
+                <label for={f.id} class={ui.label}>
+                  {f.label}
+                  {f.required && <span class="text-yellow-300">*</span>}
+                </label>
+                {f.type === "textarea" ? (
+                  <textarea
+                    id={f.id}
+                    name={f.name || f.id}
+                    rows={f.rows || 6}
+                    required={f.required}
+                    placeholder={f.placeholder}
+                    class={ui.textarea}
+                  />
+                ) : f.type === "select" ? (
+                  <select
+                    id={f.id}
+                    name={f.name || f.id}
+                    required={f.required}
+                    class={ui.input}
+                  >
+                    {(f.options || []).map((o) => (
+                      <option value={o.value}>{o.label}</option>
+                    ))}
+                  </select>
+                ) : (
+                  <input
+                    id={f.id}
+                    name={f.name || f.id}
+                    type={f.type || "text"}
+                    required={f.required}
+                    placeholder={f.placeholder}
+                    class={ui.input}
+                    pattern={f.pattern}
+                    inputmode={f.inputmode}
+                  />
+                )}
+              </div>
+            ))
+        }
 
         <!-- CTA -->
         <div class="pt-2">
-          <button
-            type="submit"
-            class="btn-primary box-shadow-[0_4px_20px_rgba(255,211,0,0.25)] hover:brightness-95 focus:outline-none focus-visible:ring-2 focus-visible:ring-yellow-300 focus-visible:ring-offset-2"
-          >
-            {content.form.cta}
+          <button type="submit" class={ui.button}>
+            {content?.form?.cta || "Submit"}
           </button>
         </div>
       </form>

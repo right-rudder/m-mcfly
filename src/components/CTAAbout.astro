@@ -1,0 +1,58 @@
+---
+import ImageComp from "./ImageComp.astro";
+const { content } = Astro.props;
+---
+
+<section class="bg-accent-950 relative isolate -z-0 overflow-hidden text-white">
+  {/* soft radial glow */}
+  <div
+    class="from-primary-950/50 pointer-events-none absolute inset-0 -z-10 bg-radial-[at_20%_40%] to-transparent to-60%"
+  >
+  </div>
+  <div class="mx-auto max-w-7xl px-6 py-16 lg:flex lg:items-center lg:gap-12">
+    <!-- TEXT BLOCK -->
+    <div class="lg:w-1/2">
+      <p
+        class="eyebrow inline-flex items-center gap-2 px-3 py-1 text-[11px] tracking-widest uppercase"
+      >
+        <span class="size-1.5 rounded-full bg-yellow-400/90"></span>
+        {content.eyebrow}
+      </p>
+      <h2 class="mt-2 text-5xl font-bold sm:text-4xl">
+        {content.title}
+      </h2>
+      <p class="mt-6 text-lg leading-relaxed">
+        {content.text}
+      </p>
+      <div class="mt-8">
+        <a
+          href="#"
+          class="ml-2 inline-flex items-center gap-1 font-semibold text-yellow-400 hover:underline"
+        >
+          {content.primary.label}
+          <svg
+            viewBox="0 0 24 24"
+            class="size-4"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.75"
+          >
+            <path
+              d="M5 12h14M13 5l7 7-7 7"
+              stroke-linecap="round"
+              stroke-linejoin="round"></path>
+          </svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- IMAGE BLOCK -->
+    <div class="mt-10 lg:mt-0 lg:w-1/2">
+      <ImageComp
+        src={content.image}
+        alt={content.imageAlt}
+        classes="mx-auto w-full max-w-lg rounded-3xl shadow-xl shadow-black/20"
+      />
+    </div>
+  </div>
+</section>

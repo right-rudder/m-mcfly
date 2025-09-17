@@ -1,0 +1,29 @@
+---
+import { PHONE_NUMBER } from "../consts";
+import { FaPhoneSquareAlt } from "react-icons/fa";
+import SocialIcons from "./SocialIcons.astro";
+---
+
+<div class="bg-primary-dark z-0 h-10 w-full px-4 lg:px-0">
+  <div
+    class="mx-auto flex h-full max-w-[80rem] items-center justify-between align-middle"
+  >
+    <div
+      class="flex h-8 w-1/2 items-center justify-around align-middle md:w-1/5 lg:ml-9"
+    >
+      <SocialIcons />
+    </div>
+
+    <a
+      href=`tel:${PHONE_NUMBER}`
+      name="Call Us"
+      aria-labelledby="Call Us Now"
+      title="Call Us Now"
+      class="flex cursor-pointer items-center text-right align-middle font-sans text-base font-normal text-white transition-all hover:scale-110 hover:font-bold lg:mr-9 lg:text-lg"
+      aria-label="Call telephone Link"
+    >
+      <FaPhoneSquareAlt className="mr-2 text-lg text-white lg:text-xl" />
+      {PHONE_NUMBER}</a
+    >
+  </div>
+</div>

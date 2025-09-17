@@ -1,11 +1,8 @@
 export const navbarLinks = [
   {
     name: "New to Flying?",
+    link: "/new-to-flying",
     submenu: [
-      {
-        name: "Why Become a Pilot?",
-        link: "/why-become-a-pilot",
-      },
       {
         name: "Book a Discovery Flight",
         link: "/discovery-flight",
@@ -14,47 +11,49 @@ export const navbarLinks = [
   },
   {
     name: "Pilot Training",
+    link: "/trainings",
     submenu: [
       {
-        name: "Private Pilot",
-        link: "/pilot-training/private-pilot",
+        name: "All Trainings",
+        link: "/trainings",
       },
       {
-        name: "Instrument Pilot",
-        link: "/pilot-training/instrument-pilot",
+        name: "Private Pilot",
+        link: "/trainings/private-pilot",
+      },
+      {
+        name: "Instrument Rating",
+        link: "/trainings/instrument-rating",
       },
       {
         name: "Commercial Pilot",
-        link: "/pilot-training/commercial-pilot",
+        link: "/trainings/commercial-pilot",
       },
       {
-        name: "External Load Training",
-        link: "/pilot-training/external-load-training",
+        name: "Certified Flight Instructor",
+        link: "/trainings/certified-flight-instructor",
       },
     ],
   },
   {
     name: "About Us",
+    link: "/about",
     submenu: [
       {
         name: "Our Story",
-        link: "/about/our-story",
-      },
-      {
-        name: "Our Chief Pilot",
-        link: "/about/our-chief-pilot",
-      },
-      {
-        name: "Our Fleet",
-        link: "/about/our-fleet",
+        link: "/about",
       },
       {
         name: "Our Blog",
         link: "/blog",
       },
       {
-        name: "Pricing",
-        link: "/about/pricing",
+        name: "Contact Us",
+        link: "/contact",
+      },
+      {
+        name: "Our Aircraft",
+        link: "/aircraft",
       },
     ],
   },

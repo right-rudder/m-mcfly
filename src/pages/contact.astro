@@ -1,0 +1,19 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import HeroSmall from "../components/HeroSmall.astro";
+import ContactForm from "../components/ContactForm.astro";
+
+
+const pageData = {
+  eyebrow: "Contact Us",
+  title: "We're Here to Help",
+  subtitle: "",
+  primaryImage: "/src/assets/stock/hero-homepage.jpg",
+  primaryAlt: "Airplane flying over mountains during sunset",
+};
+---
+
+<BaseLayout>
+  <HeroSmall data={pageData} />
+  <ContactForm />
+</BaseLayout>

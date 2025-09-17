@@ -5,8 +5,8 @@ import ImageComp from "./ImageComp.astro";
 ---
 <div class={data.styling}>
   <ImageComp
-    src={data.primaryImage}
-    alt={data.primaryAlt}
+    src={data.image}
+    alt={data.alt}
     classes={`object-cover h-full w-full`}
     loading="eager"
   />
@@ -24,8 +24,8 @@ import ImageComp from "./ImageComp.astro";
         {data.title}
       </h1>
       {
-        data.subtitle && (
-          <h2 class="text-2xl font-semibold lg:text-3xl">{data.subtitle}</h2>
+        data.paragraph && (
+          <h2 class="text-2xl font-semibold lg:text-3xl">{data.paragraph}</h2>
         )
       }
     </div>

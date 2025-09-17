@@ -9,6 +9,7 @@ import ImageComp from "../components/ImageComp.astro";
 import ContactForm from "../components/ContactForm.astro";
 import TestimonialsCarousel from "../components/react/TestimonialsCarousel.jsx";
 import CTAIntroFlight from "../components/CTAIntroFlight.astro";
+import contactData from "../data/forms/contact.js";
 ---
 
 <BaseLayout>
@@ -26,11 +27,11 @@ import CTAIntroFlight from "../components/CTAIntroFlight.astro";
       <HeroHomepage
         data={{
           eyebrow: "Fly with McFly",
-          title: "Become a Pilot Today",
+          title: "Become a Pilot with Marty Today!",
           paragraph:
-            "We craft exceptional aviators with world-class training unmatched discipline and passion to conquer skies with skill and confidence.",
+            "With flexible scheduling, more hands-on control, and a people-first approach, you’ll learn faster and build confidence from the very first lesson. ",
           styling:
-            "relative min-h-[60vh] overflow-hidden flex flex-row items-end mt-20 md:mt-0",
+            "relative min-h-[60vh] overflow-hidden flex flex-row items-end mt-20 pt-20",
         }}
       />
       <HeroCards />
@@ -42,9 +43,9 @@ import CTAIntroFlight from "../components/CTAIntroFlight.astro";
   <CTAWhyUs />
   <TestimonialsCarousel
     items={[]}
-    className="bg-gradient-to-b from-accent-950 via-accent-950/80 to-accent-950 text-white px-5 md:px-8 lg:px-10 py-16 md:py-20 lg:py-24"
+    className="from-accent-950 via-accent-950/80 to-accent-950 bg-gradient-to-b px-5 py-16 text-white md:px-8 md:py-20 lg:px-10 lg:py-24"
     client:load
   />
-  <ContactForm />
+  <ContactForm content={contactData} />
   <CTAIntroFlight />
 </BaseLayout>
