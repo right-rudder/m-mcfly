@@ -8,7 +8,7 @@ level: "Professional"
 summary: "Learn to teach, evaluate, and guide student pilots with right-seat proficiency."
 
 heroImage:
-  src: "/src/assets/marty-mcfly-student.jpg"
+  src: "/images/marty-mcfly-student.jpg"
   alt: "Student and instructor in cockpit"
 
 stats:

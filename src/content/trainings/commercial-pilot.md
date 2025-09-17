@@ -7,7 +7,7 @@ path: "commercial-pilot"
 
 summary: "Prepare to fly professionally with advanced maneuvers and decision-making."
 heroImage:
-  src: "/src/assets/marty-mcfly-student.jpg"
+  src: "/images/marty-mcfly-student.jpg"
   alt: "Student and instructor in cockpit"
 
 stats:

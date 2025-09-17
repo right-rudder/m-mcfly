@@ -2,6 +2,7 @@
 import { getCollection } from "astro:content";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import HeroSmall from "../../components/HeroSmall.astro";
+import CTAIntroFlight from "../../components/CTAIntroFlight.astro";
 
 // Build all routes
 export async function getStaticPaths() {
@@ -237,4 +238,5 @@ const entryReqs = Array.isArray(data.entryRequirements)
       </aside>
     </div>
   </section>
+  <CTAIntroFlight />
 </BaseLayout>

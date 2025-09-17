@@ -5,7 +5,7 @@ import { BiSolidPlaneAlt } from "react-icons/bi";
 const { content } = Astro.props;
 ---
 
-<div class="relative h-[90vh]">
+<div class="relative h-[90vh] bg-gradient-to-b from-accent-950 to-black">
   <!-- Mobile: image first, text below (no overlap) -->
   <div class="overflow-hidden md:hidden">
     <ImageComp
@@ -16,11 +16,11 @@ const { content } = Astro.props;
   </div>
 
   <!-- Desktop: image as background -->
-  <div class="absolute inset-0 hidden md:block">
+  <div class="absolute inset-0 overflow-hidden md:block p-4 rounded-3xl">
     <ImageComp
       src={content.headshot}
       alt=""
-      classes="h-full w-full object-cover"
+      classes="h-full w-full object-cover rounded-3xl"
     />
   </div>
 

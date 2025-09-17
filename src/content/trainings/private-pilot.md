@@ -9,7 +9,7 @@ minFlightHours: "Minimum 40 hours"
 path: "private-pilot"
 
 heroImage:
-  src: "/src/assets/marty-mcfly-student.jpg"
+  src: "/images/marty-mcfly-student.jpg"
   alt: "Student and instructor in cockpit"
 
 summary: "Learn to fly single-engine aircraft safely and confidently with a blend of ground school and hands-on lessons."

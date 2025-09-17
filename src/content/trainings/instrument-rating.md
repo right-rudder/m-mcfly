@@ -8,7 +8,7 @@ path: "instrument-rating"
 
 summary: "Train to fly using only instruments and safely operate under IFR procedures."
 heroImage:
-  src: "/src/assets/marty-mcfly-student.jpg"
+  src: "/images/marty-mcfly-student.jpg"
   alt: "Student and instructor in cockpit"
 
 stats:
