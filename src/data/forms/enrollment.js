@@ -14,8 +14,6 @@ const enrollData = {
     addressLine2: ADDRESS_LINE_2,
     phoneLabel: "Call Us",
     phoneValue: PHONE_NUMBER,
-    emailLabel: "Admissions",
-    emailValue: "enroll@dominantsite.com",
   },
   form: {
     method: "post",

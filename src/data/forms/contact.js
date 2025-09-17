@@ -14,8 +14,6 @@ const contactData = {
     addressLine2: ADDRESS_LINE_2,
     phoneLabel: "Phone Number",
     phoneValue: PHONE_NUMBER,
-    emailLabel: "Our Email",
-    emailValue: "hola@dominantsite.com",
   },
   form: {
     method: "post",

@@ -2,7 +2,7 @@
 title: "How Personalized Flight Training Can Fast-Track Your Checkride"
 description: "Hands-on coaching, tighter feedback loops, and scenario-based lessons can cut weeks off your training timeline."
 pubDate: 2025-08-20
-heroImage: "/src/assets/stock/hero-homepage.jpg"
+heroImage: "hero-homepage.jpg"
 tags: ["Training", "CFI", "Checkride"]
 author: "Marty McFly"
 ---

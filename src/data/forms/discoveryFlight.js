@@ -14,8 +14,6 @@ const discoveryData = {
     addressLine2: ADDRESS_LINE_2,
     phoneLabel: "Questions?",
     phoneValue: PHONE_NUMBER,
-    emailLabel: "Bookings",
-    emailValue: "bookings@dominantsite.com",
   },
   form: {
     method: "post",

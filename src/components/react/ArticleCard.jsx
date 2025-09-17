@@ -7,7 +7,7 @@ export default function ArticleCard({ post }) {
       <div className="aspect-[16/9] w-full bg-zinc-100">
         {post.heroImage ? (
           <img
-            src={post.heroImage}
+            src={`/images/${post.heroImage}`}
             alt={post.title}
             className="h-full w-full object-cover"
             loading="lazy"

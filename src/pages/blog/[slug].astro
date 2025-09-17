@@ -51,13 +51,13 @@ const related = all
         : new Date(e.data?.pubDate || Date.now()),
   }));
 
-  const heroData = {
-    eyebrow: "Blog",
-    title: e.data?.title || "Blog Post",
-    subtitle: e.data?.description || "",
-    primaryImage: e.data?.heroImage || "/src/assets/stock/hero-homepage.jpg",
-    primaryAlt: e.data?.title || "Blog header image",
-  };
+const heroData = {
+  eyebrow: "Blog",
+  title: e.data?.title || "Blog Post",
+  subtitle: e.data?.description || "",
+  primaryImage: `/src/assets/stock/${e.data?.heroImage}`,
+  primaryAlt: e.data?.title || "Blog header image",
+};
 ---
 
 <!-- keep this page layout-only; your site layout can inject navbar/footer -->
@@ -106,7 +106,7 @@ const related = all
       e.data?.heroImage && (
         <figure class="mt-6 overflow-hidden rounded-2xl border border-zinc-200">
           <img
-            src={e.data.heroImage}
+            src={`/images/${e.data.heroImage}`}
             alt={e.data?.title || "Blog header"}
             class="h-full w-full object-cover"
             loading="eager"
@@ -126,7 +126,7 @@ const related = all
       {
         (headings?.length ?? 0) > 0 && (
           <aside class="hidden lg:block">
-            <div class="sticky top-24 rounded-2xl border border-zinc-200 p-4">
+            <div class="sticky top-36 rounded-2xl border border-zinc-200 p-4">
               <p class="mb-3 text-xs font-semibold tracking-wide text-zinc-500 uppercase">
                 On this page
               </p>
