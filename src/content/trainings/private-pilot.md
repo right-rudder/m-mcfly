@@ -1,10 +1,12 @@
 ---
+slug: "private-pilot"
 title: "Private Pilot License (PPL)"
 shortTitle: "Private Pilot"
 tagline: "Your first step to pilot in command."
 level: "Beginner"
 durationWeeks: "8–12 weeks"
 minFlightHours: "Minimum 40 hours"
+path: "private-pilot"
 
 heroImage:
   src: "/src/assets/marty-mcfly-student.jpg"

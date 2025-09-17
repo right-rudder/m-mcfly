@@ -1,20 +1,25 @@
 import { defineCollection, z } from "astro:content";
 
 const blog = defineCollection({
-  schema: ({ image }) =>
-    z.object({
-      title: z.string(),
-      description: z.string(),
-      pubDate: z.coerce.date(),
-      updatedDate: z.coerce.date().optional(),
-      heroImage: image().optional(),
-    }),
+  // type: "content" // optional; defaults to "content"
+  schema: z.object({
+    title: z.string(),
+    description: z.string(),
+    author: z.string().optional(),
+    tags: z.array(z.string()).default([]),
+    pubDate: z.coerce.date(),
+    updatedDate: z.coerce.date().optional(),
+    // Use a plain string so your slug/list pages can do <img src={heroImage}>
+    // (supports /public paths or full URLs)
+    heroImage: z.string().optional(),
+    draft: z.boolean().default(false),
+  }),
 });
 
 
 const trainings = defineCollection({
-  schema: ({ image }) =>
-    z.object({
+  schema: z.object({
+      path: z.string().optional(),
       title: z.string(),
       shortTitle: z.string().optional(),
       tagline: z.string().optional(),
@@ -25,9 +30,7 @@ const trainings = defineCollection({
       summary: z.string(),
 
       // Accept either Astro image() or {src, alt} object
-      heroImage: z
-        .union([image(), z.object({ src: z.string(), alt: z.string() })])
-        .optional(),
+      heroImage: z.object({ src: z.string(), alt: z.string() }).optional(),
 
       // Support object-style stats or legacy array-of-label/value
       stats: z

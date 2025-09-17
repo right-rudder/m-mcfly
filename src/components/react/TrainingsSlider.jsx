@@ -4,7 +4,7 @@ export default function TrainingsSlider({
   title = "Your Training Path from zero to Pilot",
   eyebrow = "Our Trainings",
   description = "Explore our comprehensive pilot training programs designed to take you from beginner to certified pilot with confidence and expertise.",
-  items = DEFAULT_ITEMS,
+  items = trainings || [],
   gapPx = 24, // gap between cards in px
 })
 {
@@ -119,7 +119,7 @@ export default function TrainingsSlider({
                       {it.summary ?? it.description}
                     </p>
 
-                    <a href={`/trainings/${it.slug ?? it.id}`} className="inline-flex items-center gap-2 self-start rounded-full border border-white/80 bg-white/10 px-3.5 py-2 text-sm font-semibold text-white backdrop-blur transition hover:bg-white/20 w-fit">
+                    <a href={`/trainings/${it.path}`} className="inline-flex items-center gap-2 self-start rounded-full border border-white/80 bg-white/10 px-3.5 py-2 text-sm font-semibold text-white backdrop-blur transition hover:bg-white/20 w-fit">
                       <span aria-hidden className="text-base leading-none">
                         ↗
                       </span>
@@ -178,43 +178,3 @@ export default function TrainingsSlider({
     </section>
   );
 }
-
-/* Placeholder data (swap imgs with your assets) */
-const DEFAULT_ITEMS = [
-  {
-    id: "vault",
-    kicker: "RAD",
-    h1: "Radiotherapy",
-    segment: "Vault",
-    description:
-      "Proprietary shielding for linear accelerators, ensuring optimal safety and flexibility.",
-    img: "https://images.unsplash.com/photo-1501594907352-04cda38ebc29?q=80&w=1200&auto=format&fit=crop",
-  },
-  {
-    id: "center",
-    kicker: "RAD",
-    h1: "Radiotherapy",
-    segment: "Center",
-    description:
-      "Complete therapy center including Vault(s) and clinic space customized to your program.",
-    img: "https://images.unsplash.com/photo-1529078155058-5d716f45d604?q=80&w=1200&auto=format&fit=crop",
-  },
-  {
-    id: "temp",
-    kicker: "RAD",
-    h1: "Radiotherapy",
-    segment: "Temp",
-    description:
-      "Self-contained facility for lease, crafted to integrate with your current department.",
-    img: "https://images.unsplash.com/photo-1496307042754-b4aa456c4a2d?q=80&w=1200&auto=format&fit=crop",
-  },
-  {
-    id: "specialty",
-    kicker: "RAD",
-    h1: "Radiotherapy",
-    segment: "Specialty",
-    description:
-      "Flexible design for diverse applications, ensuring adaptability and efficiency.",
-    img: "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?q=80&w=1200&auto=format&fit=crop",
-  },
-];

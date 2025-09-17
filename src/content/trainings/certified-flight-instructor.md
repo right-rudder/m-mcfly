@@ -1,4 +1,5 @@
 ---
+path: "certified-flight-instructor"
 title: "Certified Flight Instructor (CFI/CFII)"
 shortTitle: "Flight Instructor"
 tagline: "Teach, lead, and build experience."

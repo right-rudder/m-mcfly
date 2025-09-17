@@ -29,6 +29,10 @@ export const navbarLinks = [
         name: "Commercial Pilot",
         link: "/trainings/commercial-pilot",
       },
+      {
+        name: "Certified Flight Instructor",
+        link: "/trainings/certified-flight-instructor",
+      },
     ],
   },
   {

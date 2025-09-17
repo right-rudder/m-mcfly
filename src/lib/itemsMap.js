@@ -7,6 +7,7 @@
 export function itemsMap(trainings) {
   return trainings.map(({ id, data }) => ({
     id,
+    path: data.path,
     kicker: data.tagline || data.level || "Program",
     h1: data.shortTitle || "", // small label under kicker
     segment: data.shortTitle || data.title, // right-side label

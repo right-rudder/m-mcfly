@@ -1,0 +1,54 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import BlogHero from "../../components/react/BlogHero.jsx";
+import BlogList from "../../components/react/BlogList.jsx";
+import CTAIntroFlight from "../../components/CTAIntroFlight.astro";
+import HeroSmall from "../../components/HeroSmall.astro";
+
+// Fetch & prep posts
+const allPosts = await getCollection("blog"); // expects fields: title, description, pubDate, heroImage, tags, author
+const posts = allPosts
+  .map(({ id, slug, data }) => ({
+    slug,
+    url: `/blog/${slug}/`,
+    title: data.title,
+    description: data.description || "",
+    heroImage: data.heroImage || null,
+    tags: data.tags || [],
+    author: data.author || "",
+    pubDate:
+      data.pubDate instanceof Date ? data.pubDate.toISOString() : data.pubDate,
+  }))
+  .sort((a, b) => new Date(b.pubDate) - new Date(a.pubDate));
+
+const featured = posts.filter((p) => p.heroImage).slice(0, 8); // show only posts that have images in the slider
+
+const pageData = {
+  eyebrow: "Blog",
+  title: "From the Flight Deck",
+  subtitle:
+    "Insights, tips, and stories from our team of experienced pilots and instructors.",
+  primaryImage: "/src/assets/stock/hero-homepage.jpg",
+  primaryAlt: "Airplane flying over mountains during sunset",
+};
+---
+
+<BaseLayout>
+  <HeroSmall data={pageData} />
+
+  <div>
+    <!-- {
+      featured.length > 0 && (
+        <section aria-label="Featured posts">
+          <BlogHero posts={featured} client:visible />
+        </section>
+      )
+    } -->
+
+    <section aria-label="All articles">
+      <BlogList posts={posts} client:load />
+    </section>
+  </div>
+  <CTAIntroFlight />
+</BaseLayout>

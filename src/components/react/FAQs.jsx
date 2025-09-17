@@ -166,7 +166,7 @@ export default function FAQSection({ faqs = content || [] }) {
             <div>
               <div className="relative overflow-hidden rounded-2xl border border-white/10">
                 <img
-                  src={faqImage}
+                  src={faqImage.src}
                   alt="Instructor briefing a student in the cockpit"
                   className="h-full w-full object-cover"
                 />

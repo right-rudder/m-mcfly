@@ -3,6 +3,7 @@ title: "Commercial Pilot"
 shortTitle: "Commercial Pilot"
 tagline: "Fly professionally with advanced skills."
 level: "Advanced"
+path: "commercial-pilot"
 
 summary: "Prepare to fly professionally with advanced maneuvers and decision-making."
 heroImage:

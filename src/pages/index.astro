@@ -9,6 +9,7 @@ import ImageComp from "../components/ImageComp.astro";
 import ContactForm from "../components/ContactForm.astro";
 import TestimonialsCarousel from "../components/react/TestimonialsCarousel.jsx";
 import CTAIntroFlight from "../components/CTAIntroFlight.astro";
+import contactData from "../data/forms/contact.js";
 ---
 
 <BaseLayout>
@@ -45,6 +46,6 @@ import CTAIntroFlight from "../components/CTAIntroFlight.astro";
     className="from-accent-950 via-accent-950/80 to-accent-950 bg-gradient-to-b px-5 py-16 text-white md:px-8 md:py-20 lg:px-10 lg:py-24"
     client:load
   />
-  <ContactForm />
+  <ContactForm content={contactData} />
   <CTAIntroFlight />
 </BaseLayout>

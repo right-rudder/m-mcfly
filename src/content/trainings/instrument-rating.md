@@ -1,8 +1,10 @@
 ---
+slug: "instrument-rating"
 title: "Instrument Rating (IR)"
 shortTitle: "Instrument Rating"
 tagline: "Master precision flying in the system."
 level: "Intermediate"
+path: "instrument-rating"
 
 summary: "Train to fly using only instruments and safely operate under IFR procedures."
 heroImage:
