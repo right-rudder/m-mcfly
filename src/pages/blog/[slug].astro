@@ -54,7 +54,7 @@ const related = all
 const heroData = {
   eyebrow: "Blog",
   title: e.data?.title || "Blog Post",
-  subtitle: e.data?.description || "",
+  subtitle: null,
   primaryImage: `/src/assets/stock/${e.data?.heroImage}`,
   primaryAlt: e.data?.title || "Blog header image",
 };
@@ -63,7 +63,7 @@ const heroData = {
 <!-- keep this page layout-only; your site layout can inject navbar/footer -->
 <BaseLayout>
   <HeroSmall data={heroData} />
-  <main class="mx-auto max-w-3xl px-4 py-10 sm:px-6 lg:px-0">
+  <main class="mx-auto max-w-7xl px-4 py-32">
     <!-- Breadcrumb (simple) -->
     <nav aria-label="Breadcrumb" class="mb-6 text-sm text-zinc-600">
       <a href="/blog" class="hover:underline">Blog</a>
@@ -118,7 +118,24 @@ const heroData = {
     <!-- Layout with optional TOC -->
     <div class="mt-8 grid grid-cols-1 gap-10 lg:grid-cols-[1fr_260px]">
       <!-- Article body -->
-      <article class="prose prose-zinc max-w-none">
+      <article
+        class="
+        prose
+        w-full
+        max-w-4xl
+        px-5
+        prose-img:w-full
+        prose-img:shadow-md
+        prose-em:text-center
+        prose-em:mx-auto
+        prose-em:text-muted-800
+        prose-em:text-base
+        prose-p:font-sans
+        prose-h2:text-3xl
+        prose-p:text-xl
+        prose-strong:font-semibold
+        prose-a:text-primary-600"
+      >
         <Content />
       </article>
 
