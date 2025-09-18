@@ -1,28 +1,38 @@
 ---
-import { PHONE_NUMBER } from "../consts";
+import { PHONE_NUMBER, INSTAGRAM_URL } from "../consts";
 import { FaPhoneSquareAlt } from "react-icons/fa";
-import SocialIcons from "./SocialIcons.astro";
+import { IoLogoInstagram } from "react-icons/io5";
 ---
 
-<div class="bg-primary-dark z-0 h-10 w-full px-4 lg:px-0">
+<div class="bg-accent-950 sticky top-0 z-0 h-10 w-full px-4 lg:px-0">
   <div
-    class="mx-auto flex h-full max-w-[80rem] items-center justify-between align-middle"
+    class="mx-auto flex h-full max-w-[80rem] items-center justify-end gap-4 align-middle"
   >
-    <div
-      class="flex h-8 w-1/2 items-center justify-around align-middle md:w-1/5 lg:ml-9"
-    >
-      <SocialIcons />
-    </div>
-
     <a
-      href=`tel:${PHONE_NUMBER}`
+      href={INSTAGRAM_URL}
+      target="_blank"
+      rel="noopener noreferrer"
+      name="Instagram"
+      aria-labelledby="Instagram Link"
+      title="Instagram Link"
+      class="flex cursor-pointer items-center text-right align-middle font-sans text-base font-normal text-white transition-all hover:scale-110 hover:font-bold lg:ml-9 lg:text-lg"
+      aria-label="Instagram Link"
+    >
+      <IoLogoInstagram className="mr-2 text-lg text-white lg:text-xl" /></a
+    >
+    <a
+      href={`tel:${PHONE_NUMBER}`}
       name="Call Us"
       aria-labelledby="Call Us Now"
       title="Call Us Now"
-      class="flex cursor-pointer items-center text-right align-middle font-sans text-base font-normal text-white transition-all hover:scale-110 hover:font-bold lg:mr-9 lg:text-lg"
+      class="flex cursor-pointer items-center gap-2 text-right align-middle font-sans text-base font-normal text-white transition-all hover:scale-110 hover:font-bold lg:mr-9 lg:text-lg"
       aria-label="Call telephone Link"
     >
-      <FaPhoneSquareAlt className="mr-2 text-lg text-white lg:text-xl" />
+      <svg viewBox="0 0 24 24" class="h-5 w-5" fill="currentColor"
+        ><path
+          d="M6.6 10.8a15.5 15.5 0 006.6 6.6l2.2-2.2a1 1 0 011-.24 11 11 0 003.46.55 1 1 0 011 1V20a1 1 0 01-1 1C9.16 21 3 14.84 3 7a1 1 0 011-1h3.5a1 1 0 011 1 11 11 0 00.55 3.46 1 1 0 01-.24 1l-2.21 2.34z"
+        ></path></svg
+      >
       {PHONE_NUMBER}</a
     >
   </div>
