@@ -1,0 +1,39 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import HeroFull from "../components/HeroFull.astro";
+
+const headerData = {
+  eyebrow: "Error 500",
+  title: "Server Error",
+  paragraph:
+    "Something went wrong on our end. Please return to the McFly Education homepage or contact us for help with flight training, discovery flights, and enrollment in Cables, CA.",
+  image: "/src/assets/stock/hero-homepage.jpg",
+  alt: "Airplane flying over mountains during sunset",  
+};
+---
+
+<BaseLayout
+  siteTitle="Server Error | McFly Education Flight Training, CA"
+  siteDescription="Something went wrong on our end. Please return to the McFly Education homepage or contact us for help with helicopter flight training, discovery flights, and enrollment in Dallas, TX."
+>
+  <HeroFull data={headerData} />
+  <section class="relative flex justify-center px-5 py-20">
+    <div class="flex flex-col gap-8 text-center">
+      <svg class="text-primary-500 mx-auto size-20" viewBox="0 0 32 32"
+        ><path
+          fill="currentColor"
+          d="M16 2C8.2 2 2 8.2 2 16s6.2 14 14 14s14-6.2 14-14S23.8 2 16 2m5.4 21L16 17.6L10.6 23L9 21.4l5.4-5.4L9 10.6L10.6 9l5.4 5.4L21.4 9l1.6 1.6l-5.4 5.4l5.4 5.4z"
+        ></path></svg
+      >
+      <h1 class="text-4xl font-bold">We're sorry, but something went wrong.</h1>
+
+      <p>Please try again later.</p>
+
+      <div class="flex flex-row justify-center">
+        <a href="/">
+          <div class="btn-primary">Home</div>
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

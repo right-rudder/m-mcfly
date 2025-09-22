@@ -1,0 +1,23 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import HeroFull from "../../components/HeroFull.astro";
+import AircraftList from "../../components/AircraftList.astro";
+import ContactForm from "../../components/ContactForm.astro";
+import enrollmentData from "../../data/forms/enrollment.js";
+import CTAIntroFlight from "../../components/CTAIntroFlight.astro";
+---
+
+<BaseLayout>
+  <HeroFull
+    data={{
+      eyebrow: "Our Aircraft",
+      title: "The best Aircraft for Training",
+      paragraph: "Explore our diverse fleet of training aircraft, each selected for its unique strengths and capabilities.",
+      image: "/src/assets/stock/aircraft.webp",
+      alt: "Two small airplanes parked on a runway",
+    }}
+  />
+  <AircraftList />
+  <CTAIntroFlight />
+  <ContactForm content={enrollmentData} />
+</BaseLayout>

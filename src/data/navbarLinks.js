@@ -53,7 +53,7 @@ export const navbarLinks = [
       },
       {
         name: "Our Aircraft",
-        link: "/aircraft",
+        link: "/about/our-aircraft",
       },
     ],
   },
