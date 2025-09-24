@@ -12,26 +12,30 @@ import CTAIntroFlight from "../components/CTAIntroFlight.astro";
 import contactData from "../data/forms/contact.js";
 ---
 
-<BaseLayout>
+<BaseLayout
+  siteTitle="Flying Lessons in Northeast Los Angeles | McFly Education, Cable Airport"
+  siteDescription="Experience personalized flying lessons at Cable Airport with McFly Education. Our flexible scheduling and hands-on approach help you learn faster and build confidence from your very first lesson."
+>
   <div class="relative min-h-[115vh]">
     <ImageComp
-      src="/src/assets/stock/hero-homepage.jpg"
+      src="/src/assets/marty-marino-cfi-los-angeles-cable-airport-flying-lessons-mcfly-education.webp"
       alt="A small aircraft flying over a scenic landscape during sunset."
       classes="absolute inset-0 h-full w-full object-cover"
       loading="eager"
+      quality={100}
     />
     <div
-      class="relative z-30 container mx-auto flex h-full w-full max-w-[98rem] flex-col justify-center gap-18 px-6 md:px-20"
+      class="relative z-30 container mx-auto flex h-full w-full max-w-[98rem] flex-col justify-center px-6 md:px-20"
     >
       <!-- Hero section -->
       <HeroHomepage
         data={{
           eyebrow: "Fly with McFly",
-          title: "Become a Pilot with Marty Today!",
+          title: "Flying Lessons in Northeast Los Angeles, Cable Airport",
           paragraph:
             "With flexible scheduling, more hands-on control, and a people-first approach, you’ll learn faster and build confidence from the very first lesson. ",
           styling:
-            "relative min-h-[60vh] overflow-hidden flex flex-row items-end mt-20 pt-20",
+            "relative min-h-[60vh] overflow-hidden flex flex-row items-end pt-20 lg:pt-40",
         }}
       />
       <HeroCards />
