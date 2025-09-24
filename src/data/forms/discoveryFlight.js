@@ -22,38 +22,17 @@ const discoveryData = {
       "event.preventDefault(); alert('Demo intro flight form — connect to /api/intro-flight');",
     fields: [
       // row 1
-      {
-        id: "name",
-        label: "Name",
-        placeholder: "Your Name",
-        required: true,
-        type: "text",
-        row: 1,
-      },
-      {
-        id: "email",
-        label: "Email",
-        placeholder: "you@example.com",
-        required: true,
-        type: "email",
-        row: 1,
-      },
+      { id: "fname", label: "First Name", placeholder: "Marty", required: true, type: "text", row: 1 },
+      { id: "lname", label: "Last Name", placeholder: "McFly", required: true, type: "text", row: 1 },
       // row 2
-      {
-        id: "phone",
-        label: "Phone",
-        placeholder: "+1 555...",
-        required: true,
-        type: "tel",
-        inputmode: "tel",
-        row: 2,
-      },
+      { id: "email", label: "Email", placeholder: "example@yourmail.com", required: true, type: "email", row: 2, inputmode: "email" },
+      { id: "phone", label: "Phone Number", placeholder: "+1 234 567 8910", required: true, type: "tel", row: 2, inputmode: "tel" },
       {
         id: "preferredDateTime",
         label: "Preferred Date & Time",
         required: true,
         type: "datetime-local",
-        row: 2,
+        row: 3,
       },
       {
         id: "notes",
