@@ -54,14 +54,14 @@ const generalFAQs = [
     question: "Is financial assistance or a payment plan available?",
     answer: [
       "We keep it flexible with pay-as-you-go scheduling and modular programs (PPL, Instrument, Commercial, CFI/CFII). We can also point you to third-party financing/scholarship resources commonly used by student pilots.",
-      "Since every situation is unique, we’ll build a plan that aligns with your budget and timeline—without cutting corners on safety.",
+      "Since every situation is unique, we’ll build a plan that aligns with your budget and timeline, without cutting corners on safety.",
     ],
   },
   {
     id: "scheduling",
     question: "How is training scheduled around work or school?",
     answer: [
-      "We offer personalized scheduling with options for evenings and weekends. Consistency matters more than duration—two to four lessons per week is the sweet spot for momentum.",
+      "We offer personalized scheduling with options for evenings and weekends. Consistency matters more than duration, two to four lessons per week is the sweet spot for momentum.",
       "We’ll lock recurring slots when possible and adjust for weather, maintenance, or exams.",
     ],
   },

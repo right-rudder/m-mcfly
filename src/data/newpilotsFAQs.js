@@ -18,7 +18,7 @@ const newcomerFAQs = [
     id: "first-step",
     question: "What’s the best first step if I’m brand new?",
     answer: [
-      "Book a Discovery (Intro) Flight. You’ll tour the aircraft, learn basics in a short briefing, and fly with the instructor—often taking the controls under supervision.",
+      "Book a Discovery (Intro) Flight. You’ll tour the aircraft, learn basics in a short briefing, and fly with the instructor, often taking the controls under supervision.",
       "After landing, we map your training plan so you know exactly what comes next.",
     ],
     bullets: [
@@ -65,7 +65,7 @@ const newcomerFAQs = [
     id: "fear-or-motion",
     question: "What if I’m nervous about flying or get motion sickness?",
     answer: [
-      "That’s very common for newcomers. We build up gradually—shorter lessons, calm-air windows, and steady skill stacking.",
+      "That’s very common for newcomers. We build up gradually, shorter lessons, calm-air windows, and steady skill stacking.",
       "Simple strategies (hydration, light meals, fresh air, choosing smoother times of day) help most students adapt quickly.",
     ],
   },
@@ -98,7 +98,7 @@ const newcomerFAQs = [
     id: "study-and-exams",
     question: "How do ground study and exams work?",
     answer: [
-      "Your CFI will give you a structured ground plan—videos, reading, and quizzes—to prep for the FAA written and oral.",
+      "Your CFI will give you a structured ground plan, videos, reading, and quizzes, to prep for the FAA written and oral.",
       "We’ll schedule milestones and stage checks so you always know what to study next.",
     ],
     bullets: [
@@ -112,7 +112,7 @@ const newcomerFAQs = [
     question: "How do payments and budgeting work for training?",
     answer: [
       "Training is pay-as-you-go with transparent planning. We’ll help you estimate milestones and connect you with common scholarship/financing resources used by student pilots.",
-      "Your plan flexes with weather, maintenance, and your pace—without compromising safety.",
+      "Your plan flexes with weather, maintenance, and your pace, without compromising safety.",
     ],
   },
   {
@@ -120,7 +120,7 @@ const newcomerFAQs = [
     question: "What should I bring to my first lessons?",
     answer: [
       "Valid photo ID, comfortable clothing, sunglasses, and a water bottle.",
-      "If you have a headset, bring it—otherwise we’ll advise options. We’ll also share a simple checklist of recommended materials and apps.",
+      "If you have a headset, bring it, otherwise we’ll advise options. We’ll also share a simple checklist of recommended materials and apps.",
     ],
     bullets: [
       "Notebook/iPad for notes and checklists",

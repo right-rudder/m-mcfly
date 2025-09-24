@@ -19,7 +19,7 @@ const discoveryData = {
     method: "post",
     action: "/api/intro-flight",
     onsubmit:
-      "event.preventDefault(); alert('Demo intro flight form — connect to /api/intro-flight');",
+      "event.preventDefault(); alert('Demo intro flight form, connect to /api/intro-flight');",
     fields: [
       // row 1
       { id: "fname", label: "First Name", placeholder: "Marty", required: true, type: "text", row: 1 },

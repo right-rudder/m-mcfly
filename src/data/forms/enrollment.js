@@ -19,7 +19,7 @@ const enrollData = {
     method: "post",
     action: "/api/enroll",
     onsubmit:
-      "event.preventDefault(); alert('Demo enrollment form — connect to /api/enroll');",
+      "event.preventDefault(); alert('Demo enrollment form, connect to /api/enroll');",
     fields: [
       // row 1
       { id: "fname", label: "First Name", placeholder: "Marty", required: true, type: "text", row: 1 },

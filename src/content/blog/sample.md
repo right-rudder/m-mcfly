@@ -7,11 +7,11 @@ tags: ["Training", "CFI", "Checkride"]
 author: "Marty McFly"
 ---
 
-> A great pilot isn't born from talent alone—but from **deliberate practice** and precise feedback.
+> A great pilot isn't born from talent alone, but from **deliberate practice** and precise feedback.
 
 ## Why personalization matters
 
-One-size-fits-all syllabi can leave gaps. When your instructor adapts **pace, sequence, and scenarios** to your current performance, each lesson compounds—faster.
+One-size-fits-all syllabi can leave gaps. When your instructor adapts **pace, sequence, and scenarios** to your current performance, each lesson compounds, faster.
 
 - Target weak areas early (e.g., crosswind landings).
 - Sequence skills logically (e.g., trim discipline → slow flight → short/soft field).
