@@ -49,6 +49,18 @@ const ui = {
   label: "text-muted-200 text-sm font-medium",
   button:
     "btn-primary box-shadow-[0_4px_20px_rgba(255,211,0,0.25)] hover:brightness-95 focus:outline-none focus-visible:ring-2 focus-visible:ring-yellow-300 focus-visible:ring-offset-2",
+
+  // NEW: native select styled + dark popup/options
+  select:
+    // base look matching inputs
+    "bg-muted-900/70 text-muted-50 placeholder:text-muted-400 mt-2 h-12 w-full rounded-2xl " +
+    "border border-white/10 px-4 pr-10 outline-none focus:border-primary-300/40 focus:ring-2 focus:ring-primary-300/30 " +
+    // render the UA dropdown in dark mode (modern browsers)
+    "[color-scheme:dark] " +
+    // darken rows where supported (Chromium/Firefox respect option styling)
+    "[&>option]:bg-[#0b0b0b] [&>option]:text-[#e5e7eb] " +
+    "[&>optgroup]:bg-[#0b0b0b] [&>optgroup]:text-[#9ca3af]",
+
   ...classes,
 };
 
@@ -89,10 +101,12 @@ const icon = "h-5 w-5 text-yellow-300";
                   <p class="text-muted-100 font-semibold">
                     {content?.info?.locationLabel || "Location"}
                   </p>
-                  <p class="text-muted-300">{content.info.addressLine1}</p>
-                  {content?.info?.addressLine2 && (
-                    <p class="text-muted-300">{content.info.addressLine2}</p>
-                  )}
+                  <div class="flex flex-wrap gap-1">
+                    <p class="text-muted-300">{content.info.addressLine1},</p>
+                    {content?.info?.addressLine2 && (
+                      <p class="text-muted-300">{content.info.addressLine2}</p>
+                    )}
+                  </div>
                 </div>
               </li>
             )
@@ -170,7 +184,7 @@ const icon = "h-5 w-5 text-yellow-300";
                     {f.label}
                     {f.required && <span class="text-yellow-300">*</span>}
                   </label>
-                  {f.type !== "textarea" ? (
+                  {f.type !== "textarea" && f.type !== "select" ? (
                     <input
                       id={f.id}
                       name={f.name || f.id}
@@ -188,7 +202,7 @@ const icon = "h-5 w-5 text-yellow-300";
                       id={f.id}
                       name={f.name || f.id}
                       required={f.required}
-                      class={ui.input}
+                      class={ui.select}
                     >
                       {(f.options || []).map((o: FieldOption) => (
                         <option value={o.value}>{o.label}</option>
@@ -226,7 +240,7 @@ const icon = "h-5 w-5 text-yellow-300";
                     {f.label}
                     {f.required && <span class="text-yellow-300">*</span>}
                   </label>
-                  {f.type !== "textarea" ? (
+                  {f.type !== "textarea" && f.type !== "select" ? (
                     <input
                       id={f.id}
                       name={f.name || f.id}
@@ -243,7 +257,7 @@ const icon = "h-5 w-5 text-yellow-300";
                       id={f.id}
                       name={f.name || f.id}
                       required={f.required}
-                      class={ui.input}
+                      class={ui.select}
                     >
                       {(f.options || []).map((o: FieldOption) => (
                         <option value={o.value}>{o.label}</option>
@@ -289,7 +303,7 @@ const icon = "h-5 w-5 text-yellow-300";
                     id={f.id}
                     name={f.name || f.id}
                     required={f.required}
-                    class={ui.input}
+                    class={ui.select}
                   >
                     {(f.options || []).map((o: FieldOption) => (
                       <option value={o.value}>{o.label}</option>
@@ -338,3 +352,13 @@ const icon = "h-5 w-5 text-yellow-300";
     </div>
   </div>
 </section>
+
+<!-- Optional: extra safety for dark options on some engines -->
+<style is:global>
+  /* only affect selects that set color-scheme: dark via the class above */
+  select[class*="[color-scheme:dark]"] option,
+  select[class*="[color-scheme:dark]"] optgroup {
+    background-color: #0b0b0b;
+    color: #e5e7eb;
+  }
+</style>
