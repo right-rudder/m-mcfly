@@ -19,8 +19,8 @@ const { siteTitle, siteDescription, siteImage } = Astro.props;
   </head>
 
   <body>
+    <Banner />
     <header>
-      <Banner />
       <Navbar pathname={pathname} client:load />
     </header>
     <main>
