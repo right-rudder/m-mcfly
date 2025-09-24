@@ -22,9 +22,9 @@ const embedUrl = reel.endsWith("/") ? `${reel}embed/` : `${reel}/embed/`;
 ---
 
 <section class="bg-accent-950 min-h-[80vh]">
-  <div class="mx-auto px-6 h-full flex items-center">
+  <div class="mx-auto px-6 py-10 h-full flex items-center">
     <div
-      class="grid items-stretch gap-10 rounded-3xl bg-white/10 p-8 text-white shadow-lg sm:p-10 lg:grid-cols-2 h-full"
+      class="grid items-stretch gap-10 rounded-3xl bg-white/10 p-8 text-white shadow-lg sm:p-10 lg:grid-cols-2 h-full shadow-white/20 shadow-md"
     >
       <!-- Left: Reel -->
       <div class="justify-self-center w-full max-w-[320px] md:max-w-[360px] overflow-hidden rounded-2xl bg-gray-100/40 shadow-lg">
@@ -40,7 +40,7 @@ const embedUrl = reel.endsWith("/") ? `${reel}embed/` : `${reel}/embed/`;
       </div>
 
       <!-- Right: Content -->
-      <div class="flex flex-col h-full">
+      <div class="flex flex-col h-full gap-8 mt-10">
         <h2 class="text-6xl font-bold tracking-tight sm:text-4xl text-primary-500">{title}</h2>
         <p class="mt-4 text-gray-100 font-medium text-lg">{body}</p>
 
@@ -57,7 +57,7 @@ const embedUrl = reel.endsWith("/") ? `${reel}embed/` : `${reel}/embed/`;
 
         <a
           href={ctaHref}
-          class="mt-auto pt-6 btn-primary w-fit px-6 py-3 text-center font-semibold text-white shadow-md transition hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 self-start"
+          class="btn-primary w-fit px-6 py-3 text-center self-start"
         >
           {ctaText}
         </a>

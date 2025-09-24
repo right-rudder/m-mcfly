@@ -40,7 +40,7 @@
 }
 
 .btn-primary {
-  @apply bg-primary-500 text-black font-semibold rounded-full px-4 py-2 flex items-center justify-center gap-2 hover:bg-primary-600 transition cursor-pointer;
+  @apply bg-primary-500 text-black font-semibold rounded-full px-4 py-2 flex items-center justify-center gap-2 hover:brightness-150 transition cursor-pointer;
 }
 
 .btn-secondary {
