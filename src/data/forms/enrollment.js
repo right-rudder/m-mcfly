@@ -22,32 +22,12 @@ const enrollData = {
       "event.preventDefault(); alert('Demo enrollment form — connect to /api/enroll');",
     fields: [
       // row 1
-      {
-        id: "fullName",
-        label: "Full Name",
-        placeholder: "First & Last Name",
-        required: true,
-        type: "text",
-        row: 1,
-      },
-      {
-        id: "email",
-        label: "Email",
-        placeholder: "you@example.com",
-        required: true,
-        type: "email",
-        row: 1,
-      },
+      { id: "fname", label: "First Name", placeholder: "Marty", required: true, type: "text", row: 1 },
+      { id: "lname", label: "Last Name", placeholder: "McFly", required: true, type: "text", row: 1 },
       // row 2
-      {
-        id: "phone",
-        label: "Phone",
-        placeholder: "+1 555...",
-        required: true,
-        type: "tel",
-        inputmode: "tel",
-        row: 2,
-      },
+      { id: "email", label: "Email", placeholder: "example@yourmail.com", required: true, type: "email", row: 2, inputmode: "email" },
+      { id: "phone", label: "Phone Number", placeholder: "+1 234 567 8910", required: true, type: "tel", row: 2, inputmode: "tel" },
+      // row 3
       {
         id: "program",
         label: "Program of Interest",
@@ -60,7 +40,7 @@ const enrollData = {
           { value: "commercial", label: "Commercial Pilot (CPL)" },
           { value: "cfi", label: "Certified Flight Instructor (CFI/CFII)" },
         ],
-        row: 2,
+        row: 3,
       },
       {
         id: "questions",
