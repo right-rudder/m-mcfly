@@ -1,5 +1,8 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { BiSolidQuoteLeft } from "react-icons/bi";
+import { FaArrowLeft } from "react-icons/fa";
+import { FaArrowRight } from "react-icons/fa";
+
 
 const PLACEHOLDER_TESTIMONIALS = [
   {
@@ -111,12 +114,12 @@ export default function TestimonialsCarousel({
       <div className="mt-10 flex items-center justify-center gap-4">
         <button
           type="button"
-          className="ring-primary-500/30 inline-flex items-center justify-center rounded-full px-3 py-2 text-sm ring-1 ring-inset hover:bg-black/5"
+          className="ring-primary-500/30 inline-flex items-center justify-center rounded-full p-3 ring-1 ring-inset text-primary-500 text-lg hover:bg-primary-500 hover:text-black transition-all duration-300"
           aria-label="Previous testimonial"
           onClick={prev}
         >
-          <span aria-hidden className="text-primary-500 text-lg">
-            ←
+          <span aria-hidden className="">
+            <FaArrowLeft />
           </span>
         </button>
         <nav
@@ -140,12 +143,12 @@ export default function TestimonialsCarousel({
         </nav>
         <button
           type="button"
-          className="ring-primary-500/30 inline-flex items-center justify-center rounded-full px-3 py-2 text-sm ring-1 ring-inset hover:bg-black/5"
+          className="ring-primary-500/30 inline-flex items-center justify-center rounded-full p-3 ring-1 ring-inset text-primary-500 text-lg hover:bg-primary-500 hover:text-black transition-all duration-300"
           aria-label="Next testimonial"
           onClick={next}
         >
-          <span aria-hidden className="text-primary-500 text-lg">
-            →
+          <span aria-hidden className="">
+           <FaArrowRight />
           </span>
         </button>
       </div>
