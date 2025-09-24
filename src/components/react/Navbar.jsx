@@ -195,7 +195,6 @@ const Navbar = ({ pathname }) => {
             <div className="text-accent-50 hidden w-[20%] justify-center gap-4 lg:flex">
               <a
                 href="/contact"
-                target="_blank"
                 className="btn-transparent bg-transparent! hover:bg-primary-500/20! hover:text-accent-50! flex-1 whitespace-nowrap"
               >
                 Get in Touch
