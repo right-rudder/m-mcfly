@@ -8,7 +8,7 @@ level: "Professional"
 summary: "Learn to teach, evaluate, and guide student pilots with right-seat proficiency."
 
 heroImage:
-  src: "/images/marty-mcfly-student.jpg"
+  src: "/images/marty-marino-cfi-los-angeles-cable-airport-flying-lessons-mcfly-education.webp"
   alt: "Student and instructor in cockpit"
 
 stats:
