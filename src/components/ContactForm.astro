@@ -9,6 +9,28 @@ import contactData from "../data/forms/contact.js";
 
 const { content = contactData, classes = {} } = Astro.props;
 
+// Types for dynamic form fields
+type FieldOption = {
+  label: string;
+  value: string | number;
+};
+
+type Field = {
+  id: string;
+  name?: string;
+  label: string;
+  type?: string;
+  required?: boolean;
+  placeholder?: string;
+  pattern?: string;
+  inputmode?: string;
+  datalistId?: string;
+  rows?: number;
+  options?: FieldOption[];
+  colSpan?: number;
+  row?: number;
+};
+
 const ui = {
   section: "bg-black px-4 py-12 sm:px-6 lg:px-8 lg:py-20",
   grid: "grid grid-cols-1 items-stretch gap-8 lg:grid-cols-2 lg:gap-10 max-w-7xl mx-auto",
@@ -135,8 +157,8 @@ const icon = "h-5 w-5 text-yellow-300";
         <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
           {
             content.form.fields
-              ?.filter((f) => f.row === 1)
-              .map((f) => (
+              ?.filter((f: Field) => f.row === 1)
+              .map((f: Field) => (
                 <div
                   class={
                     f.colSpan === 2
@@ -168,7 +190,7 @@ const icon = "h-5 w-5 text-yellow-300";
                       required={f.required}
                       class={ui.input}
                     >
-                      {(f.options || []).map((o) => (
+                      {(f.options || []).map((o: FieldOption) => (
                         <option value={o.value}>{o.label}</option>
                       ))}
                     </select>
@@ -191,8 +213,8 @@ const icon = "h-5 w-5 text-yellow-300";
         <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
           {
             content.form.fields
-              ?.filter((f) => f.row === 2)
-              .map((f) => (
+              ?.filter((f: Field) => f.row === 2)
+              .map((f: Field) => (
                 <div
                   class={
                     f.colSpan === 2
@@ -223,7 +245,7 @@ const icon = "h-5 w-5 text-yellow-300";
                       required={f.required}
                       class={ui.input}
                     >
-                      {(f.options || []).map((o) => (
+                      {(f.options || []).map((o: FieldOption) => (
                         <option value={o.value}>{o.label}</option>
                       ))}
                     </select>
@@ -246,8 +268,8 @@ const icon = "h-5 w-5 text-yellow-300";
         <!-- Any fields placed on row 3+ take full width -->
         {
           content.form.fields
-            ?.filter((f) => (f.row || 3) >= 3)
-            .map((f) => (
+            ?.filter((f: Field) => (f.row || 3) >= 3)
+            .map((f: Field) => (
               <div class="flex flex-col">
                 <label for={f.id} class={ui.label}>
                   {f.label}
@@ -269,7 +291,7 @@ const icon = "h-5 w-5 text-yellow-300";
                     required={f.required}
                     class={ui.input}
                   >
-                    {(f.options || []).map((o) => (
+                    {(f.options || []).map((o: FieldOption) => (
                       <option value={o.value}>{o.label}</option>
                     ))}
                   </select>

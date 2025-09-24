@@ -1,8 +1,12 @@
 export const navbarLinks = [
   {
-    name: "New to Flying?",
-    link: "/new-to-flying",
+    name: "First Time Flying?",
+    link: "/first-time-pilots",
     submenu: [
+      {
+        name: "First Time Flying?",
+        link: "/first-time-pilots",
+      },
       {
         name: "Book a Discovery Flight",
         link: "/discovery-flight",

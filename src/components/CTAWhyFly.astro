@@ -1,0 +1,66 @@
+---
+const benefits = [
+  {
+    icon: "🎯",
+    title: "Goal-Oriented Training",
+    body: "Structured lessons that move you from discovery flight to solo and beyond—always with safety first.",
+  },
+  {
+    icon: "🧭",
+    title: "Flexible Scheduling",
+    body: "Train on your timeline with one dedicated CFI who adapts to your pace and learning style.",
+  },
+  {
+    icon: "🛡️",
+    title: "Safety Culture",
+    body: "Checklists, personal minimums, and real-world decision-making baked into every lesson.",
+  },
+  {
+    icon: "🤝",
+    title: "Community First",
+    body: "We’re building a local pilot community where students help students and everyone grows together.",
+  },
+  {
+    icon: "🚀",
+    title: "Career or Fun",
+    body: "Whether you want weekend adventures or a pro pilot path, your training map is clear from day one.",
+  },
+  {
+    icon: "📈",
+    title: "Progress You Can See",
+    body: "Transparent milestones and debriefs so you always know what’s next—and why.",
+  },
+];
+---
+
+<section class="bg-primary-500 py-16 sm:py-24">
+  <div class="mx-auto max-w-7xl px-6">
+    <div class="max-w-2xl">
+      <h2 class="text-3xl font-bold tracking-tight sm:text-4xl">
+        Why Become a Pilot?
+      </h2>
+      <p class="mt-3 text-gray-600">
+        Aviation opens doors—personally and professionally. Here’s why students
+        choose McFly Education to begin:
+      </p>
+    </div>
+
+    <div class="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      {
+        benefits.map((b) => (
+          <article class="rounded-3xl bg-white/50 p-6 shadow-sm ring-1 ring-black/5 hover:brightness-75 transition duration-300">
+            <div class="flex items-start gap-4">
+              <div class="bg-accent[100] text-accent[800] rounded-2xl p-3 text-xl">
+                {b.icon}
+              </div>
+              <div>
+                <h3 class="text-lg font-semibold">{b.title}</h3>
+                <p class="mt-1 text-sm text-gray-600">{b.body}</p>
+              </div>
+            </div>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</section>
