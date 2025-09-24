@@ -72,7 +72,7 @@ const Navbar = ({ pathname }) => {
   return (
     <nav className="fixed top-0 z-50 h-0 w-full tracking-wider">
       <div
-        className={`${navBar || openMobile ? "bg-accent-950/80 backdrop-blur-md" : "pt-8"} ${showNavbar ? "-translate-y-28" : ""}`}
+        className={`${navBar || openMobile ? "bg-accent-950/80 backdrop-blur-md" : "mt-9"} ${showNavbar ? "-translate-y-28" : ""}`}
       >
         <div className="mx-auto max-w-[98rem] px-14 py-4">
           <div
@@ -92,7 +92,7 @@ const Navbar = ({ pathname }) => {
                   fetchPriority="auto"
                   width="397"
                   height="128"
-                  className={`${navBar || openMobile ? "h-12 w-12 rounded-full object-contain md:h-20 md:w-20" : "h-18 w-18 rounded-full object-contain md:h-32 md:w-32"} duration-300`}
+                  className={`${navBar || openMobile ? "h-14 w-14 rounded-full object-contain md:h-24 md:w-24" : "h-18 w-18 rounded-full object-contain md:h-32 md:w-32"} duration-300`}
                 ></img>
               </a>
               <div className="hidden flex-1 gap-10 lg:flex">
@@ -195,7 +195,6 @@ const Navbar = ({ pathname }) => {
             <div className="text-accent-50 hidden w-[20%] justify-center gap-4 lg:flex">
               <a
                 href="/contact"
-                target="_blank"
                 className="btn-transparent bg-transparent! hover:bg-primary-500/20! hover:text-accent-50! flex-1 whitespace-nowrap"
               >
                 Get in Touch
@@ -262,7 +261,7 @@ const Navbar = ({ pathname }) => {
         } bg-accent-500 absolute top-0 z-50 h-screen w-full overflow-x-hidden duration-300 ease-in-out lg:hidden`}
         id="mobile-menu"
       >
-        <div className="flex justify-end py-6 pr-[26px] pl-5">
+        <div className="flex justify-end p-6">
           <svg
             className={`h-6 w-6 cursor-pointer text-white`}
             fill="none"
@@ -290,12 +289,12 @@ const Navbar = ({ pathname }) => {
             fetchPriority="auto"
             width="397"
             height="128"
-            className="h-full w-full object-contain"
+            className="h-full w-full object-contain rounded-full"
           ></img>
         </a>
 
         <div
-          className={`absolute top-16 z-0 h-32 w-full bg-white duration-300 ${
+          className={`absolute top-16 z-0 h-32 w-full bg-gradient-to-l from-transparent via-primary-500 to-transparent duration-300 ${
             openMobile ? "translate-x-0 delay-300" : "-translate-x-full"
           }`}
         ></div>

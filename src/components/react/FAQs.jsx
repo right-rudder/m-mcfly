@@ -67,7 +67,7 @@ export default function FAQSection({ faqs = content || [] }) {
   if (!faqs.length) return null;
 
   return (
-    <section className="bg-accent-950 w-full text-white">
+    <section id="faqs" className="bg-accent-950 w-full text-white">
       <div className="from-primary-950/50 pointer-events-none absolute inset-0 -z-10 bg-radial-[at_20%_40%] to-transparent to-60%"></div>
       <div className="mx-auto max-w-7xl px-4 py-12 md:px-8 md:py-20">
         {/* Header */}

@@ -1,66 +1,67 @@
 import { useEffect, useMemo, useRef, useState } from "react";
+import { FaArrowLeft } from "react-icons/fa";
+import { FaArrowRight } from "react-icons/fa";
+
 
 export default function TrainingsSlider({
   title = "Your Training Path from zero to Pilot",
   eyebrow = "Our Trainings",
   description = "Explore our comprehensive pilot training programs designed to take you from beginner to certified pilot with confidence and expertise.",
-  items = trainings || [], // keep your original default
-  gapPx = 24, // gap between cards in px
+  items = [],
+  gapPx = 24,
 }) {
   const wrapRef = useRef(null);
   const trackRef = useRef(null);
 
-  // --- teleport + debounce control ---
   const isTeleporting = useRef(false);
-  const scrollEndTimer = useRef(null);
-
-  // --- cloning config ---
-  // Showing 2 cards per view; cloning 4 gives two full pages on each end
-  const CLONES = 4;
 
   const realLen = items?.length || 0;
 
-  // Build extended array with head/tail clones
+  // 1 card on mobile, 2 on desktop
+  const [visibleCount, setVisibleCount] = useState(2);
+  const [cardW, setCardW] = useState(380);
+
+  // Clone count based on visibleCount
+  const CLONES = Math.max(2, visibleCount * 2);
+
+  // Extended items with head/tail clones
   const extendedItems = useMemo(() => {
     if (!realLen) return [];
     const head = items.slice(0, Math.min(CLONES, realLen));
     const tail = items.slice(-Math.min(CLONES, realLen));
     return [...tail, ...items, ...head];
-  }, [items, realLen]);
-
-  // Card width computed so TWO cards + ONE gap fill container
-  const [cardW, setCardW] = useState(380);
-  // Index in the extended array; start at CLONES to show first "real" page
-  const [index, setIndex] = useState(CLONES);
+  }, [items, realLen, CLONES]);
 
   const step = useMemo(() => cardW + gapPx, [cardW, gapPx]);
 
-  // Compute card width responsively
+  // Current extended index (leftmost card)
+  const [index, setIndex] = useState(CLONES);
+
+  // Responsive widths and visibleCount
   useEffect(() => {
     const compute = () => {
-      const el = wrapRef.current;
-      if (!el) return;
-      const w = el.clientWidth;
-
-      // account for track horizontal padding
+      const wrap = wrapRef.current;
       const track = trackRef.current;
-      const cs = track ? getComputedStyle(track) : null;
-      const padLeft = cs ? parseFloat(cs.paddingLeft) || 0 : 0;
-      const padRight = cs ? parseFloat(cs.paddingRight) || 0 : 0;
+      if (!wrap || !track) return;
+
+      const w = wrap.clientWidth;
+      const cs = getComputedStyle(track);
+      const padLeft = parseFloat(cs.paddingLeft) || 0;
+      const padRight = parseFloat(cs.paddingRight) || 0;
       const hPad = padLeft + padRight;
 
-      const newCardW = Math.max(280, Math.floor((w - hPad - gapPx) / 2));
+      const newVisible = w < 768 ? 1 : 2; // mobile:1, desktop:2
+      setVisibleCount(newVisible);
+
+      const gapsTotal = (newVisible - 1) * gapPx;
+      const newCardW = Math.max(260, Math.floor((w - hPad - gapsTotal) / newVisible));
       setCardW(newCardW);
 
-      // snap (no animation) to current index after resize to keep alignment
       requestAnimationFrame(() => {
-        if (trackRef.current) {
-          isTeleporting.current = true;
-          trackRef.current.scrollLeft = step * index;
-          requestAnimationFrame(() => {
-            isTeleporting.current = false;
-          });
-        }
+        if (!trackRef.current) return;
+        isTeleporting.current = true;
+        trackRef.current.scrollLeft = step * index;
+        requestAnimationFrame(() => (isTeleporting.current = false));
       });
     };
 
@@ -71,17 +72,15 @@ export default function TrainingsSlider({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [gapPx, step]);
 
-  // Ensure initial position at the first real page (instant)
+  // Initial placement
   useEffect(() => {
     if (!trackRef.current || !realLen) return;
     isTeleporting.current = true;
     trackRef.current.scrollLeft = step * CLONES;
     setIndex(CLONES);
-    requestAnimationFrame(() => {
-      isTeleporting.current = false;
-    });
+    requestAnimationFrame(() => (isTeleporting.current = false));
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [step, realLen]);
+  }, [step, realLen, CLONES]);
 
   // Helpers
   const scrollToIndex = (i, smooth = true) => {
@@ -92,62 +91,123 @@ export default function TrainingsSlider({
     });
   };
 
-  const teleportTo = (i) => {
+  const teleportTo = (px) => {
     if (!trackRef.current) return;
     isTeleporting.current = true;
-    // instant jump
-    trackRef.current.scrollLeft = step * i;
-    setIndex(i);
-    // allow a frame to commit layout
-    requestAnimationFrame(() => {
-      isTeleporting.current = false;
-    });
+    trackRef.current.scrollLeft = px;
+    requestAnimationFrame(() => (isTeleporting.current = false));
   };
 
-  const next = () => scrollToIndex(index + 2, true); // one page forward (2 cards)
-  const prev = () => scrollToIndex(index - 2, true);
+  // One card per click
+  const next = () => scrollToIndex(index + 1, true);
+  const prev = () => scrollToIndex(index - 1, true);
 
-  // Scroll end handling: if we’re in the clones, teleport (instantly) to the equivalent real index
+  // Seamless wrap during scroll (for our programmatic scroll + any drag)
   const handleScroll = () => {
-    if (!trackRef.current || isTeleporting.current) return;
-    if (scrollEndTimer.current) clearTimeout(scrollEndTimer.current);
+    if (!trackRef.current || isTeleporting.current || realLen === 0) return;
 
-    // Short debounce to detect "scroll end"
-    scrollEndTimer.current = setTimeout(() => {
-      if (!trackRef.current || isTeleporting.current) return;
+    const track = trackRef.current;
+    const sl = track.scrollLeft;
 
-      const i = Math.round(trackRef.current.scrollLeft / step);
+    const min = step * CLONES;
+    const max = step * (CLONES + realLen); // exclusive
 
-      // moved into head clones → wrap to equivalent real index
-      if (i >= CLONES + realLen) {
-        teleportTo(i - realLen);
-        return;
-      }
-      // moved into tail clones → wrap to equivalent real index
-      if (i < CLONES) {
-        teleportTo(i + realLen);
-        return;
-      }
-
-      // sync index if needed
-      if (i !== index) setIndex(i);
-    }, 40);
+    if (sl >= max) {
+      teleportTo(sl - realLen * step);
+      return;
+    }
+    if (sl < min) {
+      teleportTo(sl + realLen * step);
+      return;
+    }
   };
 
-  // Page dots (based on real items/pages)
-  const pages = Math.ceil((realLen || 0) / 2);
+  // Derive current "page" for dots (leftmost positions)
+  const pages = Math.max(1, realLen - visibleCount + 1);
+  const [activePage, setActivePage] = useState(0);
 
-  // Derive active page from the current extended index
-  const realIndex =
-    realLen > 0 ? (((index - CLONES) % realLen) + realLen) % realLen : 0;
-  const activePage = Math.floor(realIndex / 2);
+  useEffect(() => {
+    const track = trackRef.current;
+    if (!track) return;
+
+    const onScroll = () => {
+      handleScroll();
+
+      const sl = track.scrollLeft;
+      const min = step * CLONES;
+      const realPx = sl - min;
+      const realIndex = realLen ? Math.max(0, Math.round(realPx / step)) % realLen : 0;
+      const page = Math.min(pages - 1, realIndex);
+      setActivePage(page);
+
+      const approxIndex = Math.round(sl / step);
+      if (approxIndex !== index) setIndex(approxIndex);
+    };
+
+    track.addEventListener("scroll", onScroll, { passive: true });
+    return () => track.removeEventListener("scroll", onScroll);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [step, realLen, pages, index, CLONES]);
 
   const goToPage = (p) => {
-    // p is 0-based page in real array (leftmost card index = p * 2)
-    const targetRealLeftmost = p * 2;
-    const extIndex = CLONES + targetRealLeftmost;
+    const extIndex = CLONES + p;
     scrollToIndex(extIndex, true);
   };
+
+  // ---- MOBILE SWIPE: trigger prev/next (no native side-scroll needed) ----
+  useEffect(() => {
+    const track = trackRef.current;
+    if (!track) return;
+
+    let startX = 0;
+    let startY = 0;
+    let moved = false;
+
+    const onTouchStart = (e) => {
+      if (e.touches.length !== 1) return;
+      const t = e.touches[0];
+      startX = t.clientX;
+      startY = t.clientY;
+      moved = false;
+    };
+
+    const onTouchMove = (e) => {
+      if (e.touches.length !== 1) return;
+      const t = e.touches[0];
+      const dx = t.clientX - startX;
+      const dy = t.clientY - startY;
+      if (!moved && Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 8) {
+        // horizontal intent → prevent vertical scroll from hijacking the swipe
+        e.preventDefault();
+        moved = true;
+      }
+    };
+
+    const onTouchEnd = (e) => {
+      if (!moved) return;
+      const t = e.changedTouches[0];
+      const dx = t.clientX - startX;
+      const THRESH = 40; // swipe distance threshold
+      if (dx <= -THRESH) {
+        next(); // swipe left → next
+      } else if (dx >= THRESH) {
+        prev(); // swipe right → prev
+      }
+    };
+
+    // Passive must be false to allow preventDefault in onTouchMove
+    track.addEventListener("touchstart", onTouchStart, { passive: true });
+    track.addEventListener("touchmove", onTouchMove, { passive: false });
+    track.addEventListener("touchend", onTouchEnd, { passive: true });
+
+    return () => {
+      track.removeEventListener("touchstart", onTouchStart);
+      track.removeEventListener("touchmove", onTouchMove);
+      track.removeEventListener("touchend", onTouchEnd);
+    };
+  }, [step, index]);
+
+  if (!realLen) return null;
 
   return (
     <section className="bg-black py-12 text-white lg:py-20">
@@ -155,9 +215,9 @@ export default function TrainingsSlider({
         {/* Header */}
         <div className="my-12 flex flex-col items-center text-center">
           <p className="eyebrow inline-flex items-center gap-2 px-3 py-1 text-[11px] tracking-widest uppercase">
-            <span className="size-1.5 rounded-full bg-yellow-400/90"></span>
+            <span className="size-1.5 rounded-full bg-yellow-400/90" />
             {eyebrow}
-            <span className="size-1.5 rounded-full bg-yellow-400/90"></span>
+            <span className="size-1.5 rounded-full bg-yellow-400/90" />
           </p>
           <h2 className="mt-3 text-[clamp(28px,6vw,56px)] leading-[1.05] tracking-[-0.02em]">
             {title}
@@ -167,16 +227,21 @@ export default function TrainingsSlider({
 
         {/* Carousel */}
         <div className="relative" ref={wrapRef}>
-          {/* Track */}
           <div
             ref={trackRef}
-            onScroll={handleScroll}
-            className="scrollbar-hide flex overflow-x-hidden overflow-y-visible scroll-smooth px-4 py-4"
-            style={{ gap: `${gapPx}px` }}
+            // Hide horizontal scrollbar and disable native side-scroll.
+            // We control movement via arrows + swipe logic above.
+            className="no-scrollbar flex overflow-x-hidden overflow-y-visible px-4 py-4"
+            style={{
+              gap: `${gapPx}px`,
+              willChange: "scroll-position",
+              WebkitOverflowScrolling: "touch",
+              touchAction: "pan-y", // allow vertical page scroll
+            }}
           >
             {extendedItems.map((it, idx) => (
               <article
-                key={`${it?.id ?? "item"}-${idx}`} // unique within extended array
+                key={`${it?.id ?? "item"}-${idx}`}
                 className="relative shrink-0 rounded-3xl shadow-[0_1px_0_rgba(0,0,0,0.06),0_12px_40px_rgba(0,0,0,0.06)] transition-transform hover:-translate-y-0.5 hover:shadow-[0_10px_48px_rgba(0,0,0,0.12)]"
                 style={{
                   width: `${cardW}px`,
@@ -211,9 +276,7 @@ export default function TrainingsSlider({
                       href={`/trainings/${it.path}`}
                       className="inline-flex w-fit items-center gap-2 self-start rounded-full border border-white/80 bg-white/10 px-3.5 py-2 text-sm font-semibold text-white backdrop-blur transition hover:bg-white/20"
                     >
-                      <span aria-hidden className="text-base leading-none">
-                        ↗
-                      </span>
+                      <span aria-hidden className="text-base leading-none">↗</span>
                       <span>Explore {it.segment}</span>
                     </a>
                   </div>
@@ -222,28 +285,28 @@ export default function TrainingsSlider({
             ))}
           </div>
 
-          {/* Arrows — always enabled for infinite loop */}
-          <div className="pointer-events-none absolute inset-y-0 right-0 left-0 flex items-center justify-between">
+          {/* Arrows (ensure always above cards) */}
+          <div className="pointer-events-none absolute inset-y-0 left-0 right-0 z-20 flex items-center justify-between">
             <button
               type="button"
               onClick={prev}
               className="btn-transparent pointer-events-auto ml-[-8px] inline-flex h-11 w-11 items-center justify-center rounded-full border border-neutral-200 shadow-sm backdrop-blur transition hover:bg-white"
               aria-label="Previous"
             >
-              <span className="text-xl">←</span>
+              <span className="text-xl"><FaArrowLeft /></span>
             </button>
             <button
               type="button"
               onClick={next}
-              className="btn-primary pointer-events-auto mr-[-8px] inline-flex h-11 w-11 items-center justify-center rounded-full shadow-sm backdrop-blur transition hover:bg-white"
+              className="btn-transparent pointer-events-auto ml-[-8px] inline-flex h-11 w-11 items-center justify-center rounded-full border border-neutral-200 shadow-sm backdrop-blur transition hover:bg-white"
               aria-label="Next"
             >
-              <span className="text-xl">→</span>
+              <span className="text-xl"><FaArrowRight /></span>
             </button>
           </div>
         </div>
 
-        {/* Page dots for REAL pages */}
+        {/* Page dots */}
         {pages > 1 && (
           <div className="mt-4 flex justify-center gap-2">
             {Array.from({ length: pages }).map((_, p) => {
@@ -254,11 +317,9 @@ export default function TrainingsSlider({
                   onClick={() => goToPage(p)}
                   className={[
                     "h-2.5 w-2.5 rounded-full transition",
-                    isActive
-                      ? "bg-neutral-900"
-                      : "bg-neutral-300 hover:bg-neutral-400",
+                    isActive ? "bg-neutral-900" : "bg-neutral-300 hover:bg-neutral-400",
                   ].join(" ")}
-                  aria-label={`Go to slide ${p + 1}`}
+                  aria-label={`Go to position ${p + 1}`}
                 />
               );
             })}

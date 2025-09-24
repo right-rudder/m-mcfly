@@ -23,7 +23,7 @@ const instructor = {
   name: "Marty McFly",
   role: "Certified Flight Instructor (CFI/CFII)",
   headshot: "/src/assets/mcfly-education-marty-headshot-selfie.webp",
-  bio: `Marty is a people‑first instructor who blends disciplined airmanship with an easygoing, hands‑on style. He builds confidence fast by tailoring each lesson to the pilot in front of him—meeting you where you are, then stretching you just enough to grow. Students appreciate his clear briefs, structured debriefs, and the way he translates complex topics into practical, cockpit‑ready skills.`,
+  bio: `Marty is a people‑first instructor who blends disciplined airmanship with an easygoing, hands‑on style. He builds confidence fast by tailoring each lesson to the pilot in front of him, meeting you where you are, then stretching you just enough to grow. Students appreciate his clear briefs, structured debriefs, and the way he translates complex topics into practical, cockpit‑ready skills.`,
   bullets: [
     "Personalized 1:1 coaching and scenario‑based training",
     "Safety‑first mindset: clear standards, conservative decision‑making",
@@ -43,7 +43,7 @@ const cta = {
   title: "Chasing dreams to the skies",
   image: "/src/assets/mcfly-education-marty-w-plane.webp",
   imageAlt: "Marty McFly with his plane",
-  text: "Marty first caught the aviation bug at 13 during a summer camp; in his early twenties he rediscovered flying and committed to professional training. He launched his Instagram to document CFI checkride prep, invite constructive peer review, and share practical insights—cultivating a welcoming community where newcomers can learn faster, ask candid questions, and start their journey with confidence.",
+  text: "Marty first caught the aviation bug at 13 during a summer camp; in his early twenties he rediscovered flying and committed to professional training. He launched his Instagram to document CFI checkride prep, invite constructive peer review, and share practical insights, cultivating a welcoming community where newcomers can learn faster, ask candid questions, and start their journey with confidence.",
   primary: { label: "Chase your dreams with Us", href: "/about#enroll" },
 };
 
@@ -57,15 +57,15 @@ const approach = {
       k: "01",
       title: "Discovery & Baseline",
       text: "We clarify your goals, review prior experience, and fly a short baseline to map strengths and gaps.",
-      image: "/src/assets/marty-mcfly-student-handshake.jpg",
+      image: "/src/assets/marty-marino-flight-training-mcfly-education-cable-airport.webp",
       imageAlt: "Marty McFly with his student",
       href: "#",
     },
     {
       k: "02",
       title: "Custom Game Plan",
-      text: "You get a tailored lesson map—ground + flight + chair flying—so you always know what’s next.",
-      image: "/src/assets/marty-mcfly-student-handshake.jpg",
+      text: "You get a tailored lesson map, ground + flight + chair flying, so you always know what’s next.",
+      image: "/src/assets/custom-gameplan-flying-lessons-cable-airport.webp",
       imageAlt: "Marty McFly with his student",
       href: "#",
     },
@@ -73,7 +73,7 @@ const approach = {
       k: "03",
       title: "Hands‑On Mastery",
       text: "Brief, fly, debrief. Tight feedback loops, scenario‑based lessons, and practical decision‑making.",
-      image: "/src/assets/marty-mcfly-student-handshake.jpg",
+      image: "/src/assets/mcfly-education-flight-school-student.webp",
       imageAlt: "Marty McFly with his student",
       href: "#",
     },
@@ -81,7 +81,7 @@ const approach = {
       k: "04",
       title: "Confident Checkride‑Ready",
       text: "We polish weak areas and run realistic mock‑rides so the real thing feels familiar.",
-      image: "/src/assets/marty-mcfly-student-handshake.jpg",
+      image: "/src/assets/mcfly-education-marty-with-student-pass-checkride-cropped.webp",
       imageAlt: "Marty McFly with his student",
       href: "#",
     },
@@ -94,11 +94,11 @@ const values = {
   items: [
     {
       title: "Community Service Mindset",
-      text: "We serve students and the aviation community first—mentoring, sharing resources, and uplifting new pilots.",
+      text: "We serve students and the aviation community first, mentoring, sharing resources, and uplifting new pilots.",
     },
     {
       title: "Safety Back Home",
-      text: "Our mission is simple: everyone gets involved and returns home to their families—every flight, every time.",
+      text: "Our mission is simple: everyone gets involved and returns home to their families, every flight, every time.",
     },
     {
       title: "Clear Structure, Human Touch",
@@ -126,7 +126,7 @@ const values = {
     <AboutMarty content={instructor} />
   </section>
 
-  <section class="bg-black px-12 py-14 text-white">
+  <section class="relative bg-black px-12 py-14 text-white">
     <div class="flex flex-col items-center py-12 text-center sm:py-16">
       <div class="mb-8">
         {
@@ -168,7 +168,7 @@ const values = {
     </div>
   </section>
 
-  <section class="bg-primary-500 px-18 py-24 sm:py-32">
+  <section class="bg-primary-500 md:px-18 py-24 sm:py-32">
     <div class="mx-auto max-w-2xl px-6 lg:max-w-7xl lg:px-8">
       {/* Eyebrow + Title */}
       <p
@@ -226,7 +226,7 @@ const values = {
                     <ImageComp
                       src={imgSrc}
                       alt={imgAlt}
-                      classes="h-80 w-full object-cover object-top"
+                      classes="h-80 w-full object-cover object-center"
                     />
                   ) : (
                     <div class="h-80 w-full bg-gradient-to-br from-gray-100 to-gray-200" />

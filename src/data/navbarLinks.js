@@ -1,7 +1,6 @@
 export const navbarLinks = [
   {
     name: "First Time Flying?",
-    link: "/first-time-pilots",
     submenu: [
       {
         name: "First Time Flying?",
@@ -15,7 +14,6 @@ export const navbarLinks = [
   },
   {
     name: "Pilot Training",
-    link: "/trainings",
     submenu: [
       {
         name: "All Trainings",
@@ -41,7 +39,6 @@ export const navbarLinks = [
   },
   {
     name: "About Us",
-    link: "/about",
     submenu: [
       {
         name: "Our Story",

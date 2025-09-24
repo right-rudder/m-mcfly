@@ -5,7 +5,7 @@ import { BiSolidPlaneAlt } from "react-icons/bi";
 const { content } = Astro.props;
 ---
 
-<div class="relative h-[90vh] bg-gradient-to-b from-accent-950 to-black">
+<div class="relative md:h-[90vh] bg-gradient-to-b from-accent-950 to-black">
   <!-- Mobile: image first, text below (no overlap) -->
   <div class="overflow-hidden md:hidden">
     <ImageComp
@@ -16,7 +16,7 @@ const { content } = Astro.props;
   </div>
 
   <!-- Desktop: image as background -->
-  <div class="absolute inset-0 overflow-hidden md:block p-4 rounded-3xl">
+  <div class="absolute hidden inset-0 overflow-hidden md:block p-4 rounded-3xl">
     <ImageComp
       src={content.headshot}
       alt=""
@@ -29,11 +29,11 @@ const { content } = Astro.props;
     class="relative z-10 md:px-8 md:py-12 text-white md:mt-0 md:flex md:min-h-[28rem] md:items-center"
   >
     <div
-      class="md:bg-accent-800/70 md:ring-accent-200/30 md:rounded-2xl px-6 py-6 shadow-lg md:ring-1 md:backdrop-blur-md sm:px-8 sm:py-8 md:ml-[55%] md:max-w-lg bg-accent-900 px-4 py-8"
+      class="md:bg-accent-800/70 md:ring-accent-200/30 md:rounded-2xl shadow-lg md:ring-1 md:backdrop-blur-md sm:px-8 sm:py-8 md:ml-[55%] md:max-w-lg bg-accent-900 px-4 py-8"
     >
       {
         content.role && (
-          <p class="eyebrow text-primary-200/80 mb-3 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-[11px] tracking-widest uppercase">
+          <p class="eyebrow text-primary-200/80 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 text-[11px] tracking-widest uppercase">
             <span class="size-1.5 rounded-full bg-yellow-400/90" />
             {content.role}
           </p>

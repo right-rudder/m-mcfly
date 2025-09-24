@@ -1,11 +1,10 @@
 ---
 import ImageComp from "./ImageComp.astro";
 
-
 const {
   title = "Our Training Aircraft",
   eyebrow = "Fleet Highlights",
-  blurb = "Reliable, forgiving, and perfectly suited for professional training. These aircraft help new pilots learn faster with hands-on control and rock-solid safety—aligned with McFly Education’s people-first approach.",
+  blurb = "Reliable, forgiving, and perfectly suited for professional training. These aircraft help new pilots learn faster with hands-on control and rock-solid safety, aligned with McFly Education’s people-first approach.",
   models = [],
 } = Astro.props;
 
@@ -24,7 +23,7 @@ const defaults = [
     ],
     highlights: [
       "High-wing for better downward visibility & stable flare.",
-      "Docile stall characteristics—ideal for fundamentals.",
+      "Docile stall characteristics, ideal for fundamentals.",
       "Rugged fixed gear and predictable ground handling.",
     ],
     trainingBenefits: [
@@ -47,12 +46,12 @@ const defaults = [
     ],
     highlights: [
       "Low-wing improves ground effect & sight picture variety.",
-      "Stable IFR platform—tracks well under the hood.",
+      "Stable IFR platform, tracks well under the hood.",
       "Wide doors & comfortable seating for long lessons.",
     ],
     trainingBenefits: [
       "Excellent for cross-country & Instrument training.",
-      "Complementary to C172—broadens handling experience.",
+      "Complementary to C172, broadens handling experience.",
       "Preps you for a wider range of rental fleets.",
     ],
   },
@@ -60,28 +59,28 @@ const defaults = [
 
 const fleet = models.length ? models : defaults;
 ---
-    <section class="relative bg-accent-950 text-white">
-    <div class="mx-auto max-w-6xl px-4 py-16 lg:py-20">
-      <!-- Header -->
-      <div class="mx-auto max-w-3xl text-center">
-        <p
-          class="eyebrow inline-flex items-center gap-2 px-3 py-1 text-[11px] tracking-widest uppercase"
-        >
-          <span class="size-1.5 rounded-full bg-yellow-400/90"></span>
-          {eyebrow}
-          <span class="size-1.5 rounded-full bg-yellow-400/90"></span>
-        </p>
-        <h2 class="text-3xl sm:text-4xl font-bold tracking-tight">
-          {title}
-        </h2>
-        <p class="mt-4 text-base/7 text-white/70">
-          {blurb}
-        </p>
-      </div>
 
-      <!-- Cards -->
-      <div class="mt-10 flex flex-col gap-8 sm:gap-10 md:gap-12 lg:gap-16">
-        {fleet.map((a: {
+<section class="relative bg-accent-950 text-white">
+  <div class="mx-auto max-w-6xl px-4 py-14 sm:py-16 lg:py-20">
+    <!-- Header -->
+    <div class="mx-auto max-w-3xl text-center">
+      <p class="eyebrow inline-flex items-center gap-2 px-3 py-1 text-[11px] tracking-widest uppercase">
+        <span class="size-1.5 rounded-full bg-yellow-400/90"></span>
+        {eyebrow}
+        <span class="size-1.5 rounded-full bg-yellow-400/90"></span>
+      </p>
+      <h2 class="font-bold tracking-tight text-[clamp(24px,4.5vw,40px)]">
+        {title}
+      </h2>
+      <p class="mt-3 text-[15px]/7 text-white/70 sm:text-base">
+        {blurb}
+      </p>
+    </div>
+
+    <!-- Cards -->
+    <div class="mt-8 sm:mt-10 flex flex-col gap-6 sm:gap-8 md:gap-10 lg:gap-12">
+      {
+        fleet.map((a: {
           name: string;
           image: string;
           overview: string;
@@ -90,79 +89,99 @@ const fleet = models.length ? models : defaults;
           trainingBenefits: string[];
         }, i: number) => (
           <article
-        class="group rounded-3xl bg-accent-600/50 ring-1 ring-white/5 p-5 sm:p-6 lg:p-7 shadow/[0_0_0_1px_rgba(0,0,0,0.02)] transition
-          hover:shadow-lg hover:ring-accent-400/30 hover:-translate-y-0.5"
+            class="group rounded-3xl bg-accent-600/50 ring-1 ring-white/5 p-4 sm:p-6 lg:p-7 shadow/[0_0_0_1px_rgba(0,0,0,0.02)] transition hover:shadow-lg hover:ring-accent-400/30 hover:-translate-y-0.5"
           >
-        <div class="grid grid-cols-2 gap-4 sm:gap-6 items-stretch">
-          <!-- Left: Image (flip on second card) -->
-          <div class={`relative w-full h-full min-h-[12rem] sm:min-h-[14rem] lg:min-h-[18rem] overflow-hidden rounded-2xl ring-1 ring-white/10 ${i === 1 ? 'order-2' : ''}`}>
-        <ImageComp
-          src={a.image}
-          alt={`${a.name} on ramp`}
-          classes="h-full w-full object-cover object-center"
-        />
-        <div class="pointer-events-none absolute inset-0 rounded-2xl bg-gradient-to-t from-black/20" />
-          </div>
+            <!-- 1 col on mobile, 2 cols from sm; flip only at lg+ on even cards -->
+            <div class={[
+              "grid items-stretch gap-4 sm:gap-6 lg:gap-8",
+              "grid-cols-1 sm:grid-cols-2",
+              i % 2 === 1 ? "lg:[&>*:first-child]:order-2 lg:[&>*:last-child]:order-1" : "",
+            ].join(" ")}>
+              <!-- Left: Image -->
+              <div class="relative w-full h-min my-auto overflow-hidden rounded-2xl ring-1 ring-white/10">
+                <!-- keep aspect on mobile; grow taller on larger screens -->
+                <div class="">
+                  <ImageComp
+                    src={a.image}
+                    alt={`${a.name} on ramp`}
+                    classes="h-full w-full object-cover object-center"
+                  />
+                </div>
+                <div class="pointer-events-none absolute inset-0 rounded-2xl bg-gradient-to-t from-black/20"></div>
+              </div>
 
-          <!-- Right: Content (flip on second card) -->
-          <div class={`min-w-0 ${i === 1 ? 'order-1' : ''}`}>
-        <h3 class="text-3xl font-semibold tracking-tight text-primary-600">{a.name}</h3>
-        <p class="mt-1 text-lg text-white/70">{a.overview}</p>
+              <!-- Right: Content -->
+              <div class="min-w-0">
+                <h3 class="text-primary-600 font-semibold tracking-tight text-[clamp(20px,3.5vw,30px)]">
+                  {a.name}
+                </h3>
+                <p class="mt-1 text-[15px] text-white/75 sm:text-base">
+                  {a.overview}
+                </p>
 
-        <!-- Specs -->
-        <div class="mt-5 grid grid-cols-2 gap-3 sm:grid-cols-3">
-          {a.quickSpecs.map((s: { label: string; value: string }) => (
-          <div class="rounded-xl bg-primary-500/60 px-3 py-2 ring-1 ring-white/10">
-        <p class="text-[11px] uppercase tracking-wide text-white/60 font-bold">{s.label}</p>
-        <p class="mt-0.5 text-sm font-medium">{s.value}</p>
-          </div>
-          ))}
-        </div>
+                <!-- Specs -->
+                <div class="mt-4 sm:mt-5 grid grid-cols-2 gap-2.5 sm:gap-3 md:grid-cols-3">
+                  {a.quickSpecs.map((s: { label: string; value: string }) => (
+                    <div class="rounded-xl bg-primary-500/60 px-3 py-2 ring-1 ring-white/10">
+                      <p class="text-[10px] sm:text-[11px] uppercase tracking-wide text-white/60 font-bold">
+                        {s.label}
+                      </p>
+                      <p class="mt-0.5 text-sm font-medium">{s.value}</p>
+                    </div>
+                  ))}
+                </div>
 
-        <!-- Lists -->
-        <div class="mt-6 grid gap-6 sm:grid-cols-2">
-          <div>
-          <p class="text-xs font-semibold uppercase tracking-wide text-accent-300">Technical Notes</p>
-          <ul class="mt-2 space-y-2 text-sm text-white/80">
-        {a.highlights.map((h: string) => (
-          <li class="flex gap-2">
-            <span class="mt-[6px] inline-block h-1.5 w-1.5 rounded-full bg-primary-400/80"></span>
-            <span>{h}</span>
-          </li>
-        ))}
-          </ul>
-          </div>
-          <div>
-          <p class="text-xs font-semibold uppercase tracking-wide text-accent-300">Training Benefits</p>
-          <ul class="mt-2 space-y-2 text-sm text-white/80">
-        {a.trainingBenefits.map((b: string) => (
-          <li class="flex gap-2">
-            <span class="mt-[6px] inline-block h-1.5 w-1.5 rounded-full bg-primary-400/80"></span>
-            <span>{b}</span>
-          </li>
-        ))}
-          </ul>
-          </div>
-        </div>
+                <!-- Lists -->
+                <div class="mt-5 sm:mt-6 grid gap-5 sm:gap-6 sm:grid-cols-2">
+                  <div>
+                    <p class="text-[11px] sm:text-xs font-semibold uppercase tracking-wide text-accent-300">
+                      Technical Notes
+                    </p>
+                    <ul class="mt-2 space-y-2 text-[13px] sm:text-sm text-white/80">
+                      {a.highlights.map((h: string) => (
+                        <li class="flex gap-2">
+                          <span class="mt-[6px] inline-block h-1.5 w-1.5 rounded-full bg-primary-400/80"></span>
+                          <span>{h}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                  <div>
+                    <p class="text-[11px] sm:text-xs font-semibold uppercase tracking-wide text-accent-300">
+                      Training Benefits
+                    </p>
+                    <ul class="mt-2 space-y-2 text-[13px] sm:text-sm text-white/80">
+                      {a.trainingBenefits.map((b: string) => (
+                        <li class="flex gap-2">
+                          <span class="mt-[6px] inline-block h-1.5 w-1.5 rounded-full bg-primary-400/80"></span>
+                          <span>{b}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
 
-        <!-- Footer -->
-        <div class="mt-10 flex items-center justify-between">
-          <span class="text-xs text-white/50">Built for safe, confidence-building lessons.</span>
-          <a
-          href="/enrollment"
-          class="btn-primary transition hover:brightness-95"
-          >
-          Start Training
-          </a>
-        </div>
-          </div>
-        </div>
+                <!-- Footer -->
+                <div class="mt-6 sm:mt-8 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+                  <span class="text-xs text-white/50">
+                    Built for safe, confidence-building lessons.
+                  </span>
+                  <a
+                    href="/enrollment"
+                    class="btn-primary w-full sm:w-auto text-center transition hover:brightness-95"
+                  >
+                    Start Training
+                  </a>
+                </div>
+              </div>
+            </div>
           </article>
-        ))}
-      </div>
+        ))
+      }
     </div>
+  </div>
 
-    <!-- Blending -->
-    <div class="pointer-events-none absolute inset-x-0 top-0 h-8 bg-gradient-to-b from-black/20 to-transparent rounded-t-3xl"></div>
-    <div class="pointer-events-none absolute inset-x-0 bottom-0 h-8 bg-gradient-to-t from-black/20 to-transparent rounded-b-3xl"></div>
-  </section>
+  <!-- Blending -->
+  <div class="pointer-events-none absolute inset-x-0 top-0 h-8 bg-gradient-to-b from-black/20 to-transparent rounded-t-3xl"></div>
+  <div class="pointer-events-none absolute inset-x-0 bottom-0 h-8 bg-gradient-to-t from-black/20 to-transparent rounded-b-3xl"></div>
+</section>
