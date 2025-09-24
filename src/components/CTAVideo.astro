@@ -1,0 +1,67 @@
+---
+const {
+  reel = "https://www.instagram.com/reel/C2vNcwAyHC7/",
+  title = "We are here to help you take off!",
+  body = "Take the first step toward becoming a pilot. Book your discovery flight and experience the thrill of flying with McFly Education.",
+  ctaText = "Give Us a Call",
+  ctaHref = "/contact",
+  bullets = [
+    "FAA-certified instructors with personalized training",
+    "Modern aircraft and safety-first operations",
+    "Flexible schedules for busy students",
+    "Discovery flights available 7 days a week",
+    "Financing and payment plans available",
+    "Career guidance from first flight to commercial",
+    "Advanced simulators and engaging ground school",
+    "Supportive community and mentorship",
+  ],
+} = Astro.props;
+
+// make sure reel url ends with /
+const embedUrl = reel.endsWith("/") ? `${reel}embed/` : `${reel}/embed/`;
+---
+
+<section class="bg-accent-950 min-h-[80vh]">
+  <div class="mx-auto px-6 h-full flex items-center">
+    <div
+      class="grid items-stretch gap-10 rounded-3xl bg-white/10 p-8 text-white shadow-lg sm:p-10 lg:grid-cols-2 h-full"
+    >
+      <!-- Left: Reel -->
+      <div class="justify-self-center w-full max-w-[320px] md:max-w-[360px] overflow-hidden rounded-2xl bg-gray-100/40 shadow-lg">
+        <div class="relative aspect-[9/16] w-full">
+          <iframe
+            src={embedUrl}
+            class="absolute inset-0 w-full h-full"
+            allow="autoplay; encrypted-media; picture-in-picture; web-share"
+            allowfullscreen
+            loading="lazy"
+            title="Instagram Reel"></iframe>
+        </div>
+      </div>
+
+      <!-- Right: Content -->
+      <div class="flex flex-col h-full">
+        <h2 class="text-6xl font-bold tracking-tight sm:text-4xl text-primary-500">{title}</h2>
+        <p class="mt-4 text-gray-100 font-medium text-lg">{body}</p>
+
+        <ul class="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-3 text-gray-100" role="list">
+          {bullets.map((item) => (
+            <li class="flex items-start gap-3">
+              <svg class="w-5 h-5 text-primary-500 shrink-0" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 0 1 0 1.414l-7.25 7.25a1 1 0 0 1-1.414 0l-3-3a1 1 0 1 1 1.414-1.414l2.293 2.293 6.543-6.543a1 1 0 0 1 1.414 0z" clip-rule="evenodd" />
+              </svg>
+              <span class="font-medium">{item}</span>
+            </li>
+          ))}
+        </ul>
+
+        <a
+          href={ctaHref}
+          class="mt-auto pt-6 btn-primary w-fit px-6 py-3 text-center font-semibold text-white shadow-md transition hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 self-start"
+        >
+          {ctaText}
+        </a>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,45 +1,29 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import Header from "../components/Header.astro";
+import HeroFull from "../components/HeroFull.astro";
 
 const headerData = {
   eyebrow: "Error 404",
   title: "Page Not Found",
   paragraph:
     "The page you’re looking for isn’t here. Head back to the McFly Education homepage to explore flight training, discovery flights, and enrollment options.",
-  image: "/src/assets/stock/hero-homepage.jpg",
+  image: "/src/assets/stock/error-page.webp",
   alt: "Airplane flying over mountains during sunset",
+  styling: "h-[100vh]",
+  buttons: [
+    {
+      text: "Return Home",
+      href: "/",
+      style: "btn-primary",
+    },
+  ],
 };
 ---
 
 <BaseLayout
   siteTitle="Page Not Found | McFly Education Flight Training, CA"
-  siteDescription="The page you’re looking for isn’t here. Head back to McFly Education’s homepage to explore flight training, discovery flights, and enrollment options in Cables, CA."
+  siteDescription="The page you’re looking for isn’t here. Head back to McFly Education’s homepage to explore flight training, discovery flights, and enrollment options in Upland, CA."
 >
-  <Header data={headerData} slot="hero" />
-  <section class="relative flex justify-center px-5 py-20">
-    <div class="flex flex-col gap-8 text-center">
-      <svg class="text-primary-500 mx-auto size-20" viewBox="0 0 32 32"
-        ><path
-          fill="currentColor"
-          d="M16 2C8.2 2 2 8.2 2 16s6.2 14 14 14s14-6.2 14-14S23.8 2 16 2m5.4 21L16 17.6L10.6 23L9 21.4l5.4-5.4L9 10.6L10.6 9l5.4 5.4L21.4 9l1.6 1.6l-5.4 5.4l5.4 5.4z"
-        ></path></svg
-      >
-      <h1 class="text-4xl font-bold">
-        The page you're looking for doesn't exist.
-      </h1>
-
-      <p>
-        Please verify the URL and try again. Or you can click the button below
-        to return to the home page.
-      </p>
-
-      <div class="flex flex-row justify-center">
-        <a href="/">
-          <div class="btn-primary">Home</div>
-        </a>
-      </div>
-    </div>
-  </section>
+  <HeroFull data={headerData} />
 </BaseLayout>
 ---

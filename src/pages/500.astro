@@ -1,0 +1,28 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import HeroFull from "../components/HeroFull.astro";
+
+const headerData = {
+  eyebrow: "Error 500",
+  title: "Server Error",
+  paragraph:
+    "Something went wrong on our end. Please return to the McFly Education homepage or contact us for help with flight training, discovery flights, and enrollment at Upland, CA.",
+  image: "/src/assets/stock/error-page.webp",
+  alt: "Airplane flying over mountains during sunset",
+  styling: "h-[100vh]",
+  buttons: [
+    {
+      text: "Return Home",
+      href: "/",
+      style: "btn-primary",
+    },
+  ],
+};
+---
+
+<BaseLayout
+  siteTitle="Server Error | McFly Education Flight Training, CA"
+  siteDescription="Something went wrong on our end. Please return to the McFly Education homepage or contact us for help with flight training, discovery flights, and enrollment at Upland, CA."
+>
+  <HeroFull data={headerData} />
+</BaseLayout>

@@ -1,0 +1,41 @@
+---
+import HeroFull from "../components/HeroFull.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import ContactForm from "../components/ContactForm.astro";
+import enrollmentData from "../data/forms/enrollment.js";
+import CTAWhyFly from "../components/CTAWhyFly.astro";
+import InstagramFeed from "../components/InstagramFeed.astro";
+import CTAVideo from "../components/CTAVideo.astro";
+import FAQSection from "../components/react/FAQs.jsx";
+import newcomerFAQs from "../data/newpilotsFAQs.js";
+import CTAIntroFlight from "../components/CTAIntroFlight.astro";
+import TrainingsSlider from "../components/react/TrainingsSlider";
+import { getCollection } from "astro:content";
+import { itemsMap } from "../lib/itemsMap.js";
+
+const trainings = await getCollection("trainings");
+const items = itemsMap(trainings);
+---
+
+<BaseLayout>
+  <HeroFull
+    data={{
+      eyebrow: "First Time Pilots",
+      title: "Your Journey Begins Here",
+      paragraph:
+        "Take the first step towards your pilot's license with our tailored programs for new aviators.",
+      styling: "relative h-[400px] md:h-[600px] lg:h-[700px]",
+      image: "/src/assets/stock/Stock Image Pierre Goiffon.jpg",
+      alt: "New pilot receiving flight instruction in a small aircraft",
+    }}
+  />
+  <CTAVideo />
+
+  <CTAWhyFly />
+  <InstagramFeed />
+  <TrainingsSlider items={items} client:only />
+  <FAQSection faqs={newcomerFAQs} client:visible />
+  <CTAIntroFlight />
+
+  <ContactForm content={enrollmentData} />
+</BaseLayout>
