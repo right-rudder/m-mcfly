@@ -7,7 +7,12 @@
  */
 import contactData from "../data/forms/contact.js";
 
-const { content = contactData, classes = {} } = Astro.props;
+const { content = contactData, classes = {}, webhook, cpApi, accId, campaign, redirect } = Astro.props;
+
+const FORM_WEBHOOK_URL = webhook;
+const PORTAL_API_KEY = cpApi;
+const PORTAL_ACCOUNT_ID = accId;
+
 
 // Types for dynamic form fields
 type FieldOption = {
@@ -161,6 +166,7 @@ const icon = "h-5 w-5 text-yellow-300";
       {content?.subheading && <p class={ui.sub}>{content.subheading}</p>}
 
       <form
+        id="page-form"
         class="mt-8 space-y-6"
         method={content?.form?.method || "post"}
         action={content?.form?.action || "#"}
@@ -352,6 +358,102 @@ const icon = "h-5 w-5 text-yellow-300";
     </div>
   </div>
 </section>
+
+<script define:vars={{ FORM_WEBHOOK_URL, PORTAL_API_KEY, PORTAL_ACCOUNT_ID, campaign, redirect }}>
+  // ADD ANY CUSTOM SCRIPT HERE
+  document.addEventListener("DOMContentLoaded", () => {
+    const form = document.getElementById("page-form");
+    if (!form) {
+      console.error("Form element not found.");
+      return;
+    }
+
+    form.addEventListener("submit", async (event) => {
+      event.preventDefault();
+
+      const formData = new FormData(form);
+      const confirmEmail = formData.get("confirm-email")?.trim();
+      if (confirmEmail) return;
+
+      const webhookURL = FORM_WEBHOOK_URL;
+      const apiKey = PORTAL_API_KEY;
+      const accId = PORTAL_ACCOUNT_ID;
+      const campaign = campaign || "general";
+      const redirectUrl = redirect || "/contact-confirmation";
+
+      const urlEncodedBody = new URLSearchParams(formData).toString();
+      
+      const excludedFields = [
+        "first-name",
+        "last-name",
+        "email",
+        "phone",
+        "confirm-email",
+        "agree-data-collection",
+      ];
+      
+      const metadata = {};
+
+      for (const [key, value] of formData.entries()) {
+        if (!excludedFields.includes(key)) {
+          metadata[key] = value?.trim?.() ?? value;
+        }
+      }
+
+      const jsonBody = {
+        first_name: formData.get("first-name")?.trim() || "",
+        last_name: formData.get("last-name")?.trim() || "",
+        email: formData.get("email")?.trim() || "",
+        phone: formData.get("phone")?.trim() || "",
+        campaign: campaign,
+        account_random_id: accId,
+        metadata: metadata,
+      };
+
+      try {
+        const [ghlRes, portalRes] = await Promise.all([
+          fetch(webhookURL, {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/x-www-form-urlencoded",
+            },
+            body: urlEncodedBody,
+          }),
+          fetch("https://portal.rightruddermarketing.com/api/leads", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              Accept: "application/json",
+              "x-api-key": apiKey,
+            },
+            body: JSON.stringify(jsonBody),
+          }),
+        ]);
+
+        if (ghlRes.ok && portalRes.ok) {
+          window.location.href = redirectUrl;
+        } else {
+          console.error("Submission failed", {
+            ghlStatus: ghlRes.status,
+            portalStatus: portalRes.status,
+          });
+        }
+      } catch (err) {
+        console.error("Submission error:", err);
+      }
+    });
+  });
+</script>
+
+<style>
+  .ohno {
+    @apply hidden;
+  }
+
+  .translate-x-3.5 {
+    transform: translateX(0.875rem); /* Tailwind's 3.5 = 14px */
+  }
+</style>
 
 <!-- Optional: extra safety for dark options on some engines -->
 <style is:global>
