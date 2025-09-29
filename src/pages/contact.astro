@@ -3,6 +3,9 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import HeroSmall from "../components/HeroSmall.astro";
 import ContactForm from "../components/ContactForm.astro";
 
+const CONTACT_US_FORM_WEBHOOK_URL = import.meta.env.CONTACT_WEBHOOK_URL;
+const PORTAL_API_KEY = import.meta.env.PORTAL_API_KEY;
+const PORTAL_ACCOUNT_ID = import.meta.env.ACCOUNT_ID;
 
 const pageData = {
   eyebrow: "Contact Us",
@@ -15,5 +18,11 @@ const pageData = {
 
 <BaseLayout>
   <HeroSmall data={pageData} />
-  <ContactForm />
+  <ContactForm
+    webhook={CONTACT_US_FORM_WEBHOOK_URL}
+    cpApi={PORTAL_API_KEY}
+    accId={PORTAL_ACCOUNT_ID}
+    campaign="contact-us"
+    redirect="/contact-confirmation"
+  />
 </BaseLayout>
