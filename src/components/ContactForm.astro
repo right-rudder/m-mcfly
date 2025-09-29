@@ -53,7 +53,11 @@ const ui = {
     "bg-muted-900/70 text-muted-50 placeholder:text-muted-400 mt-2 rounded-2xl border border-white/10 px-4 py-3 outline-none focus:border-yellow-300/40 focus:ring-2 focus:ring-yellow-300/30",
   label: "text-muted-200 text-sm font-medium",
   button:
-    "btn-primary box-shadow-[0_4px_20px_rgba(255,211,0,0.25)] hover:brightness-95 focus:outline-none focus-visible:ring-2 focus-visible:ring-yellow-300 focus-visible:ring-offset-2",
+    "btn-primary box-shadow-[0_4px_20px_rgba(255,211,0,0.25)] hover:brightness-95 " +
+    "focus:outline-none focus-visible:ring-2 focus-visible:ring-yellow-300 focus-visible:ring-offset-2 " +
+    // disabled look & behavior
+    "disabled:bg-muted-700 disabled:text-muted-300 disabled:shadow-none " +
+    "disabled:hover:brightness-100 disabled:pointer-events-none disabled:cursor-not-allowed",
 
   // NEW: native select styled + dark popup/options
   select:
@@ -170,8 +174,6 @@ const icon = "h-5 w-5 text-yellow-300";
         class="mt-8 space-y-6"
         method={content?.form?.method || "post"}
         action={content?.form?.action || "#"}
-        onsubmit={content?.form?.onsubmit ||
-          "event.preventDefault(); alert('This is a demo form. Hook it up to your endpoint.');"}
       >
         <!-- Dynamic fields -->
         <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
@@ -337,19 +339,18 @@ const icon = "h-5 w-5 text-yellow-300";
           <div class="flex items-start">
             <input
               id="accept"
+              name="accept"
               type="checkbox"
               class="mt-1 h-5 w-5 rounded border-white/20 bg-muted-900/70 text-yellow-400 focus:ring-yellow-300"
               required
-              onclick="document.getElementById('submitBtn').disabled = !this.checked"
             />
             <label for="accept" class="ml-3 text-sm text-muted-200">
               I agree to the
-              <a href="/privacy-policy-and-terms-of-service" target="_blank" class="underline hover:text-yellow-300">Terms & Conditions</a>
+              <a href="/privacy-policy-and-terms-of-service" target="_blank" class="underline hover:text-yellow-300">Terms &amp; Conditions</a>
               and consent to receive SMS communications from McFly Education.
             </label>
           </div>
 
-          <!-- Submit button -->
           <button id="submitBtn" type="submit" class={ui.button} disabled>
             {content?.form?.cta || "Submit"}
           </button>
@@ -360,74 +361,121 @@ const icon = "h-5 w-5 text-yellow-300";
 </section>
 
 <script define:vars={{ FORM_WEBHOOK_URL, PORTAL_API_KEY, PORTAL_ACCOUNT_ID, campaign, redirect }}>
-  // ADD ANY CUSTOM SCRIPT HERE
   document.addEventListener("DOMContentLoaded", () => {
     const form = document.getElementById("page-form");
-    if (!form) {
-      console.error("Form element not found.");
+    const submitBtn = document.getElementById("submitBtn");
+    const accept = document.getElementById("accept");
+
+    if (!form || !submitBtn || !accept) {
+      console.error("Form, submit button, or accept checkbox not found.");
       return;
     }
 
+    const updateDisabled = () => {
+      // Only enable when T&C checked AND form fields meet HTML validation
+      const ok = accept.checked && form.checkValidity();
+      submitBtn.disabled = !ok;
+    };
+
+    // Initialize and keep in sync
+    updateDisabled();
+    accept.addEventListener("change", updateDisabled);
+    form.addEventListener("input", updateDisabled);
+
+    // ---- helpers -----------------------------------------------------------
+    const getFirstNonEmpty = (fd, keys) => {
+      for (const k of keys) {
+        const v = fd.get(k);
+        if (typeof v === "string" && v.trim()) return v.trim();
+      }
+      return "";
+    };
+
+    const normalizePhone = (value) => {
+      if (!value) return "";
+      const cleaned = value.replace(/(?!^\+)[^\d]/g, "");
+      return cleaned === "+" ? "" : cleaned;
+    };
+
+    const toUrlEncoded = (fd) => new URLSearchParams(fd).toString();
+
+    const showFail = (msg) => {
+      console.error(msg);
+      alert("Sorry, we couldn't submit your request. Please try again.");
+    };
+
+    // ---- submission --------------------------------------------------------
     form.addEventListener("submit", async (event) => {
       event.preventDefault();
 
+      // stop if still disabled (extra safety)
+      if (submitBtn.disabled) return;
+
       const formData = new FormData(form);
-      const confirmEmail = formData.get("confirm-email")?.trim();
-      if (confirmEmail) return;
+      const confirmEmail = formData.get("confirm-email")?.trim?.();
+      if (confirmEmail) return; // honeypot
 
       const webhookURL = FORM_WEBHOOK_URL;
-      const apiKey = PORTAL_API_KEY;
-      const accId = PORTAL_ACCOUNT_ID;
-      const campaign = campaign || "general";
-      const redirectUrl = redirect || "/contact-confirmation";
+      const apiKey     = PORTAL_API_KEY;
+      const accId      = PORTAL_ACCOUNT_ID;
+      const campaignName = campaign || "general";
+      const redirectUrl  = redirect || "/contact-confirmation";
 
-      const urlEncodedBody = new URLSearchParams(formData).toString();
-      
-      const excludedFields = [
-        "first-name",
-        "last-name",
-        "email",
-        "phone",
-        "confirm-email",
-        "agree-data-collection",
-      ];
-      
+      if (!webhookURL || !apiKey || !accId) {
+        return showFail("Missing submission configuration (webhook/apiKey/accountId).");
+      }
+
+      const firstName = getFirstNonEmpty(formData, ["first-name","first_name","given-name","fname","first"]);
+      const lastName  = getFirstNonEmpty(formData, ["last-name","last_name","family-name","lname","last"]);
+      const email     = getFirstNonEmpty(formData, ["email","email_address","mail"]);
+      const phoneRaw  = getFirstNonEmpty(formData, ["phone","phone_number","tel","mobile"]);
+      const phone     = normalizePhone(phoneRaw);
+
+      const exclude = new Set([
+        "first-name","first_name","given-name","fname","first",
+        "last-name","last_name","family-name","lname","last",
+        "email","email_address","mail",
+        "phone","phone_number","tel","mobile",
+        "confirm-email"
+      ]);
+
       const metadata = {};
-
       for (const [key, value] of formData.entries()) {
-        if (!excludedFields.includes(key)) {
-          metadata[key] = value?.trim?.() ?? value;
+        if (!exclude.has(key)) {
+          metadata[key] = (typeof value === "string") ? value.trim() : value;
         }
       }
 
+      const urlEncodedBody = toUrlEncoded(formData);
       const jsonBody = {
-        first_name: formData.get("first-name")?.trim() || "",
-        last_name: formData.get("last-name")?.trim() || "",
-        email: formData.get("email")?.trim() || "",
-        phone: formData.get("phone")?.trim() || "",
-        campaign: campaign,
+        first_name: firstName,
+        last_name : lastName,
+        email,
+        phone,
+        campaign : campaignName,
         account_random_id: accId,
-        metadata: metadata,
+        metadata
       };
+
+      // Prevent double-submit
+      submitBtn.disabled = true;
 
       try {
         const [ghlRes, portalRes] = await Promise.all([
           fetch(webhookURL, {
             method: "POST",
-            headers: {
-              "Content-Type": "application/x-www-form-urlencoded",
-            },
-            body: urlEncodedBody,
+            headers: { "Content-Type": "application/x-www-form-urlencoded" },
+            body: urlEncodedBody
           }),
           fetch("https://portal.rightruddermarketing.com/api/leads", {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
-              Accept: "application/json",
-              "x-api-key": apiKey,
+              "Accept": "application/json",
+              "x-api-key": apiKey
             },
-            body: JSON.stringify(jsonBody),
-          }),
+            body: JSON.stringify(jsonBody)
+          })
         ]);
 
         if (ghlRes.ok && portalRes.ok) {
@@ -435,15 +483,20 @@ const icon = "h-5 w-5 text-yellow-300";
         } else {
           console.error("Submission failed", {
             ghlStatus: ghlRes.status,
-            portalStatus: portalRes.status,
+            portalStatus: portalRes.status
           });
+          showFail("Submission failed.");
+          updateDisabled(); // re-enable if the form is valid & checked
         }
       } catch (err) {
         console.error("Submission error:", err);
+        showFail("Network error.");
+        updateDisabled();
       }
     });
   });
 </script>
+
 
 <style>
   .ohno {
