@@ -18,21 +18,65 @@ const discoveryData = {
   form: {
     method: "post",
     action: "/api/intro-flight",
-    onsubmit:
-      "event.preventDefault(); alert('Demo intro flight form, connect to /api/intro-flight');",
     fields: [
       // row 1
-      { id: "fname", label: "First Name", placeholder: "Marty", required: true, type: "text", row: 1 },
-      { id: "lname", label: "Last Name", placeholder: "McFly", required: true, type: "text", row: 1 },
-      // row 2
-      { id: "email", label: "Email", placeholder: "example@yourmail.com", required: true, type: "email", row: 2, inputmode: "email" },
-      { id: "phone", label: "Phone Number", placeholder: "+1 234 567 8910", required: true, type: "tel", row: 2, inputmode: "tel" },
       {
-        id: "preferredDateTime",
-        label: "Preferred Date & Time",
+        id: "first-name",
+        label: "First Name",
+        placeholder: "Marty",
         required: true,
-        type: "datetime-local",
+        type: "text",
+        row: 1,
+      },
+      {
+        id: "last-name",
+        label: "Last Name",
+        placeholder: "McFly",
+        required: true,
+        type: "text",
+        row: 1,
+      },
+      // row 2
+      {
+        id: "email",
+        label: "Email",
+        placeholder: "example@yourmail.com",
+        required: true,
+        type: "email",
+        row: 2,
+        inputmode: "email",
+      },
+      {
+        id: "phone",
+        label: "Phone Number",
+        placeholder: "+1 234 567 8910",
+        required: true,
+        type: "tel",
+        row: 2,
+        inputmode: "tel",
+      },
+      // row 3+
+      // {
+      //   id: "preferredDateTime",
+      //   label: "Preferred Date & Time",
+      //   required: true,
+      //   type: "datetime-local",
+      //   step: 1800,
+      //   row: 3,
+      // },
+      { id: "preferredDate", label: "Preferred Date", required: true, type: "date", row: 3 },
+      {
+        id: "preferredTimePeriod",
+        label: "Preferred Time",
+        required: true,
+        type: "select",
         row: 3,
+        options: [
+          { label: "Select a time period", value: "", disabled: true, selected: true, hidden: true },
+          { label: "Morning (8:00–12:00)",   value: "morning" },
+          { label: "Afternoon (12:00–16:00)", value: "afternoon" },
+          { label: "Evening (16:00–20:00)",   value: "evening" },
+        ],
       },
       {
         id: "notes",
