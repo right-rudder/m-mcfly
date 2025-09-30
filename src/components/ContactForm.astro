@@ -18,6 +18,9 @@ const PORTAL_ACCOUNT_ID = accId;
 type FieldOption = {
   label: string;
   value: string | number;
+  selected?: boolean;
+  disabled?: boolean;
+  hidden?: boolean;
 };
 
 type Field = {
@@ -34,6 +37,9 @@ type Field = {
   options?: FieldOption[];
   colSpan?: number;
   row?: number;
+  step?: number | string;
+  min?: string;
+  max?: string;
 };
 
 const ui = {
@@ -203,6 +209,9 @@ const icon = "h-5 w-5 text-yellow-300";
                       pattern={f.pattern}
                       inputmode={f.inputmode}
                       list={f.datalistId}
+                      step={f.step}
+                      min={f.min}
+                      max={f.max}
                     />
                   ) : null}
                   {f.type === "select" ? (
@@ -213,7 +222,14 @@ const icon = "h-5 w-5 text-yellow-300";
                       class={ui.select}
                     >
                       {(f.options || []).map((o: FieldOption) => (
-                        <option value={o.value}>{o.label}</option>
+                        <option 
+                          value={o.value}
+                          selected={o.selected}
+                          disabled={o.disabled}
+                          hidden={o.hidden}
+                        >
+                          {o.label}
+                        </option>
                       ))}
                     </select>
                   ) : null}
@@ -258,6 +274,9 @@ const icon = "h-5 w-5 text-yellow-300";
                       class={ui.input}
                       pattern={f.pattern}
                       inputmode={f.inputmode}
+                      step={f.step}
+                      min={f.min}
+                      max={f.max}
                     />
                   ) : null}
                   {f.type === "select" ? (
@@ -268,7 +287,14 @@ const icon = "h-5 w-5 text-yellow-300";
                       class={ui.select}
                     >
                       {(f.options || []).map((o: FieldOption) => (
-                        <option value={o.value}>{o.label}</option>
+                        <option 
+                          value={o.value}
+                          selected={o.selected}
+                          disabled={o.disabled}
+                          hidden={o.hidden}
+                        >
+                          {o.label}
+                        </option>
                       ))}
                     </select>
                   ) : null}
@@ -314,7 +340,14 @@ const icon = "h-5 w-5 text-yellow-300";
                     class={ui.select}
                   >
                     {(f.options || []).map((o: FieldOption) => (
-                      <option value={o.value}>{o.label}</option>
+                        <option 
+                          value={o.value}
+                          selected={o.selected}
+                          disabled={o.disabled}
+                          hidden={o.hidden}
+                        >
+                          {o.label}
+                        </option>
                     ))}
                   </select>
                 ) : (
@@ -327,6 +360,9 @@ const icon = "h-5 w-5 text-yellow-300";
                     class={ui.input}
                     pattern={f.pattern}
                     inputmode={f.inputmode}
+                    step={f.step}
+                    min={f.min}
+                    max={f.max}
                   />
                 )}
               </div>
