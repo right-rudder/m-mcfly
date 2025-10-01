@@ -59,7 +59,8 @@ const approach = {
       text: "We clarify your goals, review prior experience, and fly a short baseline to map strengths and gaps.",
       image: "/src/assets/marty-marino-flight-training-mcfly-education-cable-airport.webp",
       imageAlt: "Marty McFly with his student",
-      href: "#",
+      button: "Get a Discovery Flight",
+      href: "/discovery-flight",
     },
     {
       k: "02",
@@ -67,6 +68,7 @@ const approach = {
       text: "You get a tailored lesson map, ground + flight + chair flying, so you always know what’s next.",
       image: "/src/assets/custom-gameplan-flying-lessons-cable-airport.webp",
       imageAlt: "Marty McFly with his student",
+      button: "Get a Discovery Flight",
       href: "#",
     },
     {
@@ -245,7 +247,7 @@ const values = {
                       href={s.href || "#"}
                       class="btn-transparent inline-flex w-fit items-center gap-1 font-semibold text-yellow-400 hover:underline"
                     >
-                      Learn more
+                      {s.button || "Learn More"}
                       <svg
                         viewBox="0 0 24 24"
                         class="size-4"
