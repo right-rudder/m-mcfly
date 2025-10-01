@@ -60,11 +60,7 @@ const ui = {
   label: "text-muted-200 text-sm font-medium",
   button:
     "btn-primary box-shadow-[0_4px_20px_rgba(255,211,0,0.25)] hover:brightness-95 " +
-    "focus:outline-none focus-visible:ring-2 focus-visible:ring-yellow-300 focus-visible:ring-offset-2 " +
-    // disabled look & behavior
-    "disabled:bg-muted-700 disabled:text-muted-300 disabled:shadow-none " +
-    "disabled:hover:brightness-100 disabled:pointer-events-none disabled:cursor-not-allowed",
-
+    "focus:outline-none focus-visible:ring-2 focus-visible:ring-yellow-300 focus-visible:ring-offset-2 ",
   // NEW: native select styled + dark popup/options
   select:
     // base look matching inputs
@@ -552,4 +548,12 @@ const icon = "h-5 w-5 text-yellow-300";
     background-color: #0b0b0b;
     color: #e5e7eb;
   }
+  #submitBtn:disabled {
+    background-color: rgb(63 63 70) !important;  /* ~gray-700 */
+    color: rgb(203 213 225) !important;          /* ~slate-300 */
+    box-shadow: none !important;
+    cursor: not-allowed !important;
+    filter: none !important; /* cancels hover brighten */
+  }
+  #submitBtn:disabled:hover { filter: none !important; }
 </style>
