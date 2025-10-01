@@ -22,11 +22,41 @@ const enrollData = {
       "event.preventDefault(); alert('Demo enrollment form, connect to /api/enroll');",
     fields: [
       // row 1
-      { id: "fname", label: "First Name", placeholder: "Marty", required: true, type: "text", row: 1 },
-      { id: "lname", label: "Last Name", placeholder: "McFly", required: true, type: "text", row: 1 },
+      {
+        id: "first-name",
+        label: "First Name",
+        placeholder: "Marty",
+        required: true,
+        type: "text",
+        row: 1,
+      },
+      {
+        id: "last-name",
+        label: "Last Name",
+        placeholder: "McFly",
+        required: true,
+        type: "text",
+        row: 1,
+      },
       // row 2
-      { id: "email", label: "Email", placeholder: "example@yourmail.com", required: true, type: "email", row: 2, inputmode: "email" },
-      { id: "phone", label: "Phone Number", placeholder: "+1 234 567 8910", required: true, type: "tel", row: 2, inputmode: "tel" },
+      {
+        id: "email",
+        label: "Email",
+        placeholder: "example@yourmail.com",
+        required: true,
+        type: "email",
+        row: 2,
+        inputmode: "email",
+      },
+      {
+        id: "phone",
+        label: "Phone Number",
+        placeholder: "+1 234 567 8910",
+        required: true,
+        type: "tel",
+        row: 2,
+        inputmode: "tel",
+      },
       // row 3
       {
         id: "program",
