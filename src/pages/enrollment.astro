@@ -4,6 +4,10 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import ContactForm from "../components/ContactForm.astro";
 import enrollmentData from "../data/forms/enrollment.js";
 
+const ENROLL_WEBHOOK_URL = import.meta.env.ENROLL_WEBHOOK_URL;
+const PORTAL_API_KEY = import.meta.env.PORTAL_API_KEY;
+const PORTAL_ACCOUNT_ID = import.meta.env.ACCOUNT_ID;
+
 const pageData = {
   eyebrow: "Enrollment",
   title: "Join Our Flight School",
@@ -11,9 +15,18 @@ const pageData = {
   primaryImage: "/src/assets/stock/hero-homepage.jpg",
   primaryAlt: "Airplane flying over mountains during sunset",
 };
+
+const formData = enrollmentData;
 ---
 
 <BaseLayout>
   <HeroSmall data={pageData} />
-  <ContactForm content={enrollmentData} />
+  <ContactForm
+    content={formData}
+    webhook={ENROLL_WEBHOOK_URL}
+    cpApi={PORTAL_API_KEY}
+    accId={PORTAL_ACCOUNT_ID}
+    campaign="enroll-form"
+    redirect="/enrollment-confirmation"
+  />
 </BaseLayout>
