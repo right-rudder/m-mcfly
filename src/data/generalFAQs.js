@@ -53,7 +53,7 @@ const generalFAQs = [
     id: "payments",
     question: "Is financial assistance or a payment plan available?",
     answer: [
-      "We keep it flexible with pay-as-you-go scheduling and modular programs (PPL, Instrument, Commercial, CFI/CFII). We can also point you to third-party financing/scholarship resources commonly used by student pilots.",
+      "We keep it flexible with pay-as-you-go scheduling and modular programs (PPL, Instrument, Commercial, CFI/CFII).",
       "Since every situation is unique, we’ll build a plan that aligns with your budget and timeline, without cutting corners on safety.",
     ],
   },
