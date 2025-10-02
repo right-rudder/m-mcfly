@@ -453,8 +453,14 @@ const icon = "h-5 w-5 text-yellow-300";
       const campaignName = campaign || "general";
       const redirectUrl  = redirect || "/contact-confirmation";
 
-      if (!webhookURL || !apiKey || !accId) {
-        return showFail("Missing submission configuration (webhook/apiKey/accountId).");
+      if (!webhookURL) {
+        return showFail("Missing submission configuration (webhook).");
+      }
+      if (!apiKey) {
+        return showFail("Missing submission configuration (apiKey).");
+      }
+      if (!accId) {
+        return showFail("Missing submission configuration (accountId).");
       }
 
       const firstName = getFirstNonEmpty(formData, ["first-name","first_name","given-name","fname","first"]);
