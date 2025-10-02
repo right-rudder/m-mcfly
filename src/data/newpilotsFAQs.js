@@ -90,7 +90,7 @@ const newcomerFAQs = [
       "We emphasize cockpit organization, real-world radio work, and practical navigation from the start.",
     ],
     bullets: [
-      "Headset checklist and training materials guidance",
+      "Checklist and training materials guidance",
       "Integrated ground + flight lessons for faster learning",
     ],
   },
