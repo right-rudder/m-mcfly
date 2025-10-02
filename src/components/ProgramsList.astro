@@ -18,7 +18,7 @@ const data = {
       },
     },
     {
-      title: "Instrument Flight Rating",
+      title: "Instrument Rating",
       desc: "Master precise navigation in any weather.",
       href: "/trainings/instrument-rating",
       img: {
@@ -27,7 +27,7 @@ const data = {
       },
     },
     {
-      title: "Commercial Pilot License",
+      title: "Commercial License",
       desc: "Advanced skills for professional pilots.",
       href: "/trainings/commercial-pilot",
       img: {
@@ -77,10 +77,11 @@ const data = {
     <!-- Cards -->
     <div class="mt-10 grid gap-6 sm:gap-7 md:gap-8 grid-cols-1 sm:grid-cols-2 xl:grid-cols-4">
       {data.items.map((item) => (
-        <a href={item.href} class="group relative overflow-hidden rounded-[22px] ring-1 ring-white/10 bg-white/5 focus:outline-none focus:ring-2 focus:ring-yellow-400/60 focus:ring-offset-2 focus:ring-offset-[#0b1320]">
+        <a href={item.href} class="group relative overflow-hidden rounded-lg ring-1 ring-white/10 bg-white/5 focus:outline-none focus:ring-2 focus:ring-yellow-400/60 focus:ring-offset-2 focus:ring-offset-[#0b1320]">
           <ImageComp
             src={item.img.src}
             alt={item.img.alt}
+            quality={30}
             classes="h-64 sm:h-72 md:h-80 w-full object-cover transition duration-500 group-hover:scale-[1.03] group-hover:brightness-110 group-hover:contrast-105"
           />
           <!-- top gradient (lightens on hover) -->
@@ -96,7 +97,7 @@ const data = {
           </div>
 
           <!-- text overlay bottom (flex to keep uniform baseline) -->
-          <div class="absolute inset-0 flex flex-col justify-end p-5 sm:p-6">
+          <div class="absolute inset-0 flex flex-col justify-end p-5">
             <h3 class="text-lg sm:text-xl font-extrabold drop-shadow [text-shadow:_0_1px_1px_rgba(0,0,0,.45)] min-h-[28px]">
               <span class="text-yellow-400">{item.title}</span>
             </h3>

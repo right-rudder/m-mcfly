@@ -152,10 +152,10 @@ export default function FAQSection({ faqs = content || [] }) {
                 <div className="mt-4 text-xs opacity-60">
                   Prefer email? Write us at{" "}
                   <a
-                    href="mailto:hello@mcfly.education"
-                    className="underline hover:opacity-100"
+                    href="/contact"
+                    className="underline hover:text-primary-500"
                   >
-                    hello@mcfly.education
+                    our contact form
                   </a>
                   .
                 </div>

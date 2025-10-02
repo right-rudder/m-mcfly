@@ -41,7 +41,7 @@ const generalFAQs = [
     id: "aircraft",
     question: "What types of aircraft or training devices will I use?",
     answer: [
-      "You’ll train in modern, well-maintained single-engine trainers (e.g., Cessna-class aircraft commonly used in U.S. flight schools) and an FAA-approved flight simulator for procedures and instrument practice.",
+      "You’ll train in well-maintained single-engine trainers (e.g., Cessna-class aircraft commonly used in U.S. flight schools) and an FAA-approved flight simulator for procedures and instrument practice.",
     ],
     bullets: [
       "Emphasis on real-world operations and cockpit discipline.",

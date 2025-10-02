@@ -7,12 +7,20 @@
  */
 import contactData from "../data/forms/contact.js";
 
-const { content = contactData, classes = {} } = Astro.props;
+const { content = contactData, classes = {}, webhook, cpApi, accId, campaign, redirect } = Astro.props;
+
+const FORM_WEBHOOK_URL = webhook;
+const PORTAL_API_KEY = cpApi;
+const PORTAL_ACCOUNT_ID = accId;
+
 
 // Types for dynamic form fields
 type FieldOption = {
   label: string;
   value: string | number;
+  selected?: boolean;
+  disabled?: boolean;
+  hidden?: boolean;
 };
 
 type Field = {
@@ -29,6 +37,9 @@ type Field = {
   options?: FieldOption[];
   colSpan?: number;
   row?: number;
+  step?: number | string;
+  min?: string;
+  max?: string;
 };
 
 const ui = {
@@ -48,8 +59,8 @@ const ui = {
     "bg-muted-900/70 text-muted-50 placeholder:text-muted-400 mt-2 rounded-2xl border border-white/10 px-4 py-3 outline-none focus:border-yellow-300/40 focus:ring-2 focus:ring-yellow-300/30",
   label: "text-muted-200 text-sm font-medium",
   button:
-    "btn-primary box-shadow-[0_4px_20px_rgba(255,211,0,0.25)] hover:brightness-95 focus:outline-none focus-visible:ring-2 focus-visible:ring-yellow-300 focus-visible:ring-offset-2",
-
+    "btn-primary box-shadow-[0_4px_20px_rgba(255,211,0,0.25)] hover:brightness-95 " +
+    "focus:outline-none focus-visible:ring-2 focus-visible:ring-yellow-300 focus-visible:ring-offset-2 ",
   // NEW: native select styled + dark popup/options
   select:
     // base look matching inputs
@@ -161,11 +172,10 @@ const icon = "h-5 w-5 text-yellow-300";
       {content?.subheading && <p class={ui.sub}>{content.subheading}</p>}
 
       <form
+        id="page-form"
         class="mt-8 space-y-6"
         method={content?.form?.method || "post"}
         action={content?.form?.action || "#"}
-        onsubmit={content?.form?.onsubmit ||
-          "event.preventDefault(); alert('This is a demo form. Hook it up to your endpoint.');"}
       >
         <!-- Dynamic fields -->
         <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
@@ -195,6 +205,9 @@ const icon = "h-5 w-5 text-yellow-300";
                       pattern={f.pattern}
                       inputmode={f.inputmode}
                       list={f.datalistId}
+                      step={f.step}
+                      min={f.min}
+                      max={f.max}
                     />
                   ) : null}
                   {f.type === "select" ? (
@@ -205,7 +218,14 @@ const icon = "h-5 w-5 text-yellow-300";
                       class={ui.select}
                     >
                       {(f.options || []).map((o: FieldOption) => (
-                        <option value={o.value}>{o.label}</option>
+                        <option 
+                          value={o.value}
+                          selected={o.selected}
+                          disabled={o.disabled}
+                          hidden={o.hidden}
+                        >
+                          {o.label}
+                        </option>
                       ))}
                     </select>
                   ) : null}
@@ -250,6 +270,9 @@ const icon = "h-5 w-5 text-yellow-300";
                       class={ui.input}
                       pattern={f.pattern}
                       inputmode={f.inputmode}
+                      step={f.step}
+                      min={f.min}
+                      max={f.max}
                     />
                   ) : null}
                   {f.type === "select" ? (
@@ -260,7 +283,14 @@ const icon = "h-5 w-5 text-yellow-300";
                       class={ui.select}
                     >
                       {(f.options || []).map((o: FieldOption) => (
-                        <option value={o.value}>{o.label}</option>
+                        <option 
+                          value={o.value}
+                          selected={o.selected}
+                          disabled={o.disabled}
+                          hidden={o.hidden}
+                        >
+                          {o.label}
+                        </option>
                       ))}
                     </select>
                   ) : null}
@@ -306,7 +336,14 @@ const icon = "h-5 w-5 text-yellow-300";
                     class={ui.select}
                   >
                     {(f.options || []).map((o: FieldOption) => (
-                      <option value={o.value}>{o.label}</option>
+                        <option 
+                          value={o.value}
+                          selected={o.selected}
+                          disabled={o.disabled}
+                          hidden={o.hidden}
+                        >
+                          {o.label}
+                        </option>
                     ))}
                   </select>
                 ) : (
@@ -319,6 +356,9 @@ const icon = "h-5 w-5 text-yellow-300";
                     class={ui.input}
                     pattern={f.pattern}
                     inputmode={f.inputmode}
+                    step={f.step}
+                    min={f.min}
+                    max={f.max}
                   />
                 )}
               </div>
@@ -331,19 +371,18 @@ const icon = "h-5 w-5 text-yellow-300";
           <div class="flex items-start">
             <input
               id="accept"
+              name="accept"
               type="checkbox"
               class="mt-1 h-5 w-5 rounded border-white/20 bg-muted-900/70 text-yellow-400 focus:ring-yellow-300"
               required
-              onclick="document.getElementById('submitBtn').disabled = !this.checked"
             />
             <label for="accept" class="ml-3 text-sm text-muted-200">
               I agree to the
-              <a href="/privacy-policy-and-terms-of-service" target="_blank" class="underline hover:text-yellow-300">Terms & Conditions</a>
+              <a href="/privacy-policy-and-terms-of-service" target="_blank" class="underline hover:text-yellow-300">Terms &amp; Conditions</a>
               and consent to receive SMS communications from McFly Education.
             </label>
           </div>
 
-          <!-- Submit button -->
           <button id="submitBtn" type="submit" class={ui.button} disabled>
             {content?.form?.cta || "Submit"}
           </button>
@@ -353,6 +392,154 @@ const icon = "h-5 w-5 text-yellow-300";
   </div>
 </section>
 
+<script define:vars={{ FORM_WEBHOOK_URL, PORTAL_API_KEY, PORTAL_ACCOUNT_ID, campaign, redirect }}>
+  document.addEventListener("DOMContentLoaded", () => {
+    const form = document.getElementById("page-form");
+    const submitBtn = document.getElementById("submitBtn");
+    const accept = document.getElementById("accept");
+
+    if (!form || !submitBtn || !accept) {
+      console.error("Form, submit button, or accept checkbox not found.");
+      return;
+    }
+
+    const updateDisabled = () => {
+      // Only enable when T&C checked AND form fields meet HTML validation
+      const ok = accept.checked && form.checkValidity();
+      submitBtn.disabled = !ok;
+    };
+
+    // Initialize and keep in sync
+    updateDisabled();
+    accept.addEventListener("change", updateDisabled);
+    form.addEventListener("input", updateDisabled);
+
+    // ---- helpers -----------------------------------------------------------
+    const getFirstNonEmpty = (fd, keys) => {
+      for (const k of keys) {
+        const v = fd.get(k);
+        if (typeof v === "string" && v.trim()) return v.trim();
+      }
+      return "";
+    };
+
+    const normalizePhone = (value) => {
+      if (!value) return "";
+      const cleaned = value.replace(/(?!^\+)[^\d]/g, "");
+      return cleaned === "+" ? "" : cleaned;
+    };
+
+    const toUrlEncoded = (fd) => new URLSearchParams(fd).toString();
+
+    const showFail = (msg) => {
+      console.error(msg);
+      alert("Sorry, we couldn't submit your request. Please try again.");
+    };
+
+    // ---- submission --------------------------------------------------------
+    form.addEventListener("submit", async (event) => {
+      event.preventDefault();
+
+      // stop if still disabled (extra safety)
+      if (submitBtn.disabled) return;
+
+      const formData = new FormData(form);
+      const confirmEmail = formData.get("confirm-email")?.trim?.();
+      if (confirmEmail) return; // honeypot
+
+      const webhookURL = FORM_WEBHOOK_URL;
+      const apiKey     = PORTAL_API_KEY;
+      const accId      = PORTAL_ACCOUNT_ID;
+      const campaignName = campaign || "general";
+      const redirectUrl  = redirect || "/contact-confirmation";
+
+      if (!webhookURL || !apiKey || !accId) {
+        return showFail("Missing submission configuration (webhook/apiKey/accountId).");
+      }
+
+      const firstName = getFirstNonEmpty(formData, ["first-name","first_name","given-name","fname","first"]);
+      const lastName  = getFirstNonEmpty(formData, ["last-name","last_name","family-name","lname","last"]);
+      const email     = getFirstNonEmpty(formData, ["email","email_address","mail"]);
+      const phoneRaw  = getFirstNonEmpty(formData, ["phone","phone_number","tel","mobile"]);
+      const phone     = normalizePhone(phoneRaw);
+
+      const exclude = new Set([
+        "first-name","first_name","given-name","fname","first",
+        "last-name","last_name","family-name","lname","last",
+        "email","email_address","mail",
+        "phone","phone_number","tel","mobile",
+        "confirm-email"
+      ]);
+
+      const metadata = {};
+      for (const [key, value] of formData.entries()) {
+        if (!exclude.has(key)) {
+          metadata[key] = (typeof value === "string") ? value.trim() : value;
+        }
+      }
+
+      const urlEncodedBody = toUrlEncoded(formData);
+      const jsonBody = {
+        first_name: firstName,
+        last_name : lastName,
+        email,
+        phone,
+        campaign : campaignName,
+        account_random_id: accId,
+        metadata
+      };
+
+      // Prevent double-submit
+      submitBtn.disabled = true;
+
+      try {
+        const [ghlRes, portalRes] = await Promise.all([
+          fetch(webhookURL, {
+            method: "POST",
+            headers: { "Content-Type": "application/x-www-form-urlencoded" },
+            body: urlEncodedBody
+          }),
+          fetch("https://portal.rightruddermarketing.com/api/leads", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              "Accept": "application/json",
+              "x-api-key": apiKey
+            },
+            body: JSON.stringify(jsonBody)
+          })
+        ]);
+
+        if (ghlRes.ok && portalRes.ok) {
+          window.location.href = redirectUrl;
+        } else {
+          console.error("Submission failed", {
+            ghlStatus: ghlRes.status,
+            portalStatus: portalRes.status
+          });
+          showFail("Submission failed.");
+          updateDisabled(); // re-enable if the form is valid & checked
+        }
+      } catch (err) {
+        console.error("Submission error:", err);
+        showFail("Network error.");
+        updateDisabled();
+      }
+    });
+  });
+</script>
+
+
+<style>
+  .ohno {
+    @apply hidden;
+  }
+
+  .translate-x-3.5 {
+    transform: translateX(0.875rem); /* Tailwind's 3.5 = 14px */
+  }
+</style>
+
 <!-- Optional: extra safety for dark options on some engines -->
 <style is:global>
   /* only affect selects that set color-scheme: dark via the class above */
@@ -361,4 +548,12 @@ const icon = "h-5 w-5 text-yellow-300";
     background-color: #0b0b0b;
     color: #e5e7eb;
   }
+  #submitBtn:disabled {
+    background-color: rgb(63 63 70) !important;  /* ~gray-700 */
+    color: rgb(203 213 225) !important;          /* ~slate-300 */
+    box-shadow: none !important;
+    cursor: not-allowed !important;
+    filter: none !important; /* cancels hover brighten */
+  }
+  #submitBtn:disabled:hover { filter: none !important; }
 </style>

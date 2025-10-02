@@ -3,7 +3,7 @@ const { data } = Astro.props;
 import ImageComp from "./ImageComp.astro";
 
 ---
-<div class={data.styling}>
+<div class={data.styling || "relative h-[100vh] lg:h-[83vh] min-h-fit"}>
   <ImageComp
     src={data.image}
     alt={data.alt}

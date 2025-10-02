@@ -10,11 +10,12 @@ import ContactForm from "../components/ContactForm.astro";
 import TestimonialsCarousel from "../components/react/TestimonialsCarousel.jsx";
 import CTAIntroFlight from "../components/CTAIntroFlight.astro";
 import contactData from "../data/forms/contact.js";
+import InstagramFeed from "../components/InstagramFeed.astro";
 ---
 
 <BaseLayout
   siteTitle="Flying Lessons in Northeast Los Angeles | McFly Education, Cable Airport"
-  siteDescription="Experience personalized flying lessons at Cable Airport with McFly Education. Our flexible scheduling and hands-on approach help you learn faster and build confidence from your very first lesson."
+  siteDescription="Experience personalized flying lessons at Cable Airport in Los Angeles with McFly Education. Our flexible scheduling and hands-on approach help you learn faster and build confidence from your very first lesson."
 >
   <div class="relative min-h-[115vh]">
     <ImageComp
@@ -45,6 +46,7 @@ import contactData from "../data/forms/contact.js";
   <HomePageAbout />
   <ProgramsList />
   <CTAWhyUs />
+  <InstagramFeed />
   <TestimonialsCarousel
     items={[]}
     className="from-accent-950 via-accent-950/80 to-accent-950 bg-gradient-to-b px-5 py-16 text-white md:px-8 md:py-20 lg:px-10 lg:py-24"

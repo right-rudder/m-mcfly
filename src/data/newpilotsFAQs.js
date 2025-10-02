@@ -86,7 +86,7 @@ const newcomerFAQs = [
     id: "aircraft-and-sim",
     question: "What aircraft and tools will I train in?",
     answer: [
-      "You’ll typically fly in modern single-engine trainers (Cessna-class) and use a flight simulator for procedures and instrument practice.",
+      "You’ll typically fly in dependable single-engine trainers (Cessna-class) and have simulations for procedures and instrument practice.",
       "We emphasize cockpit organization, real-world radio work, and practical navigation from the start.",
     ],
     bullets: [
