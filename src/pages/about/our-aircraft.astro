@@ -5,14 +5,28 @@ import AircraftList from "../../components/AircraftList.astro";
 import ContactForm from "../../components/ContactForm.astro";
 import enrollmentData from "../../data/forms/enrollment.js";
 import CTAIntroFlight from "../../components/CTAIntroFlight.astro";
+import Breadcrumb from "../../components/Breadcrumb.astro";
 ---
 
-<BaseLayout>
+<BaseLayout
+  siteTitle="Training Aircraft Fleet | McFly Education Cable Airport"
+  siteDescription="Explore our training aircraft fleet at Cable Airport. Well-maintained, quality aircraft perfect for flight training in Upland, CA. Learn to fly with reliable, safe training planes."
+  siteKeywords="training aircraft, flight school fleet, Cessna training, Cable Airport aircraft, flight training planes Upland, aviation fleet California, flight school airplanes, pilot training aircraft, Cessna 172 training, flight school equipment, McFly Education aircraft"
+>
+  <Breadcrumb
+    items={[
+      { name: "Home", url: "/" },
+      { name: "About", url: "/about" },
+      { name: "Our Aircraft" },
+    ]}
+  />
+
   <HeroFull
     data={{
       eyebrow: "Our Aircraft",
       title: "The best Aircraft for Training",
-      paragraph: "Explore our diverse fleet of training aircraft, each selected for its unique strengths and capabilities.",
+      paragraph:
+        "Explore our diverse fleet of training aircraft, each selected for its unique strengths and capabilities.",
       styling: "relative h-[80vh]",
       image: "/src/assets/stock/aircraft.webp",
       alt: "Two small airplanes parked on a runway",

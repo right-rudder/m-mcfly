@@ -17,10 +17,12 @@ const posts = allPosts
     heroImage: data.heroImage || null,
     tags: data.tags || [],
     author: data.author || "",
-    pubDate:
-      data.pubDate instanceof Date ? data.pubDate.toISOString() : data.pubDate,
+    pubDate: data.pubDate,
   }))
-  .sort((a, b) => new Date(b.pubDate) - new Date(a.pubDate));
+  //sort by pubDate descending
+  .sort((a, b) =>
+    b.pubDate.getTime() - a.pubDate.getTime()
+  );
 
 const featured = posts.filter((p) => p.heroImage).slice(0, 8); // show only posts that have images in the slider
 
@@ -34,7 +36,11 @@ const pageData = {
 };
 ---
 
-<BaseLayout>
+<BaseLayout
+  siteTitle="Flight Training Blog | McFly Education Insights & Tips"
+  siteDescription="Aviation insights, flight training tips, and pilot stories from McFly Education. Learn from experienced CFI/CFII instructors at Cable Airport in Upland, CA."
+  siteKeywords="flight training blog, aviation blog, pilot training tips, flight instructor insights, aviation education, pilot stories, flight school blog, CFI insights, learn to fly tips, aviation articles"
+>
   <HeroSmall data={pageData} />
 
   <div>

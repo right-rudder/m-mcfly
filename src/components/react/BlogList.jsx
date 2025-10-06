@@ -2,26 +2,26 @@ import { useMemo, useState } from "react";
 import ArticleCard from "./ArticleCard.jsx";
 import FilterArticles from "./FilterArticles.jsx";
 
-export default function BlogList({ posts = [] }) {
+export default function BlogList({ posts }) {
   const [query, setQuery] = useState("");
   const [tag, setTag] = useState("All");
   const [visible, setVisible] = useState(12);
 
   const tags = useMemo(() => {
     const set = new Set();
-    posts.forEach(p => (p.tags || []).forEach(t => set.add(t)));
+    posts.forEach((p) => (p.tags || []).forEach((t) => set.add(t)));
     return ["All", ...Array.from(set).sort()];
   }, [posts]);
 
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase();
-    return posts.filter(p => {
+    return posts.filter((p) => {
       const matchesTag = tag === "All" || (p.tags || []).includes(tag);
       const matchesQ =
         !q ||
         p.title?.toLowerCase().includes(q) ||
         p.description?.toLowerCase().includes(q) ||
-        (p.tags || []).some(t => t.toLowerCase().includes(q));
+        (p.tags || []).some((t) => t.toLowerCase().includes(q));
       return matchesTag && matchesQ;
     });
   }, [posts, query, tag]);
@@ -29,7 +29,7 @@ export default function BlogList({ posts = [] }) {
   const toShow = filtered.slice(0, visible);
 
   return (
-    <div className="bg-accent-950 relative isolate -z-0 overflow-hidden text-white p-6 sm:p-10 lg:p-16">
+    <div className="bg-accent-950 relative isolate -z-0 overflow-hidden p-6 text-white sm:p-10 lg:p-16">
       <div class="from-primary-950/50 pointer-events-none absolute inset-0 -z-10 bg-radial-[at_20%_40%] to-transparent to-60%"></div>
 
       <FilterArticles

@@ -71,6 +71,7 @@ const { title, description, image = FallbackImage, keywords } = Astro.props;
 <title>{title}</title>
 <meta name="title" content={title} />
 <meta name="description" content={description} />
+<meta name="keywords" content={keywords} />
 
 <!-- Open Graph / Facebook -->
 <meta property="og:type" content="website" />
@@ -87,112 +88,112 @@ const { title, description, image = FallbackImage, keywords } = Astro.props;
 <meta property="twitter:image" content={new URL(image.src, Astro.url)} />
 
 <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": ["LocalBusiness","EducationalOrganization"],
-  "name": "McFly Education",
-  "description": "Flight training at Cable Airport in Upland, CA. Discovery flights, Private Pilot (PPL), Instrument Rating (IR), Commercial Pilot (CPL), and CFI/CFII — structured, safety-first training with steam-gauge aircraft.",
-  "keywords": "flight training Upland CA, Cable Airport flight school, discovery flight Los Angeles area, private pilot lessons, instrument rating, commercial pilot training, CFI CFII training",
-  "url": "https://mcflyeducation.com/",
-  "image": "https://mcflyeducation.com/images/marty-mcfly-student.jpg",
-  "logo": "https://mcflyeducation.com/images/logo.png",
-  "telephone": "+1 (909) 262-5236",
-  "address": {
-    "@type": "PostalAddress",
-    "streetAddress": "1749 W 13th St",
-    "addressLocality": "Upland",
-    "addressRegion": "CA",
-    "postalCode": "91786",
-    "addressCountry": "US"
-  },
-  "priceRange": "$$",
-  "areaServed": [
-    "Upland, CA",
-    "Claremont, CA",
-    "Rancho Cucamonga, CA",
-    "La Verne, CA",
-    "Chino Hills, CA"
-  ],
-  "hasMap": "https://maps.google.com/?q=1749+W+13th+St,+Upland,+CA+91786",
-  "openingHoursSpecification": [
-    {
-      "@type": "OpeningHoursSpecification",
-      "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
-      "opens": "09:00",
-      "closes": "18:00"
-    },
-    {
-      "@type": "OpeningHoursSpecification",
-      "dayOfWeek": ["Saturday","Sunday"],
-      "opens": "09:00",
-      "closes": "17:00"
-    }
-  ],
-  "makesOffer": [
-    {
-      "@type": "Offer",
-      "price": "Varies",
-      "priceCurrency": "USD",
-      "itemOffered": {
-        "@type": "Service",
-        "serviceType": "Discovery / Intro Flight",
-        "description": "Hands-on intro flight with a certified instructor. Great for first-timers."
-      }
-    },
-    {
-      "@type": "Offer",
-      "price": "Varies",
-      "priceCurrency": "USD",
-      "itemOffered": {
-        "@type": "Service",
-        "serviceType": "Private Pilot License (PPL)",
-        "description": "12–24 weeks, minimum 40 hours. FAA-aligned ground & flight training."
-      }
-    },
-    {
-      "@type": "Offer",
-      "price": "Varies",
-      "priceCurrency": "USD",
-      "itemOffered": {
-        "@type": "Service",
-        "serviceType": "Instrument Rating (IR)",
-        "description": "IFR training focused on procedures, approaches, and decision-making."
-      }
-    },
-    {
-      "@type": "Offer",
-      "price": "Varies",
-      "priceCurrency": "USD",
-      "itemOffered": {
-        "@type": "Service",
-        "serviceType": "Commercial Pilot (CPL)",
-        "description": "Advanced maneuvers and professional standards for commercial privileges."
-      }
-    },
-    {
-      "@type": "Offer",
-      "price": "Varies",
-      "priceCurrency": "USD",
-      "itemOffered": {
-        "@type": "Service",
-        "serviceType": "CFI / CFII",
-        "description": "Instructor training covering FOI, right-seat proficiency, and instrument instruction."
-      }
-    }
-  ],
-  "amenityFeature": [
-    {
-      "@type": "LocationFeatureSpecification",
-      "name": "Training Aircraft",
-      "value": "Cessna 172M (steam gauges)"
-    }
-  ],
-  "sameAs": [],
-  "contactPoint": {
-    "@type": "ContactPoint",
-    "contactType": "customer support",
+  {
+    "@context": "https://schema.org",
+    "@type": ["LocalBusiness", "EducationalOrganization"],
+    "name": "McFly Education",
+    "description": "Flight training at Cable Airport in Upland, CA. Discovery flights, Private Pilot (PPL), Instrument Rating (IR), Commercial Pilot (CPL), and CFI/CFII — structured, safety-first training with steam-gauge aircraft.",
+    "keywords": "flight training Upland CA, Cable Airport flight school, discovery flight Los Angeles area, private pilot lessons, instrument rating, commercial pilot training, CFI CFII training",
+    "url": "https://mcflyeducation.com/",
+    "image": "https://mcflyeducation.com/images/marty-mcfly-student.jpg",
+    "logo": "https://mcflyeducation.com/images/logo.png",
     "telephone": "+1 (909) 262-5236",
-    "areaServed": "US"
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "1749 W 13th St",
+      "addressLocality": "Upland",
+      "addressRegion": "CA",
+      "postalCode": "91786",
+      "addressCountry": "US"
+    },
+    "priceRange": "$$",
+    "areaServed": [
+      "Upland, CA",
+      "Claremont, CA",
+      "Rancho Cucamonga, CA",
+      "La Verne, CA",
+      "Chino Hills, CA"
+    ],
+    "hasMap": "https://maps.google.com/?q=1749+W+13th+St,+Upland,+CA+91786",
+    "openingHoursSpecification": [
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+        "opens": "09:00",
+        "closes": "18:00"
+      },
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Saturday", "Sunday"],
+        "opens": "09:00",
+        "closes": "17:00"
+      }
+    ],
+    "makesOffer": [
+      {
+        "@type": "Offer",
+        "price": "Varies",
+        "priceCurrency": "USD",
+        "itemOffered": {
+          "@type": "Service",
+          "serviceType": "Discovery / Intro Flight",
+          "description": "Hands-on intro flight with a certified instructor. Great for first-timers."
+        }
+      },
+      {
+        "@type": "Offer",
+        "price": "Varies",
+        "priceCurrency": "USD",
+        "itemOffered": {
+          "@type": "Service",
+          "serviceType": "Private Pilot License (PPL)",
+          "description": "12–24 weeks, minimum 40 hours. FAA-aligned ground & flight training."
+        }
+      },
+      {
+        "@type": "Offer",
+        "price": "Varies",
+        "priceCurrency": "USD",
+        "itemOffered": {
+          "@type": "Service",
+          "serviceType": "Instrument Rating (IR)",
+          "description": "IFR training focused on procedures, approaches, and decision-making."
+        }
+      },
+      {
+        "@type": "Offer",
+        "price": "Varies",
+        "priceCurrency": "USD",
+        "itemOffered": {
+          "@type": "Service",
+          "serviceType": "Commercial Pilot (CPL)",
+          "description": "Advanced maneuvers and professional standards for commercial privileges."
+        }
+      },
+      {
+        "@type": "Offer",
+        "price": "Varies",
+        "priceCurrency": "USD",
+        "itemOffered": {
+          "@type": "Service",
+          "serviceType": "CFI / CFII",
+          "description": "Instructor training covering FOI, right-seat proficiency, and instrument instruction."
+        }
+      }
+    ],
+    "amenityFeature": [
+      {
+        "@type": "LocationFeatureSpecification",
+        "name": "Training Aircraft",
+        "value": "Cessna 172M (steam gauges)"
+      }
+    ],
+    "sameAs": [],
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "contactType": "customer support",
+      "telephone": "+1 (909) 262-5236",
+      "areaServed": "US"
+    }
   }
-}
 </script>

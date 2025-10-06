@@ -72,7 +72,7 @@ const Navbar = ({ pathname }) => {
   return (
     <nav className="fixed top-0 z-50 h-0 w-full tracking-wider">
       <div
-        className={`${navBar || openMobile ? "bg-accent-950/80 backdrop-blur-md" : "mt-9"} ${showNavbar ? "-translate-y-28" : ""}`}
+        className={`${navBar || openMobile ? "bg-black/70 backdrop-blur-md" : "mt-9"} ${showNavbar ? "-translate-y-28" : ""}`}
       >
         <div className="mx-auto max-w-[98rem] px-14 py-4">
           <div
@@ -82,7 +82,7 @@ const Navbar = ({ pathname }) => {
             <div className="flex w-[80%] items-center justify-between gap-10">
               <a
                 href="/"
-                className={`${navBar || openMobile ? "" : "w-auto duration-200"}`}
+                className={`${navBar || openMobile ? "" : ""} w-1/6 duration-700`}
               >
                 <img
                   src={logo.src}
@@ -95,7 +95,7 @@ const Navbar = ({ pathname }) => {
                   className={`${navBar || openMobile ? "h-14 w-14 rounded-full object-contain md:h-24 md:w-24" : "h-18 w-18 rounded-full object-contain md:h-32 md:w-32"} duration-300`}
                 ></img>
               </a>
-              <div className="hidden flex-1 gap-10 lg:flex">
+              <div className="hidden w-4/6 flex-1 justify-center gap-10 lg:flex">
                 <ul className="text-accent-50 flex justify-center gap-10 md:text-lg">
                   {navbarLinks.map((item, index) => (
                     <li
@@ -195,7 +195,7 @@ const Navbar = ({ pathname }) => {
             <div className="text-accent-50 hidden w-[20%] justify-center gap-4 lg:flex">
               <a
                 href="/contact"
-                className="btn-transparent bg-transparent! hover:bg-primary-500/20! hover:text-accent-50! flex-1 whitespace-nowrap"
+                className="btn-transparent hover:bg-primary-500/20! hover:text-accent-50! flex-1 bg-transparent! whitespace-nowrap"
               >
                 Get in Touch
               </a>
@@ -289,12 +289,12 @@ const Navbar = ({ pathname }) => {
             fetchPriority="auto"
             width="397"
             height="128"
-            className="h-full w-full object-contain rounded-full"
+            className="h-full w-full rounded-full object-contain"
           ></img>
         </a>
 
         <div
-          className={`absolute top-16 z-0 h-32 w-full bg-gradient-to-l from-transparent via-primary-500 to-transparent duration-300 ${
+          className={`via-primary-500 absolute top-16 z-0 h-32 w-full bg-gradient-to-l from-transparent to-transparent duration-300 ${
             openMobile ? "translate-x-0 delay-300" : "-translate-x-full"
           }`}
         ></div>
@@ -424,7 +424,11 @@ const Navbar = ({ pathname }) => {
           </div>
 
           <div className="mt-2 flex gap-3">
-            <a href={INSTAGRAM_URL} target="_blank">
+            <a
+              href={INSTAGRAM_URL}
+              target="_blank"
+              rel="noopener noreferrer me"
+            >
               <span className="sr-only">Instagram</span>
               <svg
                 className="text-primary-500 size-8"

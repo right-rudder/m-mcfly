@@ -7,13 +7,15 @@ const data = {
   bullets: [
     "One-on-one training with a highly experienced instructor",
     "Comprehensive programs from private pilot to flight instructor",
-    "Hands-on control from your very first lesson.",
-    "Flexible scheduling that adapts to your lifestyle.",
-    "A focus on discipline, persistence, and confidence in every flight.",
+    "Hands-on control from your very first lesson",
+    "Flexible scheduling that adapts to your lifestyle",
+    "A focus on discipline, persistence, and confidence in every flight",
   ],
   blurb: "We equip aspiring pilots with the vision, discipline, and skills needed to excel above the rest in aviation.",
   imageSrc: "/src/assets/mcfly-education-marty-with-student-pass-checkride.jpg",
-  imageAlt: "Cockpit dashboard placeholder",
+  imageAlt: "Flight instructor celebrating student success after checkride",
+  ctaLabel: "Learn About Our Programs",
+  ctaHref: "/trainings",
 };
 
 ---
@@ -79,6 +81,14 @@ const data = {
         <p class="mt-6 text-black font-medium">
           {data.blurb}
         </p>
+
+        <!-- CTA -->
+        <a href={data.ctaHref} class="btn-dark mt-6 w-fit">
+          {data.ctaLabel}
+          <svg viewBox="0 0 24 24" class="size-4" fill="none" stroke="currentColor" stroke-width="1.75">
+            <path d="M5 12h14M13 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </a>
       </div>
     </div>
   </div>

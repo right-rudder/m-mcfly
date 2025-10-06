@@ -12,10 +12,15 @@ import CTAIntroFlight from "../components/CTAIntroFlight.astro";
 import TrainingsSlider from "../components/react/TrainingsSlider";
 import { getCollection } from "astro:content";
 import { itemsMap } from "../lib/itemsMap.js";
+import { createFAQSchema } from "../lib/schema.js";
+import Breadcrumb from "../components/Breadcrumb.astro";
 
 const trainings = await getCollection("trainings");
 
-const priority = (entry) => {
+const priority = (entry: {
+  data: { order?: number; title?: string };
+  slug?: string;
+}) => {
   // allow manual override via frontmatter: `order: 0|1|2|3`
   if (typeof entry.data?.order === "number") return entry.data.order;
 
@@ -23,30 +28,46 @@ const priority = (entry) => {
   const title = (entry.data?.title || "").toLowerCase();
   const text = `${slug} ${title}`;
 
-  if (text.includes("private")) return 0;           // Private Pilot
-  if (text.includes("instrument")) return 1;        // Instrument Rating
-  if (text.includes("commercial")) return 2;        // Commercial Pilot
-  if (
-    /instructor|cfi|cfii|flight[-\s]?instructor/.test(text)
-  ) return 3;                                       // Instructor (CFI/CFII)
+  if (text.includes("private")) return 0; // Private Pilot
+  if (text.includes("instrument")) return 1; // Instrument Rating
+  if (text.includes("commercial")) return 2; // Commercial Pilot
+  if (/instructor|cfi|cfii|flight[-\s]?instructor/.test(text)) return 3; // Instructor (CFI/CFII)
 
   return 99; // anything else to the end
 };
 
-const trainingsSorted = trainings
-  .slice()
-  .sort((a, b) => {
-    const pa = priority(a);
-    const pb = priority(b);
-    if (pa !== pb) return pa - pb;
-    return (a.data?.title || "").localeCompare(b.data?.title || "");
-  });
+const trainingsSorted = trainings.slice().sort((a, b) => {
+  const pa = priority(a);
+  const pb = priority(b);
+  if (pa !== pb) return pa - pb;
+  return (a.data?.title || "").localeCompare(b.data?.title || "");
+});
 
 const items = itemsMap(trainingsSorted);
 
+// Generate FAQ schema
+const faqSchema = createFAQSchema(
+  newcomerFAQs.map((faq) => ({
+    question: faq.question,
+    answer:
+      faq.answer.join(" ") + (faq.bullets ? " " + faq.bullets.join(" ") : ""),
+  }))
+);
 ---
 
-<BaseLayout>
+<BaseLayout
+  siteTitle="First Time Pilots Guide | Learn to Fly at Cable Airport"
+  siteDescription="New to flying? McFly Education welcomes first-time pilots at Cable Airport. Start your aviation journey with beginner-friendly flight training, comprehensive ground school, and personalized instruction in Upland, CA."
+  siteKeywords="first time pilot, learn to fly, beginner flight training, new pilot training, student pilot program, aviation for beginners, first flight lesson, become a pilot, flight training for beginners, zero to pilot, student pilot license, new aviator training, flight school for beginners"
+>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+  </Fragment>
+
+  <Breadcrumb
+    items={[{ name: "Home", url: "/" }, { name: "First Time Pilots" }]}
+  />
+
   <HeroFull
     data={{
       eyebrow: "First Time Pilots",
@@ -54,7 +75,8 @@ const items = itemsMap(trainingsSorted);
       paragraph:
         "Take the first step towards your pilot's license with our tailored programs for new aviators.",
       styling: "",
-      image: "/src/assets/stock/stock-pilot-training-cable-california-los-angeles-flying-lessons.jpg",
+      image:
+        "/src/assets/stock/stock-pilot-training-cable-california-los-angeles-flying-lessons.jpg",
       alt: "New pilot receiving flight instruction in a small aircraft",
     }}
   />

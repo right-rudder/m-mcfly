@@ -4,7 +4,8 @@ import ImageComp from "./ImageComp.astro";
 const data = {
   eyebrow: "About Us",
   title: "A personalized pathway for every student.",
-  quote: "McFly Education is a community built around safety, service, and mentorship. Led by one experienced instructor, Marty Marino, we are dedicated to helping aspiring pilots achieve their dreams with world-class training and unwavering support.",
+  quote:
+    "McFly Education is a community built around safety, service, and mentorship. Led by one experienced instructor, Marty Marino, we are dedicated to helping aspiring pilots achieve their dreams with world-class training and unwavering support.",
   statValue: "37.3K+",
   statLabel: "Followers & Alumni Worldwide",
   body: "From your first flight lesson to earning your pilot's license and beyond, McFly Education is with you every step of the way.",
@@ -52,7 +53,9 @@ const data = {
 
         {/* Stat (narrowed) */}
         <div class="mt-7 flex max-w-md items-center gap-5">
-          <span class="text-6xl font-extrabold text-yellow-400 sm:text-7xl text-shadow-md text-shadow-primary-/40">
+          <span
+            class="text-shadow-primary-/40 text-6xl font-extrabold text-yellow-400 text-shadow-md sm:text-7xl"
+          >
             {data.statValue}
           </span>
           <div class="pb-2">
@@ -74,7 +77,28 @@ const data = {
         </figure>
 
         <p class="mt-6 text-gray-300 md:text-lg/8">
-          {data.body}
+          From your <a
+            href="/first-time-pilots"
+            class="text-yellow-400 underline hover:text-yellow-300"
+            >first flight lesson</a
+          > to earning your <a
+            href="/trainings/private-pilot"
+            class="text-yellow-400 underline hover:text-yellow-300"
+            >pilot's license</a
+          > and beyond, McFly Education is with you every step of the way. Whether
+          you're pursuing an <a
+            href="/trainings/instrument-rating"
+            class="text-yellow-400 underline hover:text-yellow-300"
+            >instrument rating</a
+          > or becoming a <a
+            href="/trainings/flight-instructor"
+            class="text-yellow-400 underline hover:text-yellow-300"
+            >certified flight instructor</a
+          >, we provide personalized training at <a
+            href="/about"
+            class="text-yellow-400 underline hover:text-yellow-300"
+            >Cable Airport</a
+          >.
         </p>
 
         <a href={data.ctaHref} class="btn-transparent mt-5 w-fit">

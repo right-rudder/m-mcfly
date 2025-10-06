@@ -3,6 +3,7 @@ import HeroSmall from "../components/HeroSmall.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import ContactForm from "../components/ContactForm.astro";
 import enrollmentData from "../data/forms/enrollment.js";
+import Breadcrumb from "../components/Breadcrumb.astro";
 
 const ENROLL_WEBHOOK_URL = import.meta.env.ENROLL_WEBHOOK_URL;
 const PORTAL_API_KEY = import.meta.env.PORTAL_API_KEY;
@@ -19,7 +20,13 @@ const pageData = {
 const formData = enrollmentData;
 ---
 
-<BaseLayout>
+<BaseLayout
+  siteTitle="Enroll in Flight Training | McFly Education Cable Airport"
+  siteDescription="Ready to start your pilot journey? Enroll in flight training at McFly Education, Cable Airport. Join our personalized flight school and begin your path to becoming a licensed pilot in Upland, CA."
+  siteKeywords="enroll flight school, join flight training, flight school enrollment, sign up flight lessons, start pilot training, aviation school enrollment, flight training registration, become a pilot, flight school signup, pilot license enrollment, aviation training enrollment"
+>
+  <Breadcrumb items={[{ name: "Home", url: "/" }, { name: "Enrollment" }]} />
+
   <HeroSmall data={pageData} />
   <ContactForm
     content={formData}

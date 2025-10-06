@@ -2,12 +2,11 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { FaArrowLeft } from "react-icons/fa";
 import { FaArrowRight } from "react-icons/fa";
 
-
 export default function TrainingsSlider({
   title = "Your Training Path from zero to Pilot",
   eyebrow = "Our Trainings",
   description = "Explore our comprehensive pilot training programs designed to take you from beginner to certified pilot with confidence and expertise.",
-  items = [],
+  items,
   gapPx = 24,
 }) {
   const wrapRef = useRef(null);
@@ -54,7 +53,10 @@ export default function TrainingsSlider({
       setVisibleCount(newVisible);
 
       const gapsTotal = (newVisible - 1) * gapPx;
-      const newCardW = Math.max(260, Math.floor((w - hPad - gapsTotal) / newVisible));
+      const newCardW = Math.max(
+        260,
+        Math.floor((w - hPad - gapsTotal) / newVisible),
+      );
       setCardW(newCardW);
 
       requestAnimationFrame(() => {
@@ -136,7 +138,9 @@ export default function TrainingsSlider({
       const sl = track.scrollLeft;
       const min = step * CLONES;
       const realPx = sl - min;
-      const realIndex = realLen ? Math.max(0, Math.round(realPx / step)) % realLen : 0;
+      const realIndex = realLen
+        ? Math.max(0, Math.round(realPx / step)) % realLen
+        : 0;
       const page = Math.min(pages - 1, realIndex);
       setActivePage(page);
 
@@ -276,7 +280,9 @@ export default function TrainingsSlider({
                       href={`/trainings/${it.path}`}
                       className="inline-flex w-fit items-center gap-2 self-start rounded-full border border-white/80 bg-white/10 px-3.5 py-2 text-sm font-semibold text-white backdrop-blur transition hover:bg-white/20"
                     >
-                      <span aria-hidden className="text-base leading-none">↗</span>
+                      <span aria-hidden className="text-base leading-none">
+                        ↗
+                      </span>
                       <span>Explore {it.segment}</span>
                     </a>
                   </div>
@@ -286,14 +292,16 @@ export default function TrainingsSlider({
           </div>
 
           {/* Arrows (ensure always above cards) */}
-          <div className="pointer-events-none absolute inset-y-0 left-0 right-0 z-20 flex items-center justify-between">
+          <div className="pointer-events-none absolute inset-y-0 right-0 left-0 z-20 flex items-center justify-between">
             <button
               type="button"
               onClick={prev}
               className="btn-transparent pointer-events-auto ml-[-8px] inline-flex h-11 w-11 items-center justify-center rounded-full border border-neutral-200 shadow-sm backdrop-blur transition hover:bg-white"
               aria-label="Previous"
             >
-              <span className="text-xl"><FaArrowLeft /></span>
+              <span className="text-xl">
+                <FaArrowLeft />
+              </span>
             </button>
             <button
               type="button"
@@ -301,7 +309,9 @@ export default function TrainingsSlider({
               className="btn-transparent pointer-events-auto ml-[-8px] inline-flex h-11 w-11 items-center justify-center rounded-full border border-neutral-200 shadow-sm backdrop-blur transition hover:bg-white"
               aria-label="Next"
             >
-              <span className="text-xl"><FaArrowRight /></span>
+              <span className="text-xl">
+                <FaArrowRight />
+              </span>
             </button>
           </div>
         </div>
@@ -317,7 +327,9 @@ export default function TrainingsSlider({
                   onClick={() => goToPage(p)}
                   className={[
                     "h-2.5 w-2.5 rounded-full transition",
-                    isActive ? "bg-neutral-900" : "bg-neutral-300 hover:bg-neutral-400",
+                    isActive
+                      ? "bg-neutral-900"
+                      : "bg-neutral-300 hover:bg-neutral-400",
                   ].join(" ")}
                   aria-label={`Go to position ${p + 1}`}
                 />

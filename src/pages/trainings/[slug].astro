@@ -3,6 +3,8 @@ import { getCollection } from "astro:content";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import HeroSmall from "../../components/HeroSmall.astro";
 import CTAIntroFlight from "../../components/CTAIntroFlight.astro";
+import { createCourseSchema } from "../../lib/schema.js";
+import Breadcrumb from "../../components/Breadcrumb.astro";
 
 // Build all routes
 export async function getStaticPaths() {
@@ -48,15 +50,75 @@ const assessments = Array.isArray(data.assessments) ? data.assessments : [];
 const entryReqs = Array.isArray(data.entryRequirements)
   ? data.entryRequirements
   : [];
+
+// Generate training-specific keywords based on the program type
+const generateKeywords = (title: string, level: string) => {
+  const baseKeywords =
+    "flight training Cable Airport, aviation training Upland CA, pilot training Los Angeles, McFly Education";
+  const slug = entry.slug.toLowerCase();
+
+  if (slug.includes("private") || title.toLowerCase().includes("private")) {
+    return `private pilot license, PPL training Cable Airport, private pilot lessons, learn to fly private pilot, student pilot training, private pilot certificate, ${baseKeywords}`;
+  } else if (
+    slug.includes("instrument") ||
+    title.toLowerCase().includes("instrument")
+  ) {
+    return `instrument rating, IFR training, instrument flight rules, instrument pilot training, IR certification, instrument rating Los Angeles, ${baseKeywords}`;
+  } else if (
+    slug.includes("commercial") ||
+    title.toLowerCase().includes("commercial")
+  ) {
+    return `commercial pilot license, CPL training, commercial pilot certificate, professional pilot training, commercial aviation training, ${baseKeywords}`;
+  } else if (
+    slug.includes("cfi") ||
+    slug.includes("instructor") ||
+    title.toLowerCase().includes("instructor")
+  ) {
+    return `flight instructor certification, CFI training, CFII certification, flight instructor course, become a flight instructor, instructor rating, ${baseKeywords}`;
+  } else {
+    return `${title} training, ${level} flight training, pilot certification, aviation education, ${baseKeywords}`;
+  }
+};
+
+const trainingKeywords = generateKeywords(data.title, data.level);
+
+// Generate Course schema
+const courseSchema = createCourseSchema({
+  name: data.title,
+  description: data.tagline || data.summary || `${data.title} training program`,
+  teaches: data.structure || [],
+  credential: data.title,
+});
 ---
 
-<BaseLayout>
+<BaseLayout
+  siteTitle={`${data.title} Training | McFly Education Cable Airport`}
+  siteDescription={data.tagline ||
+    `${data.title} flight training at Cable Airport, Upland CA. ${data.level} program with experienced instruction and personalized curriculum.`}
+  siteKeywords={trainingKeywords}
+>
+  <Fragment slot="head">
+    <script
+      type="application/ld+json"
+      set:html={JSON.stringify(courseSchema)}
+    />
+  </Fragment>
+
+  <Breadcrumb
+    items={[
+      { name: "Home", url: "/" },
+      { name: "Training Programs", url: "/trainings" },
+      { name: data.title },
+    ]}
+  />
+
   <!-- HERO -->
   <HeroSmall
     data={{
       title: data.title,
       subtitle: data.level,
-      primaryImage: "/src/assets/stock/flying-lessons-cable-airport-los-angeles-california-pilot-taining.jpg",
+      primaryImage:
+        "/src/assets/stock/flying-lessons-cable-airport-los-angeles-california-pilot-taining.jpg",
       primaryAlt: "Person attending a training session",
     }}
   />
@@ -87,7 +149,7 @@ const entryReqs = Array.isArray(data.entryRequirements)
         >
           <div class="grid gap-6 md:grid-cols-2">
             <div>
-              <p class="text-xl text-primary-300 font-bold">
+              <p class="text-primary-300 text-xl font-bold">
                 Total Program Length:
               </p>
               <h3 class="text-md mt-2 leading-tight font-medium">
@@ -95,7 +157,7 @@ const entryReqs = Array.isArray(data.entryRequirements)
               </h3>
             </div>
             <div>
-              <p class="text-xl text-primary-300 font-bold">
+              <p class="text-primary-300 text-xl font-bold">
                 Total Flight Hours:
               </p>
               <h3 class="text-md mt-2 leading-tight font-medium">
@@ -172,7 +234,7 @@ const entryReqs = Array.isArray(data.entryRequirements)
           {
             benefits.map((b) => (
               <li class="flex items-start gap-3">
-                <span class="mt-1 inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-black text-primary-500">
+                <span class="text-primary-500 mt-1 inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-black">
                   <svg
                     viewBox="0 0 20 20"
                     aria-hidden="true"

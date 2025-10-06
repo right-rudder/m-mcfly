@@ -5,7 +5,11 @@ import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
 import Navbar from "../components/react/Navbar.jsx";
 import Banner from "../components/Banner.astro";
 const { pathname } = Astro.url;
-const { siteTitle, siteDescription, siteImage } = Astro.props;
+const { siteTitle, siteDescription, siteImage, siteKeywords } = Astro.props;
+
+// Default keywords for pages that don't specify them
+const DEFAULT_KEYWORDS =
+  "flight training Upland CA, Cable Airport flight school, discovery flight Los Angeles area, private pilot lessons, instrument rating, commercial pilot training, CFI CFII training";
 ---
 
 <!doctype html>
@@ -15,6 +19,7 @@ const { siteTitle, siteDescription, siteImage } = Astro.props;
       title={siteTitle || SITE_TITLE}
       description={siteDescription || SITE_DESCRIPTION}
       image={siteImage}
+      keywords={siteKeywords || DEFAULT_KEYWORDS}
     />
   </head>
 
