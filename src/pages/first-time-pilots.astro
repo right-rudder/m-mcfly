@@ -13,6 +13,7 @@ import TrainingsSlider from "../components/react/TrainingsSlider";
 import { getCollection } from "astro:content";
 import { itemsMap } from "../lib/itemsMap.js";
 import { createFAQSchema } from "../lib/schema.js";
+import Breadcrumb from "../components/Breadcrumb.astro";
 
 const trainings = await getCollection("trainings");
 
@@ -62,6 +63,10 @@ const faqSchema = createFAQSchema(
   <Fragment slot="head">
     <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
   </Fragment>
+
+  <Breadcrumb
+    items={[{ name: "Home", url: "/" }, { name: "First Time Pilots" }]}
+  />
 
   <HeroFull
     data={{

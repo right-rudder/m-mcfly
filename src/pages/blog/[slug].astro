@@ -2,6 +2,8 @@
 import { getCollection } from "astro:content";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import HeroSmall from "../../components/HeroSmall.astro";
+import Breadcrumb from "../../components/Breadcrumb.astro";
+import { createBlogPostingSchema } from "../../lib/schema.js";
 
 export async function getStaticPaths() {
   const items = await getCollection("blog");
@@ -63,6 +65,21 @@ const heroData = {
 const postKeywords = e.data?.tags?.length
   ? `${e.data.tags.join(", ")}, flight training blog, aviation education, pilot tips, McFly Education, Cable Airport, flight school insights`
   : "flight training blog, aviation education, pilot tips, flight instructor insights, McFly Education, Cable Airport flight school";
+
+// Generate Article schema for blog post
+const articleSchema = createBlogPostingSchema({
+  title: e.data?.title || "Blog Post",
+  description: e.data?.description || "",
+  image: e.data?.heroImage
+    ? `https://mcflyeducation.com/src/assets/stock/${e.data.heroImage}`
+    : "https://mcflyeducation.com/images/hero-homepage.jpg",
+  pubDate: pubDate.toISOString(),
+  updatedDate: e.data?.updatedDate
+    ? new Date(e.data.updatedDate).toISOString()
+    : pubDate.toISOString(),
+  author: e.data?.author || "Marty McFly",
+  url: `https://mcflyeducation.com/blog/${e.slug}/`,
+});
 ---
 
 <!-- keep this page layout-only; your site layout can inject navbar/footer -->
@@ -71,16 +88,24 @@ const postKeywords = e.data?.tags?.length
   siteDescription={e.data?.description || heroData.title}
   siteKeywords={postKeywords}
 >
+  <Fragment slot="head">
+    <script
+      type="application/ld+json"
+      set:html={JSON.stringify(articleSchema)}
+    />
+  </Fragment>
+
+  <Breadcrumb
+    items={[
+      { name: "Home", url: "/" },
+      { name: "Blog", url: "/blog" },
+      { name: e.data?.title || "Post" },
+    ]}
+  />
+
   <HeroSmall data={heroData} />
   <div class="bg-accent-200 pb-20">
     <main class="mx-auto max-w-7xl px-4 py-32">
-      <!-- Breadcrumb (simple) -->
-      <nav aria-label="Breadcrumb" class="mb-6 text-sm text-zinc-600">
-        <a href="/blog" class="hover:underline">Blog</a>
-        <span class="mx-2">/</span>
-        <span class="text-zinc-900">{e.data?.title}</span>
-      </nav>
-
       <!-- Title -->
       <h1 class="text-3xl font-bold tracking-tight sm:text-4xl">
         {e.data?.title}

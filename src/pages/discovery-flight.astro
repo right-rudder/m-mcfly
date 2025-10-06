@@ -4,6 +4,7 @@ import HeroFull from "../components/HeroFull.astro";
 import AboutMarty from "../components/AboutMarty.astro";
 import ContactForm from "../components/ContactForm.astro";
 import discoveryData from "../data/forms/discoveryFlight.js";
+import Breadcrumb from "../components/Breadcrumb.astro";
 
 const DISCOVERY_FLIGHT_WEBHOOK_URL = import.meta.env
   .DISCOVERY_FLIGHT_WEBHOOK_URL;
@@ -30,6 +31,10 @@ const formData = discoveryData;
   siteDescription="Experience the thrill of flight with a discovery flight at Cable Airport. Perfect for beginners and aviation enthusiasts. Take the controls and see if flying is for you with McFly Education in Upland, CA."
   siteKeywords="discovery flight Los Angeles, intro flight Cable Airport, first flight lesson Upland, introductory flight California, discovery flight near me, first time flying lesson, try flying Los Angeles, aviation experience flight, intro to flying LA, beginner flight lesson, aircraft orientation flight, pilot experience flight"
 >
+  <Breadcrumb
+    items={[{ name: "Home", url: "/" }, { name: "Discovery Flight" }]}
+  />
+
   <HeroFull
     data={{
       eyebrow: "Discovery Flight",

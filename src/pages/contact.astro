@@ -2,6 +2,7 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import HeroSmall from "../components/HeroSmall.astro";
 import ContactForm from "../components/ContactForm.astro";
+import Breadcrumb from "../components/Breadcrumb.astro";
 
 const CONTACT_US_FORM_WEBHOOK_URL = import.meta.env.CONTACT_WEBHOOK_URL;
 const PORTAL_API_KEY = import.meta.env.PORTAL_API_KEY;
@@ -21,6 +22,8 @@ const pageData = {
   siteDescription="Get in touch with McFly Education flight school at Cable Airport, Upland, CA. Ask questions about flight training, schedule a discovery flight, or learn about our programs. Call (909) 262-5236 or fill out our contact form."
   siteKeywords="contact flight school, Cable Airport contact, McFly Education contact, flight school inquiries, flight training questions, schedule discovery flight, flight lesson information, aviation school contact, flight instructor contact, Cable Airport flight school phone"
 >
+  <Breadcrumb items={[{ name: "Home", url: "/" }, { name: "Contact" }]} />
+
   <HeroSmall data={pageData} />
   <ContactForm
     webhook={CONTACT_US_FORM_WEBHOOK_URL}

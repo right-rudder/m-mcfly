@@ -72,7 +72,7 @@ const Navbar = ({ pathname }) => {
   return (
     <nav className="fixed top-0 z-50 h-0 w-full tracking-wider">
       <div
-        className={`${navBar || openMobile ? "bg-accent-950/80 backdrop-blur-md" : "mt-9"} ${showNavbar ? "-translate-y-28" : ""}`}
+        className={`${navBar || openMobile ? "bg-black/70 backdrop-blur-md" : "mt-9"} ${showNavbar ? "-translate-y-28" : ""}`}
       >
         <div className="mx-auto max-w-[98rem] px-14 py-4">
           <div
@@ -82,7 +82,7 @@ const Navbar = ({ pathname }) => {
             <div className="flex w-[80%] items-center justify-between gap-10">
               <a
                 href="/"
-                className={`${navBar || openMobile ? "" : "w-auto duration-200"}`}
+                className={`${navBar || openMobile ? "" : ""} w-1/6 duration-700`}
               >
                 <img
                   src={logo.src}
@@ -95,7 +95,7 @@ const Navbar = ({ pathname }) => {
                   className={`${navBar || openMobile ? "h-14 w-14 rounded-full object-contain md:h-24 md:w-24" : "h-18 w-18 rounded-full object-contain md:h-32 md:w-32"} duration-300`}
                 ></img>
               </a>
-              <div className="hidden flex-1 gap-10 lg:flex">
+              <div className="hidden w-4/6 flex-1 justify-center gap-10 lg:flex">
                 <ul className="text-accent-50 flex justify-center gap-10 md:text-lg">
                   {navbarLinks.map((item, index) => (
                     <li

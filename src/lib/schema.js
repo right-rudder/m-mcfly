@@ -306,3 +306,67 @@ export function createWebsiteSchema() {
     },
   };
 }
+
+// Helper function to create AggregateRating schema
+// Use this when you have student reviews/testimonials
+export function createAggregateRatingSchema(reviews) {
+  if (!reviews || reviews.length === 0) {
+    return null;
+  }
+
+  const totalRating = reviews.reduce((sum, review) => sum + review.rating, 0);
+  const averageRating = totalRating / reviews.length;
+
+  return {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "@id": "https://mcflyeducation.com/#organization",
+    aggregateRating: {
+      "@type": "AggregateRating",
+      ratingValue: averageRating.toFixed(1),
+      reviewCount: reviews.length,
+      bestRating: "5",
+      worstRating: "1",
+    },
+    review: reviews.map((review) => ({
+      "@type": "Review",
+      author: {
+        "@type": "Person",
+        name: review.authorName,
+      },
+      datePublished: review.date,
+      reviewBody: review.text,
+      reviewRating: {
+        "@type": "Rating",
+        ratingValue: review.rating,
+        bestRating: "5",
+        worstRating: "1",
+      },
+    })),
+  };
+}
+
+// Helper function to create a single Review schema
+export function createReviewSchema(review) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Review",
+    itemReviewed: {
+      "@type": "LocalBusiness",
+      name: "McFly Education",
+      "@id": "https://mcflyeducation.com/#organization",
+    },
+    author: {
+      "@type": "Person",
+      name: review.authorName,
+    },
+    datePublished: review.date,
+    reviewBody: review.text,
+    reviewRating: {
+      "@type": "Rating",
+      ratingValue: review.rating,
+      bestRating: "5",
+      worstRating: "1",
+    },
+  };
+}
