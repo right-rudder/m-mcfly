@@ -9,13 +9,35 @@ import { getCollection } from "astro:content";
 import { itemsMap } from "../../lib/itemsMap.js";
 import ContactForm from "../../components/ContactForm.astro";
 import enrollmentData from "../../data/forms/enrollment.js";
+import { createFAQSchema } from "../../lib/schema.js";
+import Breadcrumb from "../../components/Breadcrumb.astro";
 
 const trainings = await getCollection("trainings");
 const items = itemsMap(trainings);
 
+// Generate FAQ schema
+const faqSchema = createFAQSchema(
+  generalFAQs.map((faq) => ({
+    question: faq.question,
+    answer:
+      faq.answer.join(" ") + (faq.bullets ? " " + faq.bullets.join(" ") : ""),
+  }))
+);
 ---
 
-<BaseLayout>
+<BaseLayout
+  siteTitle="Flight Training Programs | McFly Education Cable Airport"
+  siteDescription="Comprehensive pilot training programs at Cable Airport: Private Pilot License (PPL), Instrument Rating (IR), Commercial Pilot (CPL), and Flight Instructor (CFI/CFII) training in Upland, CA."
+  siteKeywords="flight training programs, private pilot license, instrument rating, commercial pilot training, CFI CFII training, pilot certification programs, aviation training courses, flight school programs Cable Airport, PPL IR CPL training"
+>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+  </Fragment>
+
+  <Breadcrumb
+    items={[{ name: "Home", url: "/" }, { name: "Training Programs" }]}
+  />
+
   <HeroFull
     data={{
       eyebrow: "Trainings",
@@ -23,7 +45,8 @@ const items = itemsMap(trainings);
       paragraph:
         "Join our comprehensive training programs designed for all levels.",
       styling: "relative h-[400px] md:h-[600px] lg:h-[700px]",
-      image: "/src/assets/stock/flying-lessons-cable-airport-los-angeles-california-pilot-taining.jpg",
+      image:
+        "/src/assets/stock/flying-lessons-cable-airport-los-angeles-california-pilot-taining.jpg",
       alt: "Person attending a training session",
     }}
   />

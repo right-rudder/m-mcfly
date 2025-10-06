@@ -1,9 +1,9 @@
 ---
 const { data } = Astro.props;
 import ImageComp from "./ImageComp.astro";
-
 ---
-<section class="relative h-[100vh] lg:h-[85vh] min-h-fit">
+
+<section class="relative h-[100vh] min-h-fit lg:h-[85vh]">
   <ImageComp
     src={data.image}
     alt={data.alt}
@@ -14,7 +14,9 @@ import ImageComp from "./ImageComp.astro";
   <div
     class="absolute inset-0 flex items-center px-5 text-left text-white backdrop-brightness-50 md:px-10 lg:px-20"
   >
-    <div class="flex translate-y-5 flex-col gap-3 md:w-5/6 xl:w-2/3 lg:gap-6 mt-20 lg:mt-32">
+    <div
+      class="mt-20 flex translate-y-5 flex-col gap-3 md:w-5/6 lg:mt-32 lg:gap-6 xl:w-2/3"
+    >
       <p class="eyebrow font-semibold uppercase lg:text-base">
         {data.eyebrow}
       </p>
@@ -31,12 +33,16 @@ import ImageComp from "./ImageComp.astro";
 
       <div class="mt-4 flex flex-wrap gap-4">
         {
-          data.buttons && data.buttons.map((button) => (
-            <a href={button.href} class={button.style}>
-              {button.text}
-            </a>
-          ))
+          data.buttons &&
+            data.buttons.map(
+              (button: { href: string; style: string; text: string }) => (
+                <a href={button.href} class={button.style}>
+                  {button.text}
+                </a>
+              )
+            )
         }
+      </div>
     </div>
   </div>
-</div>
+</section>

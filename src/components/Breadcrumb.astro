@@ -1,0 +1,43 @@
+---
+import { createBreadcrumbSchema } from "../lib/schema.js";
+
+interface BreadcrumbItem {
+  name: string;
+  url?: string;
+}
+
+interface Props {
+  items: BreadcrumbItem[];
+}
+
+const { items } = Astro.props;
+
+// Generate schema
+const breadcrumbSchema = createBreadcrumbSchema(items);
+---
+
+<!-- Breadcrumb Schema -->
+<script
+  type="application/ld+json"
+  set:html={JSON.stringify(breadcrumbSchema)}
+/>
+
+<!-- Visual Breadcrumb Navigation (optional - can be styled as needed) -->
+<nav aria-label="Breadcrumb" class="hidden">
+  <ol class="flex items-center space-x-2 text-sm">
+    {
+      items.map((item, index) => (
+        <li class="flex items-center">
+          {index > 0 && <span class="mx-2 text-gray-400">/</span>}
+          {item.url ? (
+            <a href={item.url} class="text-blue-600 hover:underline">
+              {item.name}
+            </a>
+          ) : (
+            <span class="text-gray-600">{item.name}</span>
+          )}
+        </li>
+      ))
+    }
+  </ol>
+</nav>
