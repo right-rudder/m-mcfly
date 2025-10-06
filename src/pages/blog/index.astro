@@ -21,7 +21,7 @@ const posts = allPosts
   }))
   //sort by pubDate descending
   .sort((a, b) =>
-    b.pubDate.toTimeString().localeCompare(a.pubDate.toTimeString())
+    b.pubDate.getTime() - a.pubDate.getTime()
   );
 
 const featured = posts.filter((p) => p.heroImage).slice(0, 8); // show only posts that have images in the slider
