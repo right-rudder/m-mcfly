@@ -58,13 +58,22 @@ const heroData = {
   primaryImage: `/src/assets/stock/${e.data?.heroImage}`,
   primaryAlt: e.data?.title || "Blog header image",
 };
+
+// Generate keywords from tags and add base aviation keywords
+const postKeywords = e.data?.tags?.length
+  ? `${e.data.tags.join(", ")}, flight training blog, aviation education, pilot tips, McFly Education, Cable Airport, flight school insights`
+  : "flight training blog, aviation education, pilot tips, flight instructor insights, McFly Education, Cable Airport flight school";
 ---
 
 <!-- keep this page layout-only; your site layout can inject navbar/footer -->
-<BaseLayout>
+<BaseLayout
+  siteTitle={`${e.data?.title} | McFly Education Blog`}
+  siteDescription={e.data?.description || heroData.title}
+  siteKeywords={postKeywords}
+>
   <HeroSmall data={heroData} />
   <div class="bg-accent-200 pb-20">
-    <main class="mx-auto max-w-7xl px-4 py-32 ">
+    <main class="mx-auto max-w-7xl px-4 py-32">
       <!-- Breadcrumb (simple) -->
       <nav aria-label="Breadcrumb" class="mb-6 text-sm text-zinc-600">
         <a href="/blog" class="hover:underline">Blog</a>
@@ -120,22 +129,7 @@ const heroData = {
       <div class="mt-8 grid grid-cols-1 gap-10 lg:grid-cols-[1fr_260px]">
         <!-- Article body -->
         <article
-          class="
-          prose
-          w-full
-          max-w-4xl
-          px-5
-          prose-img:w-full
-          prose-img:shadow-md
-          prose-em:text-center
-          prose-em:mx-auto
-          prose-em:text-muted-800
-          prose-em:text-base
-          prose-p:font-sans
-          prose-h2:text-3xl
-          prose-p:text-xl
-          prose-strong:font-semibold
-          prose-a:text-primary-600"
+          class="prose prose-img:w-full prose-img:shadow-md prose-em:text-center prose-em:mx-auto prose-em:text-muted-800 prose-em:text-base prose-p:font-sans prose-h2:text-3xl prose-p:text-xl prose-strong:font-semibold prose-a:text-primary-600 w-full max-w-4xl px-5"
         >
           <Content />
         </article>
@@ -196,7 +190,9 @@ const heroData = {
                   </div>
                   <div class="p-4">
                     <p class="text-sm text-zinc-500">
-                      {r.pubDate ? new Date(r.pubDate).toLocaleDateString() : ""}
+                      {r.pubDate
+                        ? new Date(r.pubDate).toLocaleDateString()
+                        : ""}
                     </p>
                     <h3 class="mt-1 text-base font-semibold group-hover:underline">
                       {r.title}

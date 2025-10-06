@@ -32,7 +32,11 @@ const data = {
   ],
   social: [
     // { label: "Facebook", href: "#", icon: "facebook" },
-    { label: "Instagram", href: "https://www.instagram.com/1martymcfly/", icon: "instagram" },
+    {
+      label: "Instagram",
+      href: "https://www.instagram.com/1martymcfly/",
+      icon: "instagram",
+    },
     // { label: "YouTube", href: "#", icon: "youtube" },
   ],
 };
@@ -79,7 +83,7 @@ const Year = new Date().getFullYear();
                 name="Call Us"
                 aria-labelledby="Call Us Now"
                 title="Call Us Now"
-                class="cursor-pointer font-semibold text-white text-lg tracking-wide transition hover:underline"
+                class="cursor-pointer text-lg font-semibold tracking-wide text-white transition hover:underline"
                 aria-label="Call telephone Link"
               >
                 {PHONE_NUMBER}</a
@@ -154,7 +158,8 @@ const Year = new Date().getFullYear();
           Service Locations
         </h3>
         <p class="text-muted-200/90 mt-4 max-w-prose">
-          We're based off Cable Airport in Los Angeles California, and proudly serve training across these primary areas. Don’t see yours? <a
+          We're based off Cable Airport in Los Angeles California, and proudly
+          serve training across these primary areas. Don’t see yours? <a
             href="/contact"
             class="underline decoration-yellow-400/70 underline-offset-4 hover:text-white"
             >Contact us</a
@@ -201,6 +206,7 @@ const Year = new Date().getFullYear();
         <a
           href="https://rightruddermarketing.com/"
           target="_blank"
+          rel="noopener noreferrer"
           class="text-bold group flex items-center gap-2 duration-200 hover:text-white/70 hover:underline"
         >
           <ImageComp
@@ -217,6 +223,8 @@ const Year = new Date().getFullYear();
           data.social.map((s) => (
             <a
               href={s.href}
+              target="_blank"
+              rel="noopener noreferrer me"
               aria-label={s.label}
               class="bg-primary-500/80 grid h-10 w-10 place-content-center rounded-full transition hover:bg-white/10"
             >

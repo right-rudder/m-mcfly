@@ -195,7 +195,7 @@ const Navbar = ({ pathname }) => {
             <div className="text-accent-50 hidden w-[20%] justify-center gap-4 lg:flex">
               <a
                 href="/contact"
-                className="btn-transparent bg-transparent! hover:bg-primary-500/20! hover:text-accent-50! flex-1 whitespace-nowrap"
+                className="btn-transparent hover:bg-primary-500/20! hover:text-accent-50! flex-1 bg-transparent! whitespace-nowrap"
               >
                 Get in Touch
               </a>
@@ -289,12 +289,12 @@ const Navbar = ({ pathname }) => {
             fetchPriority="auto"
             width="397"
             height="128"
-            className="h-full w-full object-contain rounded-full"
+            className="h-full w-full rounded-full object-contain"
           ></img>
         </a>
 
         <div
-          className={`absolute top-16 z-0 h-32 w-full bg-gradient-to-l from-transparent via-primary-500 to-transparent duration-300 ${
+          className={`via-primary-500 absolute top-16 z-0 h-32 w-full bg-gradient-to-l from-transparent to-transparent duration-300 ${
             openMobile ? "translate-x-0 delay-300" : "-translate-x-full"
           }`}
         ></div>
@@ -424,7 +424,11 @@ const Navbar = ({ pathname }) => {
           </div>
 
           <div className="mt-2 flex gap-3">
-            <a href={INSTAGRAM_URL} target="_blank">
+            <a
+              href={INSTAGRAM_URL}
+              target="_blank"
+              rel="noopener noreferrer me"
+            >
               <span className="sr-only">Instagram</span>
               <svg
                 className="text-primary-500 size-8"
