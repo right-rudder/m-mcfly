@@ -13,4 +13,3 @@ export const AIRPORT = "Cable Airport (KCCB)";
 
 export const OG_IMAGE = "/McFly-OG.png";
 export const FAVICON = "/logo.png";
-"
