@@ -10,3 +10,7 @@ export const LOCATION = "4868+C3 Upland, California, USA";
 export const ADDRESS_LINE_1 = "1749 W 13th St";
 export const ADDRESS_LINE_2 = "Upland, CA 91786";
 export const AIRPORT = "Cable Airport (KCCB)";
+
+export const OG_IMAGE = "/McFly-OG.png";
+export const FAVICON = "/logo.png";
+"

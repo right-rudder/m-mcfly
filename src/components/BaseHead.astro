@@ -4,7 +4,7 @@
 import "../styles/global.css";
 import type { ImageMetadata } from "astro";
 import FallbackImage from "../assets/mcfly-logo-nav.png";
-import { SITE_TITLE } from "../consts";
+import { SITE_TITLE, OG_IMAGE, FAVICON } from "../consts";
 
 interface Props {
   title: string;
@@ -38,7 +38,7 @@ const { title, description, image = FallbackImage, keywords } = Astro.props;
     Nice to see you here.  Find new student pilots with Right Rudder Marketing.  https://rightruddermarketing.com/contact-us -->
 
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<link rel="icon" type="image/svg+xml" href="/mcfly-logo-nav.png" />
+<link rel="icon" type="image/png" href={FAVICON} />
 <link rel="sitemap" href="/sitemap-index.xml" />
 <link
   rel="alternate"
@@ -49,21 +49,33 @@ const { title, description, image = FallbackImage, keywords } = Astro.props;
 <meta name="generator" content={Astro.generator} />
 
 <!-- Google Tag Manager -->
-<script type="text/javascript" async>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-MWFVD4GJ');</script>
+<script type="text/javascript" async>
+  (function (w, d, s, l, i) {
+    w[l] = w[l] || [];
+    w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
+    var f = d.getElementsByTagName(s)[0],
+      j = d.createElement(s),
+      dl = l != "dataLayer" ? "&l=" + l : "";
+    j.async = true;
+    j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+    f.parentNode.insertBefore(j, f);
+  })(window, document, "script", "dataLayer", "GTM-MWFVD4GJ");
+</script>
 
 <!-- Google Analytics -->
- <!-- Google tag (gtag.js) -->
-<script type="text/javascript" async src="https://www.googletagmanager.com/gtag/js?id=G-XSDPQ7MW36"></script>
+<!-- Google tag (gtag.js) -->
+<script
+  type="text/javascript"
+  async
+  src="https://www.googletagmanager.com/gtag/js?id=G-XSDPQ7MW36"></script>
 <script type="text/javascript">
   window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+  function gtag() {
+    dataLayer.push(arguments);
+  }
+  gtag("js", new Date());
 
-  gtag('config', 'G-XSDPQ7MW36');
+  gtag("config", "G-XSDPQ7MW36");
 </script>
 
 <!-- Font preloads -->
@@ -96,7 +108,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <meta property="og:url" content={Astro.url} />
 <meta property="og:title" content={title} />
 <meta property="og:description" content={description} />
-<meta property="og:image" content={new URL(image.src, Astro.url)} />
+<meta property="og:image" content={new URL(OG_IMAGE, Astro.url)} />
 
 <!-- Twitter -->
 <meta property="twitter:card" content="summary_large_image" />
