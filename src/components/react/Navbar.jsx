@@ -82,7 +82,7 @@ const Navbar = ({ pathname }) => {
             <div className="flex w-[80%] items-center justify-between gap-10">
               <a
                 href="/"
-                className={`${navBar || openMobile ? "" : ""} w-1/6 duration-700`}
+                className={`${navBar || openMobile ? "" : ""} w-auto duration-700`}
               >
                 <img
                   src={logo.src}
