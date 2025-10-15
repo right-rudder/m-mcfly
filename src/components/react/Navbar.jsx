@@ -258,7 +258,7 @@ const Navbar = ({ pathname }) => {
       <div
         className={`${
           openMobile ? "max-h-screen" : "max-h-0 delay-300"
-        } bg-accent-500 absolute top-0 z-50 h-screen w-full overflow-x-hidden duration-300 ease-in-out lg:hidden`}
+        } bg-accent-950 absolute top-0 z-50 h-screen w-full overflow-x-hidden duration-300 ease-in-out lg:hidden`}
         id="mobile-menu"
       >
         <div className="flex justify-end p-6">
@@ -401,7 +401,7 @@ const Navbar = ({ pathname }) => {
           ))}
           <li>
             <a
-              href="/enrollment-form"
+              href="/enrollment"
               className="bg-primary-500 mx-5 mt-4 block rounded-full p-5 px-8 py-4 text-center text-lg font-semibold whitespace-nowrap text-white uppercase duration-300"
             >
               Enroll Now
