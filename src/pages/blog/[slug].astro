@@ -206,7 +206,7 @@ const articleSchema = createBlogPostingSchema({
                   <div class="aspect-[16/9] w-full bg-zinc-100">
                     {r.heroImage ? (
                       <img
-                        src={r.heroImage}
+                        src={`/images/${r.heroImage}`}
                         alt={r.title}
                         class="h-full w-full object-cover"
                         loading="lazy"

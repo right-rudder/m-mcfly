@@ -105,7 +105,7 @@ export const LOCATIONS = [
       lng: "-117.6876",
     },
     notes:
-      "Located at Cable Airport (KCCB) — training in Cessna 172s and Piper PA28s. Serving Upland, Claremont, Rancho Cucamonga, La Verne, and Chino Hills.",
+      "Located at Cable Airport (KCCB) ,  training in Cessna 172s and Piper PA28s. Serving Upland, Claremont, Rancho Cucamonga, La Verne, and Chino Hills.",
   },
 ];
 
