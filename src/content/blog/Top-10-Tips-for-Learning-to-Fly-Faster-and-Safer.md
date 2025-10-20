@@ -7,7 +7,7 @@ tags: ["Training", "Beginner", "Pilot Tips", "Safety"]
 author: "Marty Marino"
 ---
 
-> Faster learning doesn’t mean cutting corners , it means **deliberate, focused practice**.
+> Faster learning doesn’t mean cutting corners, it means **deliberate, focused practice**.
 
 ## Tip 1: Track Your Progress Systematically
 
@@ -53,4 +53,4 @@ Schedule regular flights to maintain skill progression. Consistent practice redu
 
 At McFly Education, we've built our training philosophy around these principles. Our one-on-one instruction and flexible scheduling ensure you can apply these tips consistently, helping you reach checkride readiness **faster while maintaining the highest safety standards**.
 
-_Interested in experiencing our hands-on approach? [Contact us]() to schedule your discovery flight today!_
+_Interested in experiencing our hands-on approach? [Contact us](/contact) to schedule your discovery flight today!_
