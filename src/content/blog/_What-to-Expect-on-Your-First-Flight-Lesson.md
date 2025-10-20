@@ -7,7 +7,7 @@ tags: ["Training", "Beginner", "Discovery Flight"]
 author: "Marty McFly"
 ---
 
-> Your first flight lesson is the moment **learning takes off** — literally.
+> Your first flight lesson is the moment **learning takes off** , literally.
 
 ## Pre-Flight Briefing
 
@@ -31,7 +31,7 @@ author: "Marty McFly"
 
 - Dress comfortably and wear appropriate footwear.
 - Stay **hydrated and rested**.
-- Ask questions — curiosity accelerates learning.
+- Ask questions , curiosity accelerates learning.
 
 ## Ready for takeoff?
 

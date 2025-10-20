@@ -7,7 +7,7 @@ tags: ["Training", "Private Pilot", "PPL", "California"]
 author: "Marty McFly"
 ---
 
-> Becoming a pilot requires more than passion — it requires a **clear roadmap** and deliberate practice.
+> Becoming a pilot requires more than passion , it requires a **clear roadmap** and deliberate practice.
 
 ## Step 1: Understand FAA Requirements
 

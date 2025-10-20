@@ -57,7 +57,7 @@ author: "Marty McFly"
 ## 10. Not Asking Questions
 
 - Fear of appearing inexperienced can prevent learning.
-- Tip: Ask questions freely — instructors **expect curiosity** and respond best when engaged.
+- Tip: Ask questions freely , instructors **expect curiosity** and respond best when engaged.
 
 ## Wrapping Up
 

@@ -7,7 +7,7 @@ export const ORGANIZATION_SCHEMA = {
   "@id": "https://mcflyeducation.com/#organization",
   name: "McFly Education",
   description:
-    "Flight training at Cable Airport in Upland, CA. Discovery flights, Private Pilot (PPL), Instrument Rating (IR), Commercial Pilot (CPL), and CFI/CFII — structured, safety-first training with steam-gauge aircraft.",
+    "Flight training at Cable Airport in Upland, CA. Discovery flights, Private Pilot (PPL), Instrument Rating (IR), Commercial Pilot (CPL), and CFI/CFII ,  structured, safety-first training with steam-gauge aircraft.",
   url: "https://mcflyeducation.com/",
   image: "https://mcflyeducation.com/images/marty-mcfly-student.jpg",
   logo: "https://mcflyeducation.com/logo.png",

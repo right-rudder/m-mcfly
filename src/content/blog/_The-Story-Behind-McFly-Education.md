@@ -33,4 +33,4 @@ author: "Marty McFly"
 
 ## Ready to join the community?
 
-McFly Education isn’t just a school — it’s a **mentorship-driven hub** where aspiring pilots learn, grow, and fly safely.
+McFly Education isn’t just a school , it’s a **mentorship-driven hub** where aspiring pilots learn, grow, and fly safely.
