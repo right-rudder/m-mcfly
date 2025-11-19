@@ -126,7 +126,7 @@ const articleSchema = createBlogPostingSchema({
               <span>•</span>
               <ul class="flex flex-wrap gap-2">
                 {e.data.tags.map((t) => (
-                  <li class="rounded-full border border-zinc-300 px-2 py-0.5 text-xs text-zinc-700">
+                  <li class="rounded-full border border-zinc-200 px-2 py-0.5 text-xs text-zinc-700">
                     {t}
                   </li>
                 ))}
@@ -154,7 +154,7 @@ const articleSchema = createBlogPostingSchema({
       <div class="mt-8 grid grid-cols-1 gap-10 lg:grid-cols-[1fr_260px]">
         <!-- Article body -->
         <article
-          class="prose prose-img:w-full prose-img:shadow-md prose-em:text-center prose-em:mx-auto prose-em:text-muted-800 prose-em:text-base prose-p:font-sans prose-h2:text-3xl prose-p:text-xl prose-strong:font-semibold prose-a:text-primary-600 w-full max-w-4xl px-5"
+          class="prose prose-img:w-full prose-img:shadow-md prose-em:text-center prose-em:mx-auto prose-em:text-muted-800 prose-em:text-base prose-p:font-sans prose-h2:text-3xl prose-p:text-xl prose-strong:font-semibold prose-a:text-primary-600 prose-ul:marker:text-[oklch(21%_0.034_264.665)] prose-li:text-lg w-full max-w-4xl px-5"
         >
           <Content />
         </article>
