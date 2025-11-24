@@ -2,7 +2,7 @@
 title: "10 Essential Safety Tips Every Student Pilot Must Know"
 description: "A comprehensive guide to ensure student pilots prioritize safety while learning to fly."
 pubDate: 2025-10-25
-heroImage: "hero-homepage.jpg"
+heroImage: commercial-pilot-rating-cable-airport-flight-training-mcfly.jpg
 tags: ["Training", "Safety", "Student Pilot", "Flight Tips"]
 author: "Marty McFly"
 ---

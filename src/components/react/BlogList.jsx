@@ -30,7 +30,7 @@ export default function BlogList({ posts }) {
 
   return (
     <div className="bg-accent-950 relative isolate -z-0 overflow-hidden p-6 text-white sm:p-10 lg:p-16">
-      <div class="from-primary-950/50 pointer-events-none absolute inset-0 -z-10 bg-radial-[at_20%_40%] to-transparent to-60%"></div>
+      <div className="from-primary-950/50 pointer-events-none absolute inset-0 -z-10 bg-radial-[at_20%_40%] to-transparent to-60%"></div>
 
       <FilterArticles
         tags={tags}
