@@ -5,6 +5,7 @@ import AboutMarty from "../components/AboutMarty.astro";
 import ContactForm from "../components/ContactForm.astro";
 import discoveryData from "../data/forms/discoveryFlight.js";
 import Breadcrumb from "../components/Breadcrumb.astro";
+import CTAWhyBookADiscoveryFlight from "../components/CTAWhyBookADiscoveryFlight.astro";
 
 const DISCOVERY_FLIGHT_WEBHOOK_URL = import.meta.env
   .DISCOVERY_FLIGHT_WEBHOOK_URL;
@@ -54,4 +55,5 @@ const formData = discoveryData;
     campaign="discovery-flight"
     redirect="/discovery-flight-confirmation"
   />
+  <CTAWhyBookADiscoveryFlight/>
 </BaseLayout>

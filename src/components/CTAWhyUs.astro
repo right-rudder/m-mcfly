@@ -78,14 +78,17 @@ const data = {
         </ul>
 
         <!-- blurb -->
-        <p class="mt-6 text-black font-medium">
+        <p class="mt-3 text-black font-medium">
           {data.blurb}
         </p>
 
         <!-- CTA -->
-        <a href={data.ctaHref} class="btn-dark mt-6 w-fit">
+        <a
+          href={data.ctaHref}
+          class="inline-flex items-center gap-2 mt-3 px-5 py-2 bg-black text-primary-500 font-medium"
+        >
           {data.ctaLabel}
-          <svg viewBox="0 0 24 24" class="size-4" fill="none" stroke="currentColor" stroke-width="1.75">
+          <svg viewBox="0 0 24 24" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="1.75">
             <path d="M5 12h14M13 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round" />
           </svg>
         </a>
