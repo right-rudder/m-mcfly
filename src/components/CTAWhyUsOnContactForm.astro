@@ -1,0 +1,72 @@
+---
+const data = {
+  eyebrow: "REACH OUT TODAY",
+  title: "Training the \nFuture of Flight",
+  bullets: [
+    "One-on-one, individualized flight training guided directly by a highly experienced instructor",
+    "Structured programs covering every phase of your pilot journey, from Private Pilot through advanced instructor certifications",
+    "Hands-on control and active participation in real flight procedures from your very first lesson",
+    "Flexible, student-focused scheduling designed to fit around work, school, and personal commitments",
+    "A consistent emphasis on discipline, persistence, safety, and confidence throughout every stage of training",
+  ],
+  blurb:
+    "We help aspiring pilots develop the discipline, technical skill, and aviation mindset required to excel in a competitive and safety-driven industry. Our training environment combines personalized guidance with real-world operation standards, ensuring that students build confidence, situational awareness, and long-term proficiency. Whether you are beginning your first lesson or preparing for advanced certification, our mission is to provide the clarity, structure, and expert support needed to help you grow into a capable and confident aviation professional.",
+  ctaLabel: "Begin Your Enrollment",
+  ctaHref: "#page-form-section",
+};
+---
+
+<section class="relative isolate overflow-hidden bg-primary-500 text-accent-950">
+  <div class="mx-auto max-w-7xl px-5 md:px-10 lg:px-16 py-16 lg:py-24">
+    <div class="grid items-center gap-10">
+      <div class="max-w-2xl lg:max-w-none">
+        <p class="eyebrow-dark tracking-widest">
+          {data.eyebrow}
+        </p>
+
+        <h2 class="mt-4 text-4xl font-extrabold leading-tight tracking-tight sm:text-5xl">
+          {data.title.split("\n").map((line) => (
+            <>
+              {line}<br />
+            </>
+          ))}
+        </h2>
+
+        <ul class="mt-6 space-y-4 text-base/7">
+          {data.bullets.map((item) => (
+            <li class="flex items-start gap-3 font-medium">
+              <span class="mt-1 inline-flex size-6 shrink-0 items-center justify-center rounded-full bg-black">
+                <svg
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                  class="size-4 text-primary-500"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="3"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M20 6 9 17l-5-5" />
+                </svg>
+              </span>
+              <span class="text-black">{item}</span>
+            </li>
+          ))}
+        </ul>
+
+        <p class="mt-6 text-black font-medium">
+          {data.blurb}
+        </p>
+        <a
+          href={data.ctaHref}
+          class="inline-flex items-center gap-2 mt-6 px-5 py-2 bg-black text-primary-500 font-medium"
+        >
+          {data.ctaLabel}
+          <svg viewBox="0 0 24 24" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="1.75">
+            <path d="M5 12h14M13 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
