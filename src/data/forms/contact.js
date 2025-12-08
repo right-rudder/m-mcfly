@@ -1,4 +1,4 @@
-import { ADDRESS_LINE_1, ADDRESS_LINE_2, PHONE_NUMBER } from "../../consts";
+import { ADDRESS_LINE_1, ADDRESS_LINE_2, LOCATIONS, PHONE_NUMBER } from "../../consts";
 
 const contactData = {
   eyebrow: "Contact Us",
@@ -12,6 +12,7 @@ const contactData = {
     locationLabel: "Our Location",
     addressLine1: ADDRESS_LINE_1,
     addressLine2: ADDRESS_LINE_2,
+    gmapsLink: LOCATIONS[0].gMaps,
     phoneLabel: "Phone Number",
     phoneValue: PHONE_NUMBER,
   },
