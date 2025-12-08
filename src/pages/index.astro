@@ -11,6 +11,7 @@ import TestimonialsCarousel from "../components/react/TestimonialsCarousel.jsx";
 import CTAIntroFlight from "../components/CTAIntroFlight.astro";
 import contactData from "../data/forms/contact.js";
 import InstagramFeed from "../components/InstagramFeed.astro";
+import GoogleMaps from "../components/GoogleMaps.astro";
 ---
 
 <BaseLayout
@@ -44,15 +45,16 @@ import InstagramFeed from "../components/InstagramFeed.astro";
     </div>
     <div class="pointer-events-none absolute inset-0 z-20 bg-black/50"></div>
   </div>
+  <InstagramFeed />
   <HomePageAbout />
   <ProgramsList />
   <CTAWhyUs />
-  <InstagramFeed />
   <TestimonialsCarousel
     items={[]}
     className="from-accent-950 via-accent-950/80 to-accent-950 bg-gradient-to-b px-5 py-16 text-white md:px-8 md:py-20 lg:px-10 lg:py-24"
     client:load
   />
+  <GoogleMaps />
   <ContactForm content={contactData} />
   <CTAIntroFlight />
 </BaseLayout>
