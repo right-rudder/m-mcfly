@@ -2,15 +2,16 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import HeroFull from "../components/HeroFull.astro";
 import AboutMarty from "../components/AboutMarty.astro";
-import ContactForm from "../components/ContactForm.astro";
+// import ContactForm from "../components/ContactForm.astro";
 import discoveryData from "../data/forms/discoveryFlight.js";
 import Breadcrumb from "../components/Breadcrumb.astro";
 import CTAWhyBookADiscoveryFlight from "../components/CTAWhyBookADiscoveryFlight.astro";
+import DiscoveryFlightCRMCalendarForm from "../components/DiscoveryFlightCRMCalendarForm.astro";
 
-const DISCOVERY_FLIGHT_WEBHOOK_URL = import.meta.env
-  .DISCOVERY_FLIGHT_WEBHOOK_URL;
-const PORTAL_API_KEY = import.meta.env.PORTAL_API_KEY;
-const PORTAL_ACCOUNT_ID = import.meta.env.ACCOUNT_ID;
+// const DISCOVERY_FLIGHT_WEBHOOK_URL = import.meta.env
+//   .DISCOVERY_FLIGHT_WEBHOOK_URL;
+// const PORTAL_API_KEY = import.meta.env.PORTAL_API_KEY;
+// const PORTAL_ACCOUNT_ID = import.meta.env.ACCOUNT_ID;
 
 const introFlight = {
   name: "Upland, California",
@@ -47,13 +48,14 @@ const formData = discoveryData;
     }}
   />
   <AboutMarty content={introFlight} />
-  <ContactForm
+  <!-- <ContactForm
     content={formData}
     webhook={DISCOVERY_FLIGHT_WEBHOOK_URL}
     cpApi={PORTAL_API_KEY}
     accId={PORTAL_ACCOUNT_ID}
     campaign="discovery-flight"
     redirect="/discovery-flight-confirmation"
-  />
+  /> -->
+  <DiscoveryFlightCRMCalendarForm />
   <CTAWhyBookADiscoveryFlight/>
 </BaseLayout>
