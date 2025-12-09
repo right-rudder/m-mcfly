@@ -1,7 +1,7 @@
 ---
 import ImageComp from "./ImageComp.astro";
 import { FaInstagram } from "react-icons/fa6";
-import { PHONE_NUMBER, LOCATION } from "../consts";
+import { PHONE_NUMBER, LOCATION, LOCATIONS } from "../consts";
 
 const data = {
   brand: {
@@ -10,6 +10,7 @@ const data = {
       "Experience personalized flying lessons at Cable Airport in Los Angeles with McFly Education. Our flexible scheduling and hands-on approach help you learn faster and build confidence from your very first lesson.",
     phone: PHONE_NUMBER,
     address: LOCATION,
+    gmapsLink: LOCATIONS[0].gMaps,
   },
   quickLinks: [
     { label: "Home", href: "/" },
@@ -23,13 +24,7 @@ const data = {
     { label: "Discovery Flight", href: "/discovery-flight" },
     { label: "FAQ", href: "/first-time-pilots#faqs" },
   ],
-  serviceAreas: [
-    "Cable",
-    "Claremont",
-    "Rancho Cucamanga",
-    "LaVerne",
-    "Chino Hills",
-  ],
+  serviceAreas: ["Cable", "Claremont", "Rancho Cucamanga", "LaVerne", "Chino Hills"],
   social: [
     // { label: "Facebook", href: "#", icon: "facebook" },
     {
@@ -104,7 +99,12 @@ const Year = new Date().getFullYear();
             </span>
             <div>
               <p class="text-muted-300/80 text-sm">Our Location</p>
-              <p class="font-semibold tracking-wide">{data.brand.address}</p>
+              <a
+                href={data.brand.gmapsLink}
+                target="_blank"
+                class="cursor-pointer text-lg font-semibold tracking-wide text-white transition hover:underline"
+                >{data.brand.address}</a
+              >
             </div>
           </div>
         </div>
@@ -112,17 +112,12 @@ const Year = new Date().getFullYear();
 
       <!-- Quick Links -->
       <nav aria-labelledby="quick-links" class="lg:col-span-2">
-        <h2 id="quick-links" class="text-primary-500 text-2xl font-semibold">
-          Quick Links
-        </h2>
+        <h2 id="quick-links" class="text-primary-500 text-2xl font-semibold">Quick Links</h2>
         <ul class="mt-6 space-y-3">
           {
             data.quickLinks.map((l) => (
               <li>
-                <a
-                  class="text-muted-200/90 transition hover:text-white"
-                  href={l.href}
-                >
+                <a class="text-muted-200/90 transition hover:text-white" href={l.href}>
                   {l.label}
                 </a>
               </li>
@@ -133,17 +128,12 @@ const Year = new Date().getFullYear();
 
       <!-- Useful Links -->
       <nav aria-labelledby="useful-links" class="lg:col-span-2">
-        <h2 id="useful-links" class="text-primary-500 text-2xl font-semibold">
-          Useful Links
-        </h2>
+        <h2 id="useful-links" class="text-primary-500 text-2xl font-semibold">Useful Links</h2>
         <ul class="mt-6 space-y-3">
           {
             data.usefulLinks.map((l) => (
               <li>
-                <a
-                  class="text-muted-200/90 transition hover:text-white"
-                  href={l.href}
-                >
+                <a class="text-muted-200/90 transition hover:text-white" href={l.href}>
                   {l.label}
                 </a>
               </li>
@@ -154,15 +144,12 @@ const Year = new Date().getFullYear();
 
       <!-- Service Locations (replaces newsletter) -->
       <section class="lg:col-span-3">
-        <h2 class="text-primary-500 text-2xl font-semibold">
-          Service Locations
-        </h2>
+        <h2 class="text-primary-500 text-2xl font-semibold">Service Locations</h2>
         <p class="text-muted-200/90 mt-4 max-w-prose">
-          We're based off Cable Airport in Los Angeles California, and proudly
-          serve training across these primary areas. Don’t see yours? <a
+          We're based off Cable Airport in Los Angeles California, and proudly serve training across these primary
+          areas. Don’t see yours? <a
             href="/contact"
-            class="underline decoration-yellow-400/70 underline-offset-4 hover:text-white"
-            >Contact us</a
+            class="underline decoration-yellow-400/70 underline-offset-4 hover:text-white">Contact us</a
           >.
         </p>
 
@@ -171,12 +158,7 @@ const Year = new Date().getFullYear();
             data.serviceAreas.map((city) => (
               <li class="bg-primary-500/50 rounded-xl border border-white/5 px-4 py-3 font-medium backdrop-blur-sm transition hover:bg-white/1">
                 <span class="inline-flex items-center gap-2">
-                  <svg
-                    viewBox="0 0 24 24"
-                    class="h-4 w-4"
-                    fill="currentColor"
-                    aria-hidden="true"
-                  >
+                  <svg viewBox="0 0 24 24" class="h-4 w-4" fill="currentColor" aria-hidden="true">
                     <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" />
                   </svg>
                   {city}
@@ -189,15 +171,10 @@ const Year = new Date().getFullYear();
     </div>
 
     <!-- Divider -->
-    <div
-      class="mt-12 flex flex-col items-center justify-between gap-4 border-t border-white/10 pt-6 md:flex-row"
-    >
+    <div class="mt-12 flex flex-col items-center justify-between gap-4 border-t border-white/10 pt-6 md:flex-row">
       <p class="text-muted-300/80 text-sm">
         McFly Education, {Year} © All Rights Reserved.
-        <a
-          href="/privacy-policy-and-terms-of-service"
-          class="hover:text-primary-500 hover:underline"
-        >
+        <a href="/privacy-policy-and-terms-of-service" class="hover:text-primary-500 hover:underline">
           Privacy Policy & Terms of Service
         </a>
       </p>
@@ -209,11 +186,7 @@ const Year = new Date().getFullYear();
           rel="noopener noreferrer"
           class="text-bold group flex items-center gap-2 duration-200 hover:text-white/70 hover:underline"
         >
-          <ImageComp
-            src="/src/assets/RRM-R-symbol-474.webp"
-            alt="Right Rudder Marketing Logo"
-            classes="h-6 w-auto"
-          />
+          <ImageComp src="/src/assets/RRM-R-symbol-474.webp" alt="Right Rudder Marketing Logo" classes="h-6 w-auto" />
           More Right Rudder
         </a>
       </span>
@@ -229,25 +202,13 @@ const Year = new Date().getFullYear();
               class="bg-primary-500/80 grid h-10 w-10 place-content-center rounded-full transition hover:bg-white/10"
             >
               {s.icon === "facebook" && (
-                <svg
-                  viewBox="0 0 24 24"
-                  class="h-5 w-5"
-                  fill="currentColor"
-                  aria-hidden="true"
-                >
+                <svg viewBox="0 0 24 24" class="h-5 w-5" fill="currentColor" aria-hidden="true">
                   <path d="M13 22v-9h3l1-4h-4V7a1 1 0 011-1h3V2h-3a5 5 0 00-5 5v2H6v4h3v9h4z" />
                 </svg>
               )}
-              {s.icon === "instagram" && (
-                <FaInstagram className="h-5 w-5 text-white" />
-              )}
+              {s.icon === "instagram" && <FaInstagram className="h-5 w-5 text-white" />}
               {s.icon === "youtube" && (
-                <svg
-                  viewBox="0 0 24 24"
-                  class="h-5 w-5"
-                  fill="currentColor"
-                  aria-hidden="true"
-                >
+                <svg viewBox="0 0 24 24" class="h-5 w-5" fill="currentColor" aria-hidden="true">
                   <path d="M23.5 7.1a3 3 0 00-2.1-2.1C19.3 4.5 12 4.5 12 4.5s-7.3 0-9.4.5A3 3 0 00.5 7.1 31.2 31.2 0 000 12a31.2 31.2 0 00.5 4.9 3 3 0 002.1 2.1c2.1.5 9.4.5 9.4.5s7.3 0 9.4-.5a3 3 0 002.1-2.1A31.2 31.2 0 0024 12a31.2 31.2 0 00-.5-4.9zM9.75 15.02V8.98L15.5 12l-5.75 3.02z" />
                 </svg>
               )}

@@ -98,7 +98,7 @@ export const LOCATIONS = [
     city: "Upland",
     state: "CA",
     zip: "91786",
-    gMaps: "https://maps.app.goo.gl/zLZq8h1w6oLxL6Eo8", // Cable Airport location
+    gMaps: "https://maps.app.goo.gl/K7xHcTpzd2c5C8xd8",
     phone: "1-909-262-5236",
     coordinates: {
       lat: "34.1128",

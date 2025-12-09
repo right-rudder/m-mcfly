@@ -119,12 +119,12 @@ const icon = "h-5 w-5 text-yellow-300";
                   <p class="text-muted-100 font-semibold">
                     {content?.info?.locationLabel || "Location"}
                   </p>
-                  <div class="flex flex-wrap gap-1">
-                    <p class="text-muted-300">{content.info.addressLine1},</p>
+                  <a href={content.info.gmapsLink} target="_blank" class="text-muted-300 transition-colors duration-300 ease-in-out hover:text-yellow-300 flex flex-wrap gap-1">
+                    <p>{content.info.addressLine1},</p>
                     {content?.info?.addressLine2 && (
-                      <p class="text-muted-300">{content.info.addressLine2}</p>
+                      <p>{content.info.addressLine2}</p>
                     )}
-                  </div>
+                  </a>
                 </div>
               </li>
             )
@@ -147,7 +147,7 @@ const icon = "h-5 w-5 text-yellow-300";
                   </p>
                   <a
                     href={`tel:${content.info.phoneValue}`}
-                    class="text-muted-300 hover:text-yellow-300"
+                    class="text-muted-300 transition-colors duration-300 ease-in-out hover:text-yellow-300"
                   >
                     {content.info.phoneValue}
                   </a>
