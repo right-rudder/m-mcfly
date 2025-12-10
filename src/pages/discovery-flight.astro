@@ -3,7 +3,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import HeroFull from "../components/HeroFull.astro";
 import AboutMarty from "../components/AboutMarty.astro";
 // import ContactForm from "../components/ContactForm.astro";
-import discoveryData from "../data/forms/discoveryFlight.js";
+// import discoveryData from "../data/forms/discoveryFlight.js";
 import Breadcrumb from "../components/Breadcrumb.astro";
 import CTAWhyBookADiscoveryFlight from "../components/CTAWhyBookADiscoveryFlight.astro";
 import DiscoveryFlightCRMCalendarForm from "../components/DiscoveryFlightCRMCalendarForm.astro";
@@ -16,7 +16,10 @@ import DiscoveryFlightCRMCalendarForm from "../components/DiscoveryFlightCRMCale
 const introFlight = {
   name: "Upland, California",
   role: "Our destination",
-  headshot: "/src/assets/stock/Mountain Range with Trees.jpg",
+  img: {
+    src: "/src/assets/stock/Mountain Range with Trees.jpg",
+    alt: "Mountain range with trees during daytime",
+  },
   bio: "Upland Airport in Upland sits at the base of the San Gabriel Mountains and is known for friendly ops, great visibility, and relaxed non-towered procedures, ideal for a scenic discovery flight with smooth pattern work and easy post-flight amenities.",
   bullets: [
     "Scenic views of the San Gabriel Mountains",
@@ -25,7 +28,7 @@ const introFlight = {
   ],
 };
 
-const formData = discoveryData;
+// const formData = discoveryData;
 ---
 
 <BaseLayout

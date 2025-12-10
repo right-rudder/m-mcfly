@@ -5,24 +5,20 @@ import { BiSolidPlaneAlt } from "react-icons/bi";
 const { content } = Astro.props;
 ---
 
-<div class="relative md:h-[90vh] bg-gradient-to-b from-accent-950 to-black">
+<div class="relative bg-gradient-to-b from-accent-950 to-black md:min-h-[90vh]">
   <!-- Mobile: image first, text below (no overlap) -->
-  <div class="overflow-hidden md:hidden">
-    <ImageComp
-      src={content.headshot}
-      alt=""
-      classes="h-full w-full object-cover"
-    />
-  </div>
+  <ImageComp
+    src={content.img.src}
+    alt={content.img.alt}
+    classes="size-full object-cover md:hidden"
+  />
 
   <!-- Desktop: image as background -->
-  <div class="absolute hidden inset-0 overflow-hidden md:block p-4 rounded-3xl">
-    <ImageComp
-      src={content.headshot}
-      alt=""
-      classes="h-full w-full object-cover rounded-3xl"
-    />
-  </div>
+  <ImageComp
+    src={content.img.src}
+    alt={content.img.alt}
+    classes="size-full object-cover absolute hidden top-0 left-0 p-4 rounded-3xl md:block"
+  />
 
   <!-- Text box aligned to the right on desktop -->
   <div
@@ -47,10 +43,10 @@ const { content } = Astro.props;
 
       {
         content.bullets?.length > 0 && (
-          <ul class="mt-6 grid gap-3 text-md sm:grid-cols-2 font-medium">
+          <ul class="mt-6 grid gap-3 text-md lg:grid-cols-2 font-medium">
             {content.bullets.map((b: any) => (
               <li class="flex items-start gap-3">
-                <BiSolidPlaneAlt className="inline-block h-10 w-10 text-primary-500" />
+                <BiSolidPlaneAlt className="shrink-0 inline-block size-8 text-primary-500" />
                 {b}
               </li>
             ))}
