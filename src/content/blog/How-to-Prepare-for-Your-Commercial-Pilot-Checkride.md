@@ -1,8 +1,8 @@
 ---
 title: "How to Prepare for Your Commercial Pilot Checkride"
 description: "Step-by-step strategies to prepare for your commercial pilot checkride with confidence and skill mastery."
-pubDate: 2025-12-15
-heroImage: "hero-homepage.jpg"
+pubDate: 2025-12-15T12:00:00
+heroImage: "commercial-pilot-rating-cable-airport-flight-training-mcfly.jpg"
 tags: ["Training", "Commercial Pilot", "Checkride", "CFI"]
 author: "Marty McFly"
 ---
@@ -13,10 +13,10 @@ author: "Marty McFly"
 
 The checkride tests your ability to:
 
-- Execute commercial maneuvers (short-field, steep turns, chandelles)
-- Demonstrate emergency procedures (engine-out, unusual attitude recovery)
-- Plan and execute cross-country flights efficiently
-- Communicate professionally with ATC
+- Execute commercial maneuvers (short-field, steep turns, chandelles).
+- Demonstrate emergency procedures (engine-out, unusual attitude recovery).
+- Plan and execute cross-country flights efficiently.
+- Communicate professionally with ATC.
 
 ## Step 1: Review the ACS
 

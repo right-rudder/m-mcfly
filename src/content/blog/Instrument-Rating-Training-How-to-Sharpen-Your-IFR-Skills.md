@@ -1,8 +1,8 @@
 ---
 title: "Instrument Rating Training: How to Sharpen Your IFR Skills"
 description: "Use simulator and real-flight practice to master IFR procedures and prepare confidently for your instrument rating."
-pubDate: 2025-11-30
-heroImage: "hero-homepage.jpg"
+pubDate: 2025-11-30T12:00:00
+heroImage: "stock-pilot-training-cable-california-los-angeles-flying-lessons.jpg"
 tags: ["Training", "Instrument Rating", "IFR", "Flight School"]
 author: "Marty McFly"
 ---
