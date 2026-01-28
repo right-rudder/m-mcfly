@@ -7,8 +7,6 @@ tags: ["Safety", "Aviation Standards", "Pilot Training", "McFly Education"]
 author: "McFly Education"
 ---
 
-MCFLY
-
 Learning to fly is exciting, but safety always comes first. At McFly Education in Los Angeles, California, every lesson is designed to teach students how to fly safely right from the start.
 
 But what do “aviation safety standards” really mean? And how does McFly Education make safety a natural part of your training?

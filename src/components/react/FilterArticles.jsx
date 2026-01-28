@@ -8,7 +8,7 @@ export default function FilterArticles({
 }) {
   return (
     <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-      <div className="flex gap-2 overflow-x-auto pb-1">
+      <div className="flex flex-wrap gap-2 pb-1 max-w-2xl lg:max-w-none">
         {tags.map((t) => {
           const active = t === currentTag;
           return (
