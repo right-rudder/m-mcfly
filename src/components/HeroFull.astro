@@ -36,7 +36,7 @@ import ImageComp from "./ImageComp.astro";
           data.buttons &&
             data.buttons.map(
               (button: { href: string; style: string; text: string }) => (
-                <a href={button.href} class={button.style}>
+                <a href={button.href} class={button.style} target={button.href.startsWith("https://") ? "_blank" : "_self"}>
                   {button.text}
                 </a>
               )
