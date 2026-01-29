@@ -53,6 +53,17 @@ const { content } = Astro.props;
           </ul>
         )
       }
+      {
+        content.buttons?.length > 0 && (
+          <div class="mt-6 flex flex-wrap gap-3">
+            {content.buttons.map((b: any) => (
+              <a href={b.href} class={b.style} target={b.href.startsWith("https://") ? "_blank" : "_self"}>
+                {b.text}
+              </a>
+            ))}
+          </div>
+        )
+      }
     </div>
   </div>
 </div>
